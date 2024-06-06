@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import localFont from 'next/font/local'
+
+
+const myFont = localFont({ src: '../public/fonts/AnekBangla-SemiBold.ttf' })
+
 
 
 
@@ -16,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='bg-[#F9F7FF] max-w-[1304px] mx-auto'>
+      <body className={`${myFont.className} bg-[#F9F7FF] max-w-[1304px] mx-auto`}>
         <Navbar />
         <main>
           {children}
