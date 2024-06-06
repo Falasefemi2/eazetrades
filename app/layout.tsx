@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import localFont from 'next/font/local'
 
 
-const myFont = localFont({ src: '../public/fonts/AnekBangla-SemiBold.ttf' })
+const anekBangla = localFont({ src: '../public/fonts/AnekBangla-SemiBold.ttf' })
 
 
 
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${myFont.className} bg-[#F9F7FF] max-w-[1304px] mx-auto`}>
+      <body className={`${anekBangla.className} bg-[#F9F7FF]`}>
         <Navbar />
         <main>
           {children}

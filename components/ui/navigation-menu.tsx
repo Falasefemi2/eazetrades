@@ -2,6 +2,10 @@ import * as React from "react"
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 import { cva } from "class-variance-authority"
 import { ChevronDown } from "lucide-react"
+import localFont from 'next/font/local'
+
+const myFont = localFont({ src: '../../public/fonts/AnekBangla-Regular.ttf' })
+
 
 import { cn } from "@/lib/utils"
 
@@ -41,7 +45,10 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+  cn(
+    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium focus:outline-none disabled:pointer-events-none disabled:opacity-50 text-xl text-[#4F4F4F]",
+    myFont.className // Apply the font class here
+  )
 )
 
 const NavigationMenuTrigger = React.forwardRef<
