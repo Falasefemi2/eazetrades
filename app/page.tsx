@@ -4,10 +4,10 @@ import Container from "./components/Container";
 
 export default function Home() {
   return (
-    <Container>
-      <div className="max-w-[1318px] h-[507px] py-[136px] px-[72px]">
+    <>
+      <div className=" mt-[54px]">
         <HeroSection />
       </div>
-    </Container>
+    </>
   );
 }
