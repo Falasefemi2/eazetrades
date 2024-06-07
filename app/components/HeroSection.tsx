@@ -18,7 +18,7 @@ const HeroSection = () => {
             <div className="relative">
                 <Image
                     alt="Hero"
-                    className="w-[1318px] rounded-lg object-cover"
+                    className="w-[1318px] h-[507px] rounded-lg object-cover"
                     src={heroimg}
                 />
                 <div className="absolute inset-0 flex flex-col">
