@@ -15,27 +15,13 @@ const textFont = localFont({ src: '../../public/fonts/AnekBangla_SemiCondensed-S
 
 const Navbar = () => {
     return (
-        // <Container>
-        //     <header className="w-full flex items-center justify-between px-4 py-[12px] lg:py-[40px]">
-        //         <div className='flex items-center justify-center mr-[144px]'>
-        //             <Image src={logo} width={29.17} height={35} alt='logo' className='mr-[5px]' />
-        //             <span className={`${textFont.className} text-2xl font-semibold text-[#4F4F4F]`}>EAZETRADES</span>
-        //         </div>
-        //         <div className="flex items-center justify-end space-x-8 max-w-[978px] w-full">
-        //             <SearchBar className=" mr-20" /> {/* Added margin-left */}
-        //             <NavigationMenuDemo />
-        //             <Button size="default" className={`${btnfont.className} text-xl`}>Get Started</Button>
-        //             <MobileNav />
-        //         </div>
-        //     </header>
-        // </Container>
         <Container>
-            <header className="w-full flex items-center justify-between px-4 py-[12px] lg:py-[40px]">
+            <header className="w-full flex items-center justify-between">
                 <div className='flex items-center justify-center mr-[144px]'>
                     <Image src={logo} width={29.17} height={35} alt='logo' className='mr-[5px]' />
                     <span className={`${textFont.className} text-2xl font-semibold text-[#4F4F4F]`}>EAZETRADES</span>
                 </div>
-                <div className="flex items-center justify-end space-x-8 max-w-[978px] w-full">
+                <div className="flex items-center justify-end max-w-[978px] w-full">
                     {/* Show SearchBar, NavigationMenuDemo, and Button on desktop */}
                     <div className="hidden lg:flex">
                         <SearchBar className="mr-20" />

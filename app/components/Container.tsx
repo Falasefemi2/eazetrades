@@ -6,7 +6,7 @@ interface ContainerProps {
 
 const Container: React.FC<ContainerProps> = ({ children }) => {
     return (
-        <div className="max-w-[1304px] mx-auto">{children}</div>
+        <div className="py-[35px] px-[72px] w-full h-full mx-auto">{children}</div>
     )
 }
 
