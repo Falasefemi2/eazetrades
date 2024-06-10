@@ -18,7 +18,8 @@ const Navbar = () => {
         <Container>
             <header className="w-full flex items-center justify-between">
                 <div className='flex items-center justify-center mr-[144px]'>
-                    <Image src={logo} width={29.17} height={35} alt='logo' className='mr-[5px]' />
+                    <Image src={logo} width={29.17} height={35} alt='logo' className='mr-[5px] hidden md:block' />
+                    <Image src={logo} width={128.12} height={35} alt='logo' className='mr-[5px] md:hidden' />
                     <span className={`${textFont.className} text-2xl font-semibold text-[#4F4F4F]`}>EAZETRADES</span>
                 </div>
                 <div className="flex items-center justify-end max-w-[978px] w-full">

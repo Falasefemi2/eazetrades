@@ -24,9 +24,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${anekBangla.className} bg-[#F9F7FF]`}>
         <Navbar />
-        <Container>
+        <div>
           {children}
-        </Container>
+        </div>
       </body>
     </html>
   );
