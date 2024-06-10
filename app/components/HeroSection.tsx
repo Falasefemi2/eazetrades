@@ -45,6 +45,10 @@ const HeroSection = () => {
 
                     </div>
                 </div>
+                <div className="absolute bottom-[-70px] left-0 right-0 bg-white h-[117px] rounded-[10px] mx-[10px] shadow-[#000000] flex justify-center items-center">
+                    <Input className="rounded-[30px] w-[337px] h-[66px] mx-[18px] my-[51px]" />
+                </div>
+
             </div>
 
         </section>
