@@ -47,11 +47,9 @@ const MobileNav = () => {
                                     </Link>
                                 </NavigationMenuItem>
                             </NavigationMenu>
+                            <Separator className="bg-[#696969] w-full mt-9" />
                         </div>
-                        <div className="">
-                            <Separator className="bg-[#696969] w-full mt-0" />
-                        </div>
-                        <div className="flex justify-center px-4">
+                        <div className="flex justify-center px-4 mb-[81px]">
                             <Button size="lg">Get Started</Button>
                         </div>
                     </SheetContent>
