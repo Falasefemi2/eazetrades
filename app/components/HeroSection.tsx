@@ -46,19 +46,6 @@ const HeroSection = () => {
 
                     </div>
                 </div>
-                {/* <div className="absolute bottom-[-70px] left-0 right-0 bg-white h-[117px] rounded-[10px] mx-[10px] shadow-[#000000] flex justify-center items-center">
-                    <div className="relative w-[337px] h-[66px] mx-[18px] my-[51px]">
-                        <Input
-                            className="rounded-[30px] w-full h-full px-10 pl-12 pr-10"
-                            placeholder="Search..."
-                        />
-                        <div className="absolute inset-y-0 right-3 flex items-center pl-2">
-                            <div className="bg-[#5F3AFB] rounded-full p-1 w-[54px]  h-[50px] flex justify-center items-center">
-                                <Search className="w-8 h-8 text-[#FFFFFF]" />
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
                 <div className="absolute bottom-[-70px] left-0 right-0 bg-white h-[117px] rounded-[10px] mx-[10px] shadow-[#000000] flex justify-center items-center">
                     <div className="relative w-[500px] h-[80px] mx-[18px] my-[51px]">
                         <Input
