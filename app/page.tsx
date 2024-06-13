@@ -1,6 +1,7 @@
 import HeroSection from "./components/HeroSection";
 import ImageSlider from "./components/ImageSlider";
 import RelatedSearch from "./components/RelatedSearch";
+import TrendingProducts from "./components/TrendingProducts";
 
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <HeroSection />
       <ImageSlider />
       <RelatedSearch />
+      <TrendingProducts />
     </>
   );
 }

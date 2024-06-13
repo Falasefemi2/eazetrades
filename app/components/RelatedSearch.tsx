@@ -21,7 +21,7 @@ const repeatedPics = Array(9).fill(pic).map((_, i) => pic[i % pic.length]);
 
 const RelatedSearch = () => {
     return (
-        <section>
+        <section className="mb-0 lg:mb-[152px]">
             <div className="text-center">
                 <h1 className=" font-semibold text-[32px] md:text-5xl leading-[131.8%] text-[#000000]">Related Searches</h1>
             </div>
