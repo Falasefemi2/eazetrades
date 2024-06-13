@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardDescription } from "@/components/ui/card"
 import {
     Carousel,
     CarouselContent,
@@ -20,6 +20,17 @@ import gif9 from "../../public/vids/theaglad.gif"
 import Image from "next/image";
 
 const gifs = [gif1, gif2, gif3, gif4, gif5, gif6, gif7, gif8, gif9]
+const text = [
+    "Sport,Art",
+    "Health",
+    "Animals",
+    "Vehicle",
+    "Fashion",
+    "Pup",
+    "SVG Robot",
+    "Teacher Tips",
+    "theaglad",
+]
 
 const VidSlider = () => {
     return (
@@ -28,10 +39,13 @@ const VidSlider = () => {
                 {gifs.map((gif, index) => (
                     <CarouselItem key={index} className="pl-2 basis-10/12 lg:basis-1/5">
                         <div className="p-1">
-                            <Card className=" bg-[#F0F4FF]  lg:w-[256px] lg:h-[306px] rounded-[8px]">
+                            <Card className=" bg-[#F0F4FF] rounded-[8px]">
                                 <CardContent className="flex aspect-square items-center justify-center p-6">
-                                    <Image src={gif} alt={`GIF ${index + 1}`} className="w-[143px] md:w-[177px] h-[108px] md:h-[126px] object-cover" />
+                                    <Image src={gif} alt={`GIF ${index + 1}`} className="w-[143px] md:w-[177px] object-cover" />
                                 </CardContent>
+                                <div className="text-center px-[30px] mb-[35px]">
+                                    <CardDescription className="text-[#333333] font-medium text-xl lg:text-[32px]">{text[index]}</CardDescription>
+                                </div>
                             </Card>
                         </div>
                     </CarouselItem>
