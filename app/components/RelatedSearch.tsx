@@ -35,17 +35,17 @@ const RelatedSearch = () => {
                                         <CardContent className="flex aspect-square items-center justify-center p-6">
                                             <Image src={p} alt={`PIC ${i + 1}`} className="w-[316.85px] lg:w-[464px] object-cover rounded-[45px]" />
                                         </CardContent>
-                                        <CardDescription>
+                                        <>
                                             <div className="flex justify-between items-center p-2 lg:p-4">
                                                 <p className="text-[#5F3AFB] font-medium text-xl lg:text-3xl leading-relaxed">Fashion</p>
                                                 <h2 className="text-[#000000] font-bold text-xl lg:text-[37px] leading-relaxed">₦20,000</h2>
                                             </div>
-                                        </CardDescription>
-                                        <div className="p-4">
-                                            <p className="text-[#000000] font-bold text-xl lg:text-[27px]">High Quality Crocs</p>
-                                        </div>
-                                        <CardFooter>
-                                            <div className="bg-[#F0F0F0]  lg:w-[464px]  lg:h-[152px] rounded-[45px]">
+                                            <div className="p-4">
+                                                <p className="text-[#000000] font-bold text-xl lg:text-[27px]">High Quality Crocs</p>
+                                            </div>
+                                        </>
+                                        <CardFooter className="p-4">
+                                            <div className="bg-[#F0F0F0] w-full mx-auto rounded-[45px]">
                                                 <div className="flex items-center m-6">
                                                     <Image src={location} alt="loc" width={22} height={29} />
                                                     <span className="font-bold text-[#5F3AFB] text-[22px]">Lagos, Ikeja</span>
