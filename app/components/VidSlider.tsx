@@ -23,14 +23,14 @@ const gifs = [gif1, gif2, gif3, gif4, gif5, gif6, gif7, gif8, gif9]
 
 const VidSlider = () => {
     return (
-        <Carousel className="w-full max-w-[1371px]">
+        <Carousel>
             <CarouselContent className="-ml-1">
                 {gifs.map((gif, index) => (
-                    <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+                    <CarouselItem key={index} className="pl-2 basis-10/12 lg:basis-1/5">
                         <div className="p-1">
-                            <Card className="w-[191px] md:w-[255px] h-[256px] md:h-[306px] px-[35px] py-[30px] bg-[#F0F4FF]">
+                            <Card className=" bg-[#F0F4FF]  lg:w-[256px] lg:h-[306px] rounded-[8px]">
                                 <CardContent className="flex aspect-square items-center justify-center p-6">
-                                    <Image src={gif} alt={`GIF ${index + 1}`} className="w-[177px] h-[126px] object-cover" />
+                                    <Image src={gif} alt={`GIF ${index + 1}`} className="w-[143px] md:w-[177px] h-[108px] md:h-[126px] object-cover" />
                                 </CardContent>
                             </Card>
                         </div>
