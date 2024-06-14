@@ -62,7 +62,7 @@ const TrendingProducts = () => {
             </div>
             <div className="flex items-center justify-center mt-[60px] mb-[89px]">
                 <Button variant="outline"
-                    className="px-[14px] py-[13px] w-[234px] h-[69px] rounded-[12px] text-[#333333]">View all products <span className="ml-[10.5px]"><ShoppingCart /> </span></Button>
+                    className="px-[14px] py-[13px] w-[234px] h-[69px] rounded-[12px] text-[#333333] bg-transparent">View all products <span className="ml-[10.5px]"><ShoppingCart /> </span></Button>
             </div>
 
         </section>
