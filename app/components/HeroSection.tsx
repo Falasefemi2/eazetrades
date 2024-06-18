@@ -47,7 +47,7 @@ const HeroSection = () => {
                     </div>
                 </div>
                 <div className="absolute bottom-[-70px] left-0 right-0 bg-white h-[117px] rounded-[10px] mx-[10px] shadow-[#000000] flex justify-center items-center">
-                    <div className="relative w-[500px] h-[80px] mx-[18px] my-[51px]">
+                    <div className="relative w-[90%] h-[80px] mx-[18px] my-[51px]">
                         <Input
                             className="rounded-[30px] w-full h-full px-10 pl-12 pr-10"
                             placeholder="Search..."
@@ -59,7 +59,6 @@ const HeroSection = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </section>
