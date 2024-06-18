@@ -20,46 +20,37 @@ import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const ecommerceComponents: { title: string; description: string }[] = [
+const ecommerceComponents: { title: string; }[] = [
     {
         title: "Product List",
-        description: "Displays a collection of products available for purchase.",
     },
     {
         title: "Product Details",
-        description: "Shows detailed information about a selected product.",
     },
     {
         title: "Shopping Cart",
-        description: "Displays items added to the cart, with options to modify the quantity or remove items.",
     },
     {
         title: "Checkout",
-        description: "A process where the user provides payment and shipping information to complete a purchase.",
     },
     {
         title: "User Profile",
-        description: "Shows user account information, order history, and saved addresses.",
+
     },
     {
         title: "Search Bar",
-        description: "Allows users to search for products by keywords.",
     },
     {
         title: "Filters",
-        description: "Provides options to filter products based on categories, price, ratings, etc.",
     },
     {
         title: "Wishlist",
-        description: "A list of products the user wishes to purchase in the future.",
     },
     {
         title: "Reviews",
-        description: "Displays customer reviews and ratings for products.",
     },
     {
         title: "Promotional Banner",
-        description: "Highlights special offers, discounts, or new arrivals.",
     },
 ];
 
@@ -81,14 +72,13 @@ const MobileNav = () => {
                             <NavigationMenu className="flex flex-col items-center space-y-10">
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger>Products</NavigationMenuTrigger>
-                                    <NavigationMenuContent>
-                                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                                    <NavigationMenuContent className="bg-white">
+                                        <ul className="grid w-[400px] gap-3 p-4 md:grid-cols-2 lg:w-[600px] overflow-scroll md:overflow-hidden">
                                             {ecommerceComponents.map((component) => (
                                                 <ListItem
                                                     key={component.title}
                                                     title={component.title}
                                                 >
-                                                    {component.description}
                                                 </ListItem>
                                             ))}
                                         </ul>
@@ -96,14 +86,13 @@ const MobileNav = () => {
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-                                    <NavigationMenuContent>
-                                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                                    <NavigationMenuContent className="bg-white">
+                                        <ul className="grid w-[400px] gap-3 p-4  md:grid-cols-3 lg:w-[600px] overflow-scroll md:overflow-hidden">
                                             {ecommerceComponents.map((component) => (
                                                 <ListItem
                                                     key={component.title}
                                                     title={component.title}
                                                 >
-                                                    {component.description}
                                                 </ListItem>
                                             ))}
                                         </ul>
