@@ -85,7 +85,7 @@ const cardData = [
 const Testimonials = () => {
     return (
         <section>
-            <Separator />
+            {/* <Separator className=" text-gray-300" /> */}
             <div className="mt-[75px]">
                 <div className="flex items-center justify-center flex-col gap-[14px]">
                     <p className="text-[#4A3AFF] w-[22px] h-2 rounded-[30px]">-</p>

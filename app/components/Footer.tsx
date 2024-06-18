@@ -55,7 +55,7 @@ const Footer = () => {
                         <li>Lift Media</li>
                     </ul>
                 </div>
-                <Card className="w-[350px] px-7 lg:px-[42px] lg:py-[32px] mt-[195px] lg:mt-0">
+                <Card className="w-[350px] px-7 py-0 lg:px-[42px] lg:py-[32px]  lg:mt-0">
                     <CardHeader>
                         <CardTitle className="font-semibold text-base leading-7 text-[#333333]">Subscribe</CardTitle>
                     </CardHeader>

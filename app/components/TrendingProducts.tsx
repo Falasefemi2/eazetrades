@@ -96,14 +96,17 @@ const TrendingProducts = () => {
                             <div>
                                 <p className="text-[#000000] font-bold text-lg lg:text-xl">High Quality Crocs</p>
                             </div>
-                            <div className="bg-[#F0F0F0] rounded-[20px] sm:rounded-[30px] lg:rounded-[45px] p-2 sm:p-4">
+                            <div className="bg-[#F0F0F0] rounded-[20px] p-2 sm:p-4">
                                 <div className="text-sm text-[#5F3AFB] flex items-center gap-2 mb-2">
-                                    <LocateIcon className="w-4 h-4" />
+                                    {/* <LocateIcon className="w-4 h-4" /> */}
+                                    <Image src={location} alt="location" />
                                     Lagos, Ikeja
                                 </div>
                                 <div className="flex items-center justify-between">
                                     <p className="text-sm text-black">16 visits</p>
-                                    <Button size="sm" className="rounded-full">Preview</Button>
+                                    {/* <Button size="sm" className="rounded-full">Preview</Button> */}
+                                    <Button size="sm" className="rounded-full text-base md:text-sm lg:text-xs">Preview</Button>
+
                                 </div>
                             </div>
                         </div>
