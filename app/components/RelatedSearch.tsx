@@ -13,6 +13,7 @@ import show from "../../public/images/show.png"
 import Image from "next/image"
 import location from "../../public/images/location.png"
 import { Button } from "@/components/ui/button"
+import { LocateIcon } from "lucide-react"
 
 const pic = [camera, show]
 const repeatedPics = Array(9).fill(pic).map((_, i) => pic[i % pic.length]);
@@ -29,40 +30,39 @@ const RelatedSearch = () => {
                 <Carousel>
                     <CarouselContent className="flex justify-between items-center p-6 -ml-1">
                         {repeatedPics.map((p, i) => (
-                            <CarouselItem key={i} className="pl-2 basis-full sm:basis-full md:basis-1/2  lg:basis-1/5">
+                            <CarouselItem key={i} className="pl-2 basis-full sm:basis-full md:basis-1/2  lg:basis-1/3">
                                 <div className="p-1">
-                                    <Card className=" bg-[#FFFFFF] rounded-[59px] drop-shadow-md shadow-md">
-                                        <CardContent className="flex aspect-square items-center justify-center p-6">
-                                            <Image src={p} alt={`PIC ${i + 1}`} className="w-[316.85px] lg:w-[464px] object-cover rounded-[45px]" />
-                                        </CardContent>
-                                        <>
-                                            <div className="flex justify-between items-center p-2 lg:p-4">
-                                                <p className="text-[#5F3AFB] font-medium text-xl lg:text-3xl leading-relaxed">Fashion</p>
-                                                <h2 className="text-[#000000] font-bold text-xl lg:text-[37px] leading-relaxed">₦20,000</h2>
+                                    <Card className="w-full max-w-sm bg-[#FFFFFF] drop-shadow-md shadow-m overflow-hidden">
+                                        <Image
+                                            src={p}
+                                            width={600}
+                                            height={400}
+                                            alt={`PIC ${i + 1}`}
+                                            className="w-full aspect-[3/2] object-cover"
+                                        />
+                                        <div className="p-4 space-y-2">
+                                            <div className="flex items-center justify-between">
+                                                <h3 className="text-lg font-semibold text-[#5F3AFB]">Fashion</h3>
+                                                <div className="text-2xl font-bold text-[#000000]">₦20,000</div>
                                             </div>
                                             <div className="p-4">
-                                                <p className="text-[#000000] font-bold text-xl lg:text-[27px]">High Quality Crocs</p>
+                                                <p className="text-[#000000] font-bold text-xl">High Quality Crocs</p>
                                             </div>
-                                        </>
-                                        <CardFooter className="p-4">
-                                            <div className="bg-[#F0F0F0] w-full mx-auto rounded-[45px]">
-                                                <div className="flex items-center m-6">
-                                                    <Image src={location} alt="loc" width={22} height={29} />
-                                                    <span className="font-bold text-[#5F3AFB] text-[22px]">Lagos, Ikeja</span>
+                                            <div className="bg-[#F0F0F0] rounded-md p-4 flex items-center justify-between">
+                                                <div className="text-sm text-[#5F3AFB] flex items-center gap-2">
+                                                    <LocateIcon className="w-4 h-4" />
+                                                    Lagos, Ikeja
                                                 </div>
-                                                <div className="flex items-center justify-between m-6">
-                                                    <p className=" text-black font-bold text-xl">16 Visits</p>
-                                                    <Button size="md">Preview</Button>
-                                                </div>
+                                                <Button size="sm" className="rounded-full">Preview</Button>
                                             </div>
-                                        </CardFooter>
+                                        </div>
                                     </Card>
                                 </div>
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
+                    {/* <CarouselPrevious />
+                    <CarouselNext /> */}
                 </Carousel>
             </div>
         </section>

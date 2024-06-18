@@ -40,19 +40,24 @@ const VidSlider = () => {
                     <CarouselItem key={index} className="pl-2 basis-10/12 lg:basis-1/5">
                         <div className="p-1">
                             <Card className=" bg-[#F0F4FF] rounded-[8px]">
-                                <CardContent className="flex aspect-square items-center justify-center p-6">
-                                    <Image src={gif} alt={`GIF ${index + 1}`} className="w-[143px] md:w-[177px] object-cover" />
-                                </CardContent>
-                                <div className="text-center px-[30px] mb-[35px]">
-                                    <CardDescription className="text-[#333333] font-medium text-xl lg:text-[32px]">{text[index]}</CardDescription>
+                                <div className="flex items-center justify-center p-6">
+                                    <Image src={gif}
+                                        className=" aspect-[3/2] object-cover w-[143px] md:w-[177px]"
+                                        alt="img"
+                                    />
+                                </div>
+                                <div className="p-4 space-y-2">
+                                    <div className="flex items-center justify-center">
+                                        <h3 className="text-[#333333] font-medium text-xl lg:text-2xl">{text[index]}</h3>
+                                    </div>
                                 </div>
                             </Card>
                         </div>
                     </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            {/* <CarouselPrevious />
+            <CarouselNext /> */}
         </Carousel>
 
     );
