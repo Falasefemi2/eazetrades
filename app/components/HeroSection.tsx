@@ -14,14 +14,27 @@ import Autoplay from "embla-carousel-autoplay"
 
 
 
-import { Card, CardContent } from "@/components/ui/card"
+
 import {
     Carousel,
-    CarouselContent,
-    CarouselItem,
+    CarouselIndicator,
+    CarouselMainContainer,
     CarouselNext,
     CarouselPrevious,
-} from "@/components/ui/carousel"
+    CarouselThumbsContainer,
+    SliderMainItem,
+} from "@/components/ui/mycarousel";
+import AutoScroll from "embla-carousel-auto-scroll";
+
+
+
+// import {
+//     Carousel,
+//     CarouselContent,
+//     CarouselItem,
+//     CarouselNext,
+//     CarouselPrevious,
+// } from "@/components/ui/carousel"
 
 
 
@@ -90,15 +103,74 @@ const HeroSection = () => {
         //     </div>
         // </section>
 
+        // <section className="w-full pt-[80px] md:pt-[220px] px-0 md:px-[50px] h-full mx-auto relative">
+        //     <Carousel
+        //         plugins={[plugin.current]}
+        //         onMouseEnter={plugin.current.stop}
+        //         onMouseLeave={plugin.current.reset}
+        //     >
+        //         <CarouselMainContainer >
+        //             {Array.from({ length: 3 }).map((_, index) => (
+        //                 <CarouselItem  key={index} className="relative">
+        //                     <Image
+        //                         alt="Hero"
+        //                         className="w-full h-[427px] md:h-[507px] rounded-lg object-cover"
+        //                         src={heroimg}
+        //                     />
+        //                     <div className="absolute inset-0 flex flex-col">
+        //                         <div className="flex flex-col py-[32px] md:py-[52px] px-[30px] md:px-[59px]">
+        //                             <div className="max-w-[359px] md:max-w-[555px]">
+        //                                 <h1 className={`${myFont.className} text-[#333333] text-[28px] md:text-[50px] leading-[110%] font-semibold whitespace-pre-wrap break-words mb-3 md:mb-5`}>
+        //                                     Connecting <br />
+        //                                     sellers and buyers where convenience <br />
+        //                                     meet innovation
+        //                                 </h1>
+        //                             </div>
+        //                             <div className="max-w-[197px] md:max-w-[332px]">
+        //                                 <p className={`${myFonts.className} text-[#000000] leading-[131.8%] text-sm md:text-[27px] mb-6 md:mb-10`}>
+        //                                     World's largerst market place
+        //                                 </p>
+        //                             </div>
+        //                             <Button asChild size="lg" className="relative z-10">
+        //                                 <Link href="#">
+        //                                     Get started
+        //                                 </Link>
+        //                             </Button>
+        //                         </div>
+        //                     </div>
+        //                 </CarouselItem>
+        //             ))}
+        //         </CarouselMainContainer>
+        //     </Carousel>
+        //     <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[calc(100%-20px)] max-w-3xl md:max-w-[1175px] h-[117px] mx-auto p-2 bg-white rounded-[10px] shadow-md flex justify-center">
+        //         <div className="relative w-full h-[80px]">
+        //             <Input
+        //                 className="rounded-[30px] w-full h-full px-10 pl-12 pr-10"
+        //                 placeholder="Search..."
+        //             />
+        //             <div className="absolute inset-y-0 right-3 flex items-center pl-2">
+        //                 <div className="bg-[#5F3AFB] rounded-full p-1 w-[54px] h-[50px] flex justify-center items-center">
+        //                     <Search className="w-8 h-8 text-[#FFFFFF]" />
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </section>
         <section className="w-full pt-[80px] md:pt-[220px] px-0 md:px-[50px] h-full mx-auto relative">
+
             <Carousel
-                plugins={[plugin.current]}
-                onMouseEnter={plugin.current.stop}
-                onMouseLeave={plugin.current.reset}
+                plugins={[
+                    AutoScroll({
+                        speed: 5,
+                    }),
+                ]}
+                carouselOptions={{
+                    loop: true,
+                }}
             >
-                <CarouselContent>
+                <CarouselMainContainer>
                     {Array.from({ length: 3 }).map((_, index) => (
-                        <CarouselItem key={index} className="relative">
+                        <SliderMainItem key={index} className="relative">
                             <Image
                                 alt="Hero"
                                 className="w-full h-[427px] md:h-[507px] rounded-lg object-cover"
@@ -125,9 +197,17 @@ const HeroSection = () => {
                                     </Button>
                                 </div>
                             </div>
-                        </CarouselItem>
+                        </SliderMainItem>
                     ))}
-                </CarouselContent>
+                </CarouselMainContainer>
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
+                    <CarouselThumbsContainer className="gap-x-1 ">
+                        {Array.from({ length: 3 }).map((_, index) => (
+                            <CarouselIndicator key={index} index={index} />
+                        ))}
+                    </CarouselThumbsContainer>
+                </div>
+
             </Carousel>
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[calc(100%-20px)] max-w-3xl md:max-w-[1175px] h-[117px] mx-auto p-2 bg-white rounded-[10px] shadow-md flex justify-center">
                 <div className="relative w-full h-[80px]">
@@ -143,8 +223,6 @@ const HeroSection = () => {
                 </div>
             </div>
         </section>
-
-
     );
 }
 
