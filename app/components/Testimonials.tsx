@@ -1,6 +1,7 @@
 "use client";
 
-import { Separator } from "@/components/ui/separator";
+import * as React from "react"
+import Autoplay from "embla-carousel-autoplay"
 import { Card, CardContent } from "@/components/ui/card"
 import {
     Carousel,
@@ -83,6 +84,10 @@ const cardData = [
 
 
 const Testimonials = () => {
+    const plugin = React.useRef(
+        Autoplay({ delay: 2000, stopOnInteraction: true })
+    )
+
     return (
         <section>
             <div className="mt-[75px]">
@@ -123,7 +128,11 @@ const Testimonials = () => {
                         <CarouselPrevious />
                         <CarouselNext />
                     </Carousel> */}
-                    <Carousel>
+                    <Carousel
+                        plugins={[plugin.current]}
+                        onMouseEnter={plugin.current.stop}
+                        onMouseLeave={plugin.current.reset}
+                    >
                         <CarouselContent className="-ml-1">
                             {cardData.map((card, index) => (
                                 <CarouselItem key={index} className="lg:basis-1/2">
@@ -149,8 +158,8 @@ const Testimonials = () => {
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <CarouselPrevious />
-                        <CarouselNext />
+                        {/* <CarouselPrevious />
+                        <CarouselNext /> */}
                     </Carousel>
                 </div>
             </div>

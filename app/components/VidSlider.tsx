@@ -1,5 +1,7 @@
 "use client";
 
+import * as React from "react"
+import Autoplay from "embla-carousel-autoplay"
 import { Card, CardContent, CardDescription } from "@/components/ui/card"
 import {
     Carousel,
@@ -33,8 +35,16 @@ const text = [
 ]
 
 const VidSlider = () => {
+    const plugin = React.useRef(
+        Autoplay({ delay: 2000, stopOnInteraction: true })
+    )
+
     return (
-        <Carousel>
+        <Carousel
+            plugins={[plugin.current]}
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+        >
             <CarouselContent className="-ml-1">
                 {gifs.map((gif, index) => (
                     <CarouselItem key={index} className="pl-2 basis-10/12 lg:basis-1/5">
@@ -59,8 +69,8 @@ const VidSlider = () => {
                     </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            {/* <CarouselPrevious />
+            <CarouselNext /> */}
         </Carousel>
 
 

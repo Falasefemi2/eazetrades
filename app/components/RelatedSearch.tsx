@@ -1,5 +1,7 @@
 "use client"
 
+import * as React from "react"
+import Autoplay from "embla-carousel-autoplay"
 import { Card, CardContent, CardDescription, CardFooter } from "@/components/ui/card"
 import {
     Carousel,
@@ -21,13 +23,20 @@ const repeatedPics = Array(9).fill(pic).map((_, i) => pic[i % pic.length]);
 
 
 const RelatedSearch = () => {
+    const plugin = React.useRef(
+        Autoplay({ delay: 2000, stopOnInteraction: true })
+    )
     return (
         <section className="mb-0 lg:mb-[152px]">
             <div className="text-center">
                 <h1 className=" font-semibold text-[32px] md:text-5xl leading-[131.8%] text-[#000000]">Related Searches</h1>
             </div>
             <div className="mt-0 lg:mt-[60px] px-[34px] md:px-20 pt-[32px] md:pt-[55px] pb-[115px]">
-                <Carousel>
+                <Carousel
+                    plugins={[plugin.current]}
+                    onMouseEnter={plugin.current.stop}
+                    onMouseLeave={plugin.current.reset}
+                >
                     <CarouselContent className="flex justify-between items-center p-6 -ml-1">
                         {repeatedPics.map((p, i) => (
                             <CarouselItem key={i} className="pl-2 basis-full sm:basis-full md:basis-1/2 lg:basis-1/3">
@@ -70,8 +79,8 @@ const RelatedSearch = () => {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
+                    {/* <CarouselPrevious />
+                    <CarouselNext /> */}
                 </Carousel>
             </div>
 
