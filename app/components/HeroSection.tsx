@@ -161,7 +161,7 @@ const HeroSection = () => {
             <Carousel
                 plugins={[
                     AutoScroll({
-                        speed: 5,
+                        speed: 1,
                     }),
                 ]}
                 carouselOptions={{
@@ -200,8 +200,8 @@ const HeroSection = () => {
                         </SliderMainItem>
                     ))}
                 </CarouselMainContainer>
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
-                    <CarouselThumbsContainer className="gap-x-1 ">
+                <div className="absolute bottom-[-120px] left-1/2 -translate-x-1/2">
+                    <CarouselThumbsContainer className="gap-x-2 ">
                         {Array.from({ length: 3 }).map((_, index) => (
                             <CarouselIndicator key={index} index={index} />
                         ))}
@@ -209,15 +209,15 @@ const HeroSection = () => {
                 </div>
 
             </Carousel>
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[calc(100%-20px)] max-w-3xl md:max-w-[1175px] h-[117px] mx-auto p-2 bg-white rounded-[10px] shadow-md flex justify-center">
-                <div className="relative w-full h-[80px]">
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[calc(100%-20px)] max-w-3xl md:max-w-[1175px] h-[100px] mx-auto bg-white rounded-[10px] shadow-md flex items-center justify-center">
+                <div className="relative w-full px-4">
                     <Input
-                        className="rounded-[30px] w-full h-full px-10 pl-12 pr-10"
+                        className="rounded-[30px] w-full h-[60px] px-6 pl-12 pr-[70px]"
                         placeholder="Search..."
                     />
-                    <div className="absolute inset-y-0 right-3 flex items-center pl-2">
-                        <div className="bg-[#5F3AFB] rounded-full p-1 w-[54px] h-[50px] flex justify-center items-center">
-                            <Search className="w-8 h-8 text-[#FFFFFF]" />
+                    <div className="absolute inset-y-0 right-6 flex items-center">
+                        <div className="bg-[#5F3AFB] rounded-full p-1 w-[50px] h-[50px] flex justify-center items-center">
+                            <Search className="w-7 h-7 text-[#FFFFFF]" />
                         </div>
                     </div>
                 </div>

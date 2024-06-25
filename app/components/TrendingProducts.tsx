@@ -30,7 +30,7 @@ const TrendingProducts = () => {
             <div className="text-center">
                 <h1 className="font-semibold text-[32px] leading-[131.8%] text-[#333333] mb-[60px]">All trending products</h1>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-[20px] sm:gap-[30px] lg:gap-[40px] px-4 sm:px-[20px] lg:px-[63px] mx-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-[20px] sm:gap-[30px] lg:gap-[40px] px-4 sm:px-[20px] lg:px-[63px] mx-auto">
                 {pics.map((p, i) => (
                     <Card className="bg-[#FFFFFF] drop-shadow-md shadow-m overflow-hidden rounded-[20px] sm:rounded-[30px] lg:rounded-[45px]" key={i}>
                         <div className="p-2 sm:p-4">
@@ -58,9 +58,8 @@ const TrendingProducts = () => {
                                 </div>
                                 <div className="flex items-center justify-between">
                                     <p className="text-sm text-black">16 visits</p>
-                                    {/* <Button size="sm" className="rounded-full">Preview</Button> */}
-                                    <Button size="sm" className="rounded-full text-base md:text-sm lg:text-xs">Preview</Button>
-
+                                    <Button size="md" className="rounded-full text-base md:text-sm lg:text-xs hidden lg:block">Preview</Button>
+                                    <Button size="sm" className="rounded-full text-base md:text-sm lg:text-xs lg:hidden block">Preview</Button>
                                 </div>
                             </div>
                         </div>
