@@ -59,13 +59,13 @@ const ecommerceComponents: { title: string; }[] = [
 const MobileNav = () => {
     return (
         <div className="flex items-center gap-[7.5px]">
-            <div className="w-[50px] h-[50px] bg-[#5F3AFB] rounded-full flex items-center justify-center">
-                <Search className="text-white w-7 h-7" />
+            <div className="w-10 h-10 bg-[#5F3AFB] rounded-full flex items-center justify-center">
+                <Search className="text-white w-5 h-5" />
             </div>
             <div>
                 <Sheet>
-                    <SheetTrigger className="w-[50px] h-[50px] bg-[#5F3AFB] rounded-full flex items-center justify-center">
-                        <Menu className="text-white w-7 h-7" />
+                    <SheetTrigger className="w-10 h-10 bg-[#5F3AFB] rounded-full flex items-center justify-center">
+                        <Menu className="text-white w-5 h-5" />
                     </SheetTrigger>
                     <SheetContent className="w-full flex flex-col justify-between pb-0">
                         <div className="flex flex-col items-start px-4 mt-10">
