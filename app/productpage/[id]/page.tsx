@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import Image from "next/image";
@@ -10,14 +11,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import av1 from "../../../public/images/av1.png"
 import bag from "../../../public/images/bag.jpg"
 import cup from "../../../public/images/cup.jpg"
+import { Separator } from "@/components/ui/separator";
 
 
 function ProductPage() {
     const [mainImage, setMainImage] = useState(camera1);
 
     const thumbnails = [camera1, bag, cup]
-
-
 
     return (
         <main className="pt-20 md:pt-52 px-4 md:px-12">
@@ -121,6 +121,11 @@ function ProductPage() {
                     </div>
                 </div>
             </div>
+            <div className="mt-24">
+                <ProductDetails />
+                <ProductFeatures />
+                <SafetyTips />
+            </div>
         </main>
     )
 }
@@ -144,5 +149,69 @@ function CheckIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
         >
             <path d="M20 6 9 17l-5-5" />
         </svg>
+    )
+}
+
+
+function ProductDetails() {
+    return (
+        <section>
+            <Separator className="bg-[#696969]" />
+            <div className=" px-10 py-8">
+                <h1 className=" font-medium text-3xl lg:text-5xl leading-8 lg:leading-10">Product Details</h1>
+                <p className=" mt-6 font-light text-2xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus. . Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.
+                </p>
+            </div>
+        </section>
+    )
+}
+
+function ProductFeatures() {
+    return (
+        <section className="px-10 py-10">
+            <h1 className=" font-medium text-3xl lg:text-5xl leading-8 lg:leading-10 mb-5">Features of this product</h1>
+            <p className="  font-light text-2xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className=" font-light text-2xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className="  font-light text-2xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className="  font-light text-2xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className="  font-light text-2xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </section>
+    )
+}
+
+
+function Bullet() {
+    return (
+        <span className="w-[15px] h-[15px] rounded-full bg-[#4F4F4F] mr-2 flex-shrink-0 flex items-center justify-center">
+            <span className="w-[9px] h-[9px] rounded-full bg-[#D9D9D9]"></span>
+        </span>
+    )
+}
+
+
+function SafetyTips() {
+    return (
+        <section className="bg-[#F0F0F0] rounded-2xl px-10 h-[350px] py-10">
+            <h1 className=" font-medium text-[#333333] text-2xl lg:text-4xl">Safety tips !</h1>
+            <ul className="mt-4 space-y-2">
+                <li className="flex items-center">
+                    <Bullet />
+                    Don't pay in advance, including for delivery
+                </li>
+                <li className="flex items-center">
+                    <Bullet />
+
+                    Meet the seller at a safe public place
+                </li>
+                <li className="flex items-center">
+                    <Bullet />
+                    Inspect the goods thoroughly to ensure you are satisfied
+                </li>
+                <li className="flex items-center">
+                    <Bullet />
+                    Only pay when you are satisfied
+                </li>
+            </ul>
+        </section>
     )
 }
