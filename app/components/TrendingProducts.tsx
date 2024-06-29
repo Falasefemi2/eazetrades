@@ -28,7 +28,10 @@ const TrendingProducts = () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-[20px] sm:gap-[30px] lg:gap-[40px] px-4 sm:px-[20px] lg:px-[63px] mx-auto">
                 {pics.map((p, i) => (
                     <Card className="bg-[#FFFFFF] drop-shadow-md shadow-m overflow-hidden rounded-[20px] sm:rounded-[30px] lg:rounded-[45px]" key={i}>
-                        <div className="p-2 sm:p-4">
+                        <div className="p-2 sm:p-4 relative">
+                            <div className="absolute top-12 right-8  z-10 bg-white text-blue-700 px-2 py-1 rounded-full text-xs font-semibold">
+                                Premium Ad
+                            </div>
                             <Image
                                 src={p}
                                 width={600}

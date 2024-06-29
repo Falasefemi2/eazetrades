@@ -47,7 +47,7 @@ function ProductPage() {
                     <Image
                         src={mainImage}
                         alt="Main camera"
-                        className="mb-4 rounded-lg w-full"
+                        className="mb-4 rounded-lg w-full aspect-[1/1]"
                     />
                     <div className="grid grid-cols-3 gap-6 mt-auto">
                         {thumbnails.map((img, index) => (
@@ -55,7 +55,7 @@ function ProductPage() {
                                 key={index}
                                 src={img}
                                 alt={`Thumbnail ${index + 1}`}
-                                className="w-full rounded-lg shadow cursor-pointer"
+                                className="w-full rounded-lg shadow cursor-pointer aspect-[1/1]"
                                 onClick={() => setMainImage(img)}
                             />
                         ))}
@@ -286,7 +286,10 @@ function Likes() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-[20px] sm:gap-[30px] lg:gap-[40px] px-4 sm:px-[20px] lg:px-[63px] mx-auto mt-10">
                 {pics.map((p, i) => (
                     <Card className="bg-[#FFFFFF] drop-shadow-md shadow-m overflow-hidden rounded-[20px] sm:rounded-[30px] lg:rounded-[45px]" key={i}>
-                        <div className="p-2 sm:p-4">
+                        <div className="p-2 sm:p-4 relative">
+                            <div className="absolute top-12 right-8  z-10 bg-white text-blue-700 px-2 py-1 rounded-full text-xs font-semibold">
+                                Premium Ad
+                            </div>
                             <Image
                                 src={p}
                                 width={600}
