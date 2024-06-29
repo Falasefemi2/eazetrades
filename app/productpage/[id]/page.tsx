@@ -9,9 +9,11 @@ import { JSX, SVGProps } from "react";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import av1 from "../../../public/images/av1.png"
+import av2 from "../../../public/images/av2.png"
 import bag from "../../../public/images/bag.jpg"
 import cup from "../../../public/images/cup.jpg"
 import { Separator } from "@/components/ui/separator";
+import { Input } from "@/components/ui/input";
 
 
 function ProductPage() {
@@ -125,6 +127,7 @@ function ProductPage() {
                 <ProductDetails />
                 <ProductFeatures />
                 <SafetyTips />
+                <Testimonials />
             </div>
         </main>
     )
@@ -212,6 +215,57 @@ function SafetyTips() {
                     Only pay when you are satisfied
                 </li>
             </ul>
+        </section>
+    )
+}
+
+
+function Testimonials() {
+    return (
+        <section className=" mt-20">
+            <Card className=" px-14 py-12 space-y-6">
+                <div className="flex items-center space-x-5 ">
+                    <Image
+                        src={av1}
+                        alt=""
+                    />
+                    <div className="flex flex-col">
+                        <p className=" font-medium text-lg lg:text-2xl">Paul James</p>
+                        <h3 className=" font-light text-sm text-muted-foreground lg:text-lg leading-6">I like how beautiful and easy to use this product is. Will definitely recommend it for others</h3>
+                    </div>
+                </div>
+                <div className="flex items-center space-x-5">
+                    <Image
+                        src={av2}
+                        alt=""
+                    />
+                    <div className="flex flex-col">
+                        <p className=" font-medium text-lg lg:text-2xl">Paul James</p>
+                        <h3 className=" font-light text-sm text-muted-foreground lg:text-base leading-6">I like how beautiful and easy to use this product is. Will definitely recommend it for others</h3>
+                    </div>
+                </div>
+
+                <div className="flex items-center gap-6">
+                    <Input placeholder="Write your comment here..." className=" h-14 w-[996px] p-[15px] rounded-[30px] hidden lg:block" />
+                    <Button className="bg-[#5F3AFB] rounded-[30px] p-5 hidden lg:flex items-center justify-center">Comment</Button>
+                    <div className="relative flex items-center w-full lg:hidden">
+                        <Input
+                            type="text"
+                            className="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-purple-500 pr-10"
+                            placeholder="Write your comment here.."
+                        />
+                        <button
+                            type="submit"
+                            className="absolute right-0 flex items-center justify-center w-10 h-10 text-white bg-[#5F3AFB] rounded-full hover:bg-[#5F3AFB] focus:outline-none focus:ring-2 focus:ring-[#5F3AFB] focus:ring-opacity-50 mr-1"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+            </Card>
         </section>
     )
 }
