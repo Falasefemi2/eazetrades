@@ -1,12 +1,24 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from 'react';
 import camera1 from "../../../public/images/camera1.png"
 import { Button } from "@/components/ui/button"
 import { JSX, SVGProps } from "react";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import av1 from "../../../public/images/av1.png"
+import bag from "../../../public/images/bag.jpg"
+import cup from "../../../public/images/cup.jpg"
+
 
 function ProductPage() {
+    const [mainImage, setMainImage] = useState(camera1);
+
+    const thumbnails = [camera1, bag, cup]
+
+
+
     return (
         <main className="pt-20 md:pt-52 px-4 md:px-12">
             <div className="py-6">
@@ -20,89 +32,24 @@ function ProductPage() {
                     </ul>
                 </div>
             </div>
-            {/* <div className="p-4 flex flex-col md:flex-row gap-16">
-                <div className="md:w-1/2 flex flex-col">
-                    <Image src={camera1} alt="Polaroid camera" className="w-full rounded-lg shadow-lg mb-4" />
-                    <div className="grid grid-cols-3 gap-2 mt-auto">
-                        <Image src={camera1} alt="Thumbnail 1" className="w-full rounded-lg shadow" />
-                        <Image src={camera1} alt="Thumbnail 2" className="w-full rounded-lg shadow" />
-                        <Image src={camera1} alt="Thumbnail 3" className="w-full rounded-lg shadow" />
-                    </div>
-                </div>
-
-                <div className="md:w-1/2 flex flex-col justify-between">
-                    <div>
-                        <h1 className="text-2xl font-bold mb-2">Name of product according to seller</h1>
-                        <p className="text-gray-600 mb-1">Very short and important description of product.</p>
-                        <p className="text-gray-600 mb-4">Very short and important description of product.</p>
-                        <Card className=" w-96 rounded-2xl p-5 mb-4">
-                            <div className="grid grid-cols-2 gap-y-8 text-sm">
-                                <p className="font-semibold">Price</p>
-                                <p className="text-right">N20,000</p>
-
-                                <p className="font-semibold">Advert ID</p>
-                                <p className="text-right">ID:43795</p>
-
-                                <p className="font-semibold">Category</p>
-                                <p className="text-right">Animals & pets - Birds</p>
-
-                                <p className="font-semibold">Seller</p>
-                                <p className="text-right text-[#5F3AFB]">Seller Name</p>
-
-                                <p className="font-semibold">Location</p>
-                                <p className="text-right">Lagos, Ikeja</p>
-                            </div>
-                        </Card>
-                    </div>
-                    <div>
-                        <button className="w-full bg-indigo-600 text-white py-2 rounded-lg mb-2">Buy Now</button>
-                        <button className="w-full bg-gray-200 text-gray-800 py-2 rounded-lg mb-4">Go back to home page</button>
-
-                        <div className="flex items-center mb-4">
-                            <div className="flex -space-x-2 mr-2">
-                                <div className="w-8 h-8 rounded-full bg-gray-300"></div>
-                                <div className="w-8 h-8 rounded-full bg-gray-400"></div>
-                                <div className="w-8 h-8 rounded-full bg-gray-500"></div>
-                            </div>
-                            <span className="text-sm text-gray-600">11 other people trust this seller</span>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-2">
-                            <div className="flex items-center">
-                                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                </svg>
-                                <span>Delivery to your home</span>
-                            </div>
-                            <div className="flex items-center">
-                                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                </svg>
-                                <span>Delivery to your home</span>
-                            </div>
-                            <div className="flex items-center">
-                                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                </svg>
-                                <span>Other benefits</span>
-                            </div>
-                            <div className="flex items-center">
-                                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                </svg>
-                                <span>Other benefits</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
             <div className="flex gap-16 flex-col md:flex-row">
                 <div className="md:w-2/4 flex flex-col">
-                    <Image src={camera1} alt="camera" className="mb-4 rounded-lg w-full" />
+                    <Image
+                        src={mainImage}
+                        alt="Main camera"
+                        className="mb-4 rounded-lg w-full"
+                    />
                     <div className="grid grid-cols-3 gap-6 mt-auto">
-                        <Image src={camera1} alt="Thumbnail 1" className="w-full rounded-lg shadow" />
-                        <Image src={camera1} alt="Thumbnail 2" className="w-full rounded-lg shadow" />
-                        <Image src={camera1} alt="Thumbnail 3" className="w-full rounded-lg shadow" />
+                        {thumbnails.map((img, index) => (
+                            <Image
+                                key={index}
+                                src={img}
+                                alt={`Thumbnail ${index + 1}`}
+                                className="w-full rounded-lg shadow cursor-pointer"
+                                onClick={() => setMainImage(img)}
+                            />
+                        ))}
+
                     </div>
                 </div>
                 <div className="md:w-2/4 flex flex-col">
