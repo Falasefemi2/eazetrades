@@ -69,7 +69,7 @@ const RelatedSearch = () => {
                                                 <div className="flex items-center justify-between">
                                                     <p className="text-sm text-black">16 visits</p>
                                                     {/* <Button size="sm" className="rounded-full lg:text-xs lg:px-2 lg:py-1">Preview</Button> */}
-                                                    <Button size="sm" className="rounded-full text-base md:text-sm lg:text-xs">Preview</Button>
+                                                    <Button size="md" className="rounded-full text-base md:text-sm lg:text-xs">Preview</Button>
 
                                                 </div>
                                             </div>

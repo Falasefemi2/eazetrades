@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input"
 import { ArrowBigRight, FacebookIcon, Linkedin, Twitter } from "lucide-react"
 import Image from "next/image"
 import logo from "../../public/images/eazetrades-logo-3 3.png"
+import Link from "next/link"
 
 
 const Footer = () => {
@@ -71,9 +72,9 @@ const Footer = () => {
                 </Card>
             </div>
             <div className="container mx-auto mt-8 border-t  border-[#333333] pt-4 flex items-center flex-col lg:flex-row lg:justify-between">
-                <div>
+                <Link href="/">
                     <Image src={logo} alt="logo" />
-                </div>
+                </Link>
                 <div className="flex items-center space-x-10">
                     <a href="#" className="text-[#333333 font-medium text-[14px]">
                         Terms

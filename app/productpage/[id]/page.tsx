@@ -21,7 +21,7 @@ import crocs from "../../../public/images/crocs.png"
 import location from "../../../public/images/location.png"
 
 
-const pics = [stool, bootle, crocs]
+const pics = [stool, bootle, crocs, bag]
 
 
 function ProductPage() {
@@ -170,7 +170,7 @@ function ProductDetails() {
         <section>
             <Separator className="bg-[#696969]" />
             <div className=" px-10 py-8">
-                <h1 className=" font-medium text-3xl lg:text-5xl leading-8 lg:leading-10">Product Details</h1>
+                <h1 className="text-3xl lg:text-5xl leading-8 lg:leading-10 text-muted-foreground">Product Details</h1>
                 <p className=" mt-6 font-light text-base lg:text-xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus. . Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.
                 </p>
             </div>
@@ -181,7 +181,7 @@ function ProductDetails() {
 function ProductFeatures() {
     return (
         <section className="px-10 py-10">
-            <h1 className=" font-light text-3xl lg:text-5xl leading-8 lg:leading-10 mb-5">Features of this product</h1>
+            <h1 className=" font-light text-3xl lg:text-5xl leading-8 lg:leading-10 mb-5 text-muted-foreground">Features of this product</h1>
             <p className="  font-light text-base lg:text-xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <p className=" font-light text-base lg:text-xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <p className="  font-light text-base lg:text-xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -203,7 +203,7 @@ function Bullet() {
 
 function SafetyTips() {
     return (
-        <section className="bg-[#F0F0F0] rounded-2xl px-10 h-[350px] py-10">
+        <section className="bg-[#F0F0F0] rounded-2xl px-10 h-[350px] py-10 lg:w-2/5">
             <h1 className=" font-medium text-[#333333] text-2xl lg:text-4xl">Safety tips !</h1>
             <ul className="mt-4 space-y-2">
                 <li className="flex items-center">
@@ -283,7 +283,7 @@ function Likes() {
     return (
         <section className=" mt-20">
             <h1 className="text-center text-[#333333] font-semibold text-3xl lg:text-5xl">You may also like</h1>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-[20px] sm:gap-[30px] lg:gap-[40px] px-4 sm:px-[20px] lg:px-[63px] mx-auto mt-10">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-[20px] sm:gap-[30px] lg:gap-[40px] px-4 sm:px-[20px] lg:px-[63px] mx-auto mt-10">
                 {pics.map((p, i) => (
                     <Card className="bg-[#FFFFFF] drop-shadow-md shadow-m overflow-hidden rounded-[20px] sm:rounded-[30px] lg:rounded-[45px]" key={i}>
                         <div className="p-2 sm:p-4 relative">
@@ -315,7 +315,7 @@ function Likes() {
                                 <div className="flex items-center justify-between">
                                     <p className="text-sm text-black">16 visits</p>
                                     <Button size="md" className="rounded-full text-base md:text-sm lg:text-xs hidden lg:block">Preview</Button>
-                                    <Button size="sm" className="rounded-full text-base md:text-sm lg:text-xs lg:hidden block">Preview</Button>
+                                    <Button size="sm" className=" lg:hidden block">Preview</Button>
                                 </div>
                             </div>
                         </div>
