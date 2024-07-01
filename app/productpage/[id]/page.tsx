@@ -169,7 +169,7 @@ function ProductDetails() {
     return (
         <section>
             <Separator className="bg-[#696969]" />
-            <div className="px-10 py-8">
+            <div className="px-4 py-8">
                 <h1 className="text-3xl lg:text-5xl leading-8 lg:leading-10 text-muted-foreground mb-6">
                     Product Details
                 </h1>
@@ -183,7 +183,7 @@ function ProductDetails() {
 
 function ProductFeatures() {
     return (
-        <section className="px-10 py-10">
+        <section className="px-4 py-10">
             <h1 className=" font-light text-3xl lg:text-5xl leading-8 lg:leading-10 mb-5 text-muted-foreground">Features of this product</h1>
             <p className=" font-light text-base lg:text-xl text-muted-foreground text-justify hyphens-auto">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <p className="font-light text-base lg:text-xl text-muted-foreground text-justify hyphens-auto">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -206,7 +206,7 @@ function Bullet() {
 
 function SafetyTips() {
     return (
-        <section className="bg-[#F0F0F0] rounded-2xl px-10 h-[350px] py-10 lg:w-2/5">
+        <section className="bg-[#F0F0F0] rounded-2xl px-4 h-[350px] py-10 lg:w-2/5">
             <h1 className=" font-medium text-[#333333] text-2xl lg:text-4xl">Safety tips !</h1>
             <ul className="mt-4 space-y-2">
                 <li className="flex items-center">
@@ -235,7 +235,7 @@ function SafetyTips() {
 function Testimonials() {
     return (
         <section className=" mt-20">
-            <Card className=" px-14 py-12 space-y-6">
+            <Card className=" px-4 py-12 space-y-6">
                 <div className="flex items-center space-x-5 ">
                     <Image
                         src={av1}
