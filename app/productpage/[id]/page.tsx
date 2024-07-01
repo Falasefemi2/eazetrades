@@ -42,8 +42,8 @@ function ProductPage() {
                     </ul>
                 </div>
             </div>
-            <div className="flex gap-16 flex-col md:flex-row">
-                <div className="md:w-2/4 flex flex-col">
+            <div className="flex gap-16 flex-col md:flex-row justify-between">
+                <div className="md:w-1/2 flex flex-col">
                     <Image
                         src={mainImage}
                         alt="Main camera"
@@ -62,14 +62,14 @@ function ProductPage() {
 
                     </div>
                 </div>
-                <div className="md:w-2/4 flex flex-col">
+                <div className="md:w-1/3 flex flex-col">
                     <div className="max-w-[355px] lg:max-w-[535px]">
                         <h1 className=" font-medium text-2xl mb-2">Name of product according to seller</h1>
                         <p className=" mb-1 font-light">Very short and important description of product.</p>
                         <p className=" mb-4 font-light">Very short and important description of product.</p>
                     </div>
                     <div className="flex flex-col mt-6">
-                        <Card className=" lg:w-96 rounded-2xl p-5 mb-4">
+                        <Card className="rounded-2xl p-5 mb-4 mt-6 w-full  lg:max-w-[400px]">
                             <div className="grid grid-cols-2 gap-y-8 text-sm">
                                 <p className="font-semibold">Price</p>
                                 <p className="text-right">N20,000</p>
@@ -169,9 +169,12 @@ function ProductDetails() {
     return (
         <section>
             <Separator className="bg-[#696969]" />
-            <div className=" px-10 py-8">
-                <h1 className="text-3xl lg:text-5xl leading-8 lg:leading-10 text-muted-foreground">Product Details</h1>
-                <p className=" mt-6 font-light text-base lg:text-xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus. . Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.
+            <div className="px-10 py-8">
+                <h1 className="text-3xl lg:text-5xl leading-8 lg:leading-10 text-muted-foreground mb-6">
+                    Product Details
+                </h1>
+                <p className="font-light text-base lg:text-xl text-muted-foreground text-justify hyphens-auto">
+                    Borem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.
                 </p>
             </div>
         </section>
@@ -182,11 +185,11 @@ function ProductFeatures() {
     return (
         <section className="px-10 py-10">
             <h1 className=" font-light text-3xl lg:text-5xl leading-8 lg:leading-10 mb-5 text-muted-foreground">Features of this product</h1>
-            <p className="  font-light text-base lg:text-xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p className=" font-light text-base lg:text-xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p className="  font-light text-base lg:text-xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p className="  font-light text-base lg:text-xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p className="  font-light text-base lg:text-xl text-muted-foreground">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className=" font-light text-base lg:text-xl text-muted-foreground text-justify hyphens-auto">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className="font-light text-base lg:text-xl text-muted-foreground text-justify hyphens-auto">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className=" font-light text-base lg:text-xl text-muted-foreground text-justify hyphens-auto">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className=" font-light text-base lg:text-xl text-muted-foreground text-justify hyphens-auto">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className=" font-light text-base lg:text-xl text-muted-foreground text-justify hyphens-auto">Borem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </section>
     )
 }
