@@ -78,7 +78,7 @@ function AccountPage() {
                             </div>
                         </div>
                         <div className="mt-6">
-                            <Button type="submit" className="w-full px-4 py-2 bg-[#5F3AFB] text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5F3AFB] focus:ring-offset-2 focus:ring-offset-[#5F3AFB] rounded-[30px]">
+                            <Button type="submit" className="w-full px-4 py-2 bg-[#5F3AFB] text-white font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-[#5F3AFB] focus:ring-offset-2 focus:ring-offset-[#5F3AFB] rounded-[30px]">
                                 Sign up
                             </Button>
                         </div>
