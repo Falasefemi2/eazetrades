@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import bgd from "../../../public/images/bg-dek.png"
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 function AccountPage() {
     const [showPassword, setShowPassword] = useState(false);
@@ -77,9 +78,9 @@ function AccountPage() {
                             </div>
                         </div>
                         <div className="mt-6">
-                            <button type="submit" className="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-indigo-200">
+                            <Button type="submit" className="w-full px-4 py-2 bg-[#5F3AFB] text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5F3AFB] focus:ring-offset-2 focus:ring-offset-[#5F3AFB] rounded-[30px]">
                                 Sign up
-                            </button>
+                            </Button>
                         </div>
                     </form>
                 </div>
