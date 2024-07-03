@@ -30,7 +30,7 @@ function ProductPage() {
     const thumbnails = [camera1, bag, cup]
 
     return (
-        <main className="pt-20 md:pt-52 px-4 md:px-12">
+        <main className="pt-20 md:pt-52 px-4 md:px-[50px]">
             <div className="py-6">
                 <div>
                     <h1 className="text-[#333333] font-medium text-2xl lg:text-4xl leading-10">Camera</h1>
@@ -42,34 +42,37 @@ function ProductPage() {
                     </ul>
                 </div>
             </div>
-            <div className="flex gap-16 flex-col md:flex-row justify-between">
-                <div className="md:w-1/2 flex flex-col">
-                    <Image
-                        src={mainImage}
-                        alt="Main camera"
-                        className="mb-4 rounded-lg w-full aspect-[1/1]"
-                    />
-                    <div className="grid grid-cols-3 gap-6 mt-auto">
-                        {thumbnails.map((img, index) => (
-                            <Image
-                                key={index}
-                                src={img}
-                                alt={`Thumbnail ${index + 1}`}
-                                className="w-full rounded-lg shadow cursor-pointer aspect-[1/1]"
-                                onClick={() => setMainImage(img)}
-                            />
-                        ))}
+            <div className="flex flex-col md:flex-row md:gap-4 lg:gap-6">
+                <div className="md:w-1/2 lg:w-7/12 flex flex-col">
+                    <div className="md:pr-4 lg:pr-8">
 
+                        <Image
+                            src={mainImage}
+                            alt="Main camera"
+                            className="mb-4 rounded-lg w-full aspect-[1/1]"
+                        />
+                        <div className="grid grid-cols-3 gap-4 mt-auto">
+                            {thumbnails.map((img, index) => (
+                                <Image
+                                    key={index}
+                                    src={img}
+                                    alt={`Thumbnail ${index + 1}`}
+                                    className="w-full rounded-lg shadow cursor-pointer aspect-[1/1]"
+                                    onClick={() => setMainImage(img)}
+                                />
+                            ))}
+
+                        </div>
                     </div>
                 </div>
-                <div className="md:w-1/3 flex flex-col">
-                    <div className="max-w-[355px] lg:max-w-[535px]">
+                <div className="md:w-1/2 lg:w-5/12 flex flex-col">
+                    <div className="max-w-[355px] lg:max-w-full">
                         <h1 className=" font-medium text-2xl mb-2">Name of product according to seller</h1>
                         <p className=" mb-1 font-light">Very short and important description of product.</p>
                         <p className=" mb-4 font-light">Very short and important description of product.</p>
                     </div>
                     <div className="flex flex-col mt-6">
-                        <Card className="rounded-2xl p-5 mb-4 mt-6 w-full  lg:max-w-[400px]">
+                        <Card className="rounded-2xl p-5 mb-4 mt-6 w-full">
                             <div className="grid grid-cols-2 gap-y-8 text-sm">
                                 <p className="font-semibold">Price</p>
                                 <p className="text-right">N20,000</p>
@@ -87,7 +90,7 @@ function ProductPage() {
                                 <p className="text-right">Lagos, Ikeja</p>
                             </div>
                         </Card>
-                        <div className="mt-10 flex flex-col space-y-4 lg:w-96">
+                        <div className="mt-10 flex flex-col space-y-4 lg:w-full">
                             <Button className="w-full bg-[#5F3AFB] text-white  mb-2">Buy Now</Button>
                             <Button variant="outline" className="w-full mb-4 text-[#5F3AFB] border-none">Go back to home page</Button>
                         </div>
