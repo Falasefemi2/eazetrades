@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import bgd from "../../../public/images/bg-dek.png"
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Eye, EyeOff } from "lucide-react";
 
 function AccountPage() {
     const [showPassword, setShowPassword] = useState(false);
@@ -17,7 +18,7 @@ function AccountPage() {
         <div className="min-h-screen  flex items-center justify-center px-4">
             <div className="absolute inset-0">
                 <Image
-                    src={bgd}
+                    src={bg}
                     alt="bg"
                     layout="fill"
                     objectFit="cover"
@@ -32,31 +33,31 @@ function AccountPage() {
                         <div className="space-y-4">
                             <div>
                                 <Label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</Label>
-                                <Input type="text" id="name" className="mt-1 block w-full px-3 py-2  border border-[#333333] rounded-md text-sm shadow-sm placeholder-gray-400
+                                <Input type="text" id="name" className="mt-1 block w-full px-3 py-2  border border-[#333333] rounded-md text-sm placeholder-gray-400
                     focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" placeholder="Placeholder" />
                             </div>
                             <div>
                                 <Label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</Label>
-                                <Input type="email" id="email" className="mt-1 block w-full px-3 py-2 bg-white border border-[#333333] rounded-md text-sm shadow-sm placeholder-gray-400
+                                <Input type="email" id="email" className="mt-1 block w-full px-3 py-2 bg-white border border-[#333333] rounded-md text-sm  placeholder-gray-400
                     focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" placeholder="Placeholder" />
                             </div>
                             <div>
                                 <Label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</Label>
                                 <div className="mt-1 relative">
-                                    <Input type={showPassword ? "text" : "password"} id="password" className="block w-full px-3 py-2 bg-white border border-[#333333] rounded-md text-sm shadow-sm placeholder-gray-400
+                                    <Input type={showPassword ? "text" : "password"} id="password" className="block w-full px-3 py-2 bg-white border border-[#333333] rounded-md text-sm  placeholder-gray-400
                       focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" placeholder="Password" />
                                     <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5" onClick={() => setShowPassword(!showPassword)}>
-                                        {showPassword ? "Hide" : "Show"}
+                                        {showPassword ? <EyeOff /> : <Eye />}
                                     </button>
                                 </div>
                             </div>
                             <div>
                                 <Label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm password</Label>
                                 <div className="mt-1 relative">
-                                    <Input type={showConfirmPassword ? "text" : "password"} id="confirmPassword" className="block w-full px-3 py-2 bg-white border border-[#333333] rounded-md text-sm shadow-sm placeholder-gray-400
+                                    <Input type={showConfirmPassword ? "text" : "password"} id="confirmPassword" className="block w-full px-3 py-2 bg-white border border-[#333333] rounded-md text-sm  placeholder-gray-400
                       focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" placeholder="Password" />
                                     <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-                                        {showConfirmPassword ? "Hide" : "Show"}
+                                        {showPassword ? <EyeOff /> : <Eye />}
                                     </button>
                                 </div>
                             </div>
