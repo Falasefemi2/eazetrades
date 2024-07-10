@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import bg from "../../public/images/bgPhone.png"
+import bg from "../../../public/images/bgPhone.png"
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -35,28 +35,31 @@ function CreateAccount() {
                             <div>
                                 <Label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</Label>
                                 <Input type="text" id="name" className="mt-1 block w-full px-3 py-2  border border-[#333333] rounded-md text-sm placeholder-gray-400
-                    focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" placeholder="Placeholder" />
+                    focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-[#F3F5F8]" placeholder="Placeholder" />
                             </div>
                             <div>
                                 <Label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</Label>
-                                <Input type="email" id="email" className="mt-1 block w-full px-3 py-2 bg-white border border-[#333333] rounded-md text-sm  placeholder-gray-400
-                    focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" placeholder="Placeholder" />
+                                <Input type="email" id="email" className="mt-1 block w-full px-3 py-2  border border-[#333333] rounded-md text-sm  placeholder-gray-400
+                    focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-[#F3F5F8]" placeholder="Placeholder" />
                             </div>
                             <div>
                                 <Label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</Label>
                                 <div className="mt-1 relative">
-                                    <Input type={showPassword ? "text" : "password"} id="password" className="block w-full px-3 py-2 bg-white border border-[#333333] rounded-md text-sm  placeholder-gray-400
-                      focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" placeholder="Password" />
+                                    <Input type={showPassword ? "text" : "password"} id="password" className="block w-full px-3 py-2  border border-[#333333] rounded-md text-sm  placeholder-gray-400
+                      focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-[#F3F5F8]" placeholder="Password" />
                                     <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5" onClick={() => setShowPassword(!showPassword)}>
                                         {showPassword ? <EyeOff /> : <Eye />}
                                     </button>
+                                </div>
+                                <div className="mt-2 text-right">
+                                    <Link href="/auth/forgetpassword" className="text-[#5F3AFB] font-medium text-sm">Forget Password</Link>
                                 </div>
                             </div>
                             <div>
                                 <Label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm password</Label>
                                 <div className="mt-1 relative">
-                                    <Input type={showConfirmPassword ? "text" : "password"} id="confirmPassword" className="block w-full px-3 py-2 bg-white border border-[#333333] rounded-md text-sm  placeholder-gray-400
-                      focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" placeholder="Password" />
+                                    <Input type={showConfirmPassword ? "text" : "password"} id="confirmPassword" className="block w-full px-3 py-2  border border-[#333333] rounded-md text-sm  placeholder-gray-400
+                      focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-[#F3F5F8]" placeholder="Password" />
                                     <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
                                         {showPassword ? <EyeOff /> : <Eye />}
                                     </button>
@@ -87,7 +90,7 @@ function CreateAccount() {
                     </form>
                 </div>
                 <div className="flex items-center justify-center mb-4">
-                    <p className=" text-lg font-semibold text-[#333333]">Already have an account? <span className="text-[#5F3AFB]"><Link href="/signin">Sign in</Link></span></p>
+                    <p className=" text-lg font-semibold text-[#333333]">Already have an account? <span className="text-[#5F3AFB]"><Link href="/auth/signin">Sign in</Link></span></p>
                 </div>
             </Card>
         </div>

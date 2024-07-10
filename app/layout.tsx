@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const isAuthPage = pathname.startsWith('/createaccount'); // Adjust this based on your auth route
+  const isAuthPage = pathname.startsWith('/auth'); // Adjust this based on your auth route
 
   return (
     <html lang="en">
