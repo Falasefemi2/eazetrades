@@ -32,10 +32,12 @@ const ForgetPasswordPage = () => {
                         <Image src={logo} alt="logo" height={35} width={29.17} />
                         <span className="text-[#4F4F4F] font-semibold text-xl">EAZETRADES</span>
                     </CardTitle>
-                    <CardDescription className=" flex items-center flex-col">
-                        <h1 className="text-[#333333] font-semibold text-2xl  lg:text-4xl">Forgot Password</h1>
-                        <p className="text-[#333333] font-normal text-base">Enter the email you used to create your account so we can send you instructions on how to reset your password.</p>
-                    </CardDescription>
+                    <div className="flex items-center flex-col">
+                        <h2 className="text-[#333333] font-semibold text-2xl lg:text-4xl mb-2">Forgot Password</h2>
+                        <p className="text-[#333333] font-normal text-base text-center">
+                            Enter the email you used to create your account so we can send you instructions on how to reset your password.
+                        </p>
+                    </div>
                 </CardHeader>
                 <div className="px-6 py-8">
                     <h2 className="text-2xl font-bold text-center text-[#333333] mb-6">Create new account</h2>
