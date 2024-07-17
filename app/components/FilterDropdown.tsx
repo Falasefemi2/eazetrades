@@ -39,8 +39,18 @@ export default function FilterDropdown() {
         'Shoes',
         'Glasses',
         'Accessories'
-
     ]
+
+    const colors = [
+        { name: 'black', bg: 'bg-black', border: 'border-black' },
+        { name: 'white', bg: 'bg-white', border: 'border-white' },
+        { name: 'blue', bg: 'bg-blue-500', border: 'border-blue-700' },
+        { name: 'yellow', bg: 'bg-yellow-500', border: 'border-yellow-700' },
+        { name: 'green', bg: 'bg-green-500', border: 'border-green-700' },
+        { name: 'red', bg: 'bg-red-500', border: 'border-red-700' },
+        { name: 'grey', bg: 'bg-gray-500', border: 'border-gray-700' },
+    ];
+
 
     return (
         <DropdwonMenuClose>
@@ -54,7 +64,7 @@ export default function FilterDropdown() {
                         <Image src={iconexport} alt="export" width={24} height={24} />
                     </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-[738px] p-6 bg-white">
+                <DropdownMenuContent className="w-full max-w-[738px] p-4 sm:p-6 bg-white">
                     <DropdownMenuLabel className="flex items-center justify-end mb-4">
                         <X className="cursor-pointer" onClick={() => setOpen(false)} />
                     </DropdownMenuLabel>
@@ -96,7 +106,7 @@ export default function FilterDropdown() {
                         </div>
                     </div>
 
-                    <div className="mt-10">
+                    <div className="mt-10 max-w-[400px] lg:max-w-full">
                         <h1 className="text-lg font-semibold mb-2">Filter by price</h1>
                         <Slider defaultValue={[33]} max={100} step={1} />
                         <div className="mt-8">
@@ -106,7 +116,27 @@ export default function FilterDropdown() {
 
                     <div className="mt-10">
                         <h1 className="text-lg font-semibold mb-2">Colors</h1>
+                        <div className="flex flex-wrap gap-2">
+                            {colors.map((color) => (
+                                <div
+                                    key={color.name}
+                                    className={`w-12 h-12 sm:w-16 sm:h-16 ${color.bg} ${color.border}`}
+                                />
+                            ))}
+                        </div>
                     </div>
+
+                    <div className="mt-10">
+                        <h1 className="text-lg font-semibold mb-2">Sizes</h1>
+                        <div className="flex flex-wrap sm:flex-nowrap overflow-x-auto gap-2 lg:w-full w-1/2 sm:w-auto flex-grow sm:flex-grow-0 sm:flex-shrink-0 ">
+                            <Button variant="outline" className="rounded-[20px] border-[#333333]">Size 7</Button>
+                            <Button variant="outline" className="rounded-[20px] border-[#333333]">Size 8</Button>
+                            <Button variant="outline" className="rounded-[20px] border-[#333333]">Size 9</Button>
+                            <Button variant="outline" className="rounded-[20px] border-[#333333]">Size 10</Button>
+
+                        </div>
+                    </div>
+
                 </DropdownMenuContent>
             </DropdownMenu>
         </DropdwonMenuClose>

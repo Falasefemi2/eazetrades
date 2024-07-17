@@ -11,6 +11,8 @@ import {
 import arrow from "../../public/images/simple-line-icons_arrow-left.png"
 import Image from "next/image";
 import FilterDropdown from "../components/FilterDropdown";
+import ProductCard from "./ProductCard";
+import ProductPagination from "./ProductPagination";
 
 export default function Product() {
     return (
@@ -43,6 +45,14 @@ export default function Product() {
             <div className="flex items-center justify-between mt-4">
                 <h1 className="text-[#333333] font-medium text-3xl">Fashion</h1>
                 <FilterDropdown />
+            </div>
+
+            <div className="mt-4">
+                <ProductCard />
+            </div>
+
+            <div className=" mt-14 flex items-center justify-center">
+                <ProductPagination />
             </div>
         </main>
     )
