@@ -1,10 +1,19 @@
+"use client"
 /* eslint-disable react/no-unescaped-entities */
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 import glasses from "../../public/images/aboutus.png"
 import heroImg from "../../public/images/shopping.png"
 import product from "../../public/images/product.png"
 import item from "../../public/images/item.png"
-
+import bluetick from "../../public/images/bluetick.png"
+import customer from "../../public/images/customer.png"
+import girl from "../../public/images/orangegirl.png"
+import mask from "../../public/images/mask.png"
+import model from "../../public/images/model.png"
+import model2 from "../../public/images/model2.png"
+import orange1 from "../../public/images/orangegirl.png"
+import orange2 from "../../public/images/orange2.png"
+import old from "../../public/images/old.png"
 
 
 export default function AboutUs() {
@@ -74,6 +83,178 @@ export default function AboutUs() {
                     <p className="max-w-[543px] text-[24px] leading-[44,78px]">Our innovative related searches feature ensures you discover new products based on your browsing history and preferences. Whether you're looking for the latest gadgets, fashion trends, or home essentials, our AI-powered recommendations help you find exactly what you’re searching for.</p>
                 </div>
             </div>
+
+            <div className="px-[82px] py-[92px] flex gap-8 justify-between">
+                <div className="w-[405px]  px-5 py-10 border">
+                    <div className="flex items-start flex-col">
+                        <Image src={bluetick} alt="" width={85} height={85} className="mb-10" />
+                        <h1 className=" font-medium text-[32px] leading-[59.71px]">Seller-to-buyer Delivery</h1>
+                        <p className="max-w-[375px] font-light">We do not hold possession of the products. Instead, we pick up the item from the seller and deliver it directly to you.</p>
+                    </div>
+                </div>
+                <div className="w-[405px]  px-5 py-10 border">
+                    <div className="flex items-start flex-col">
+                        <Image src={bluetick} alt="" width={85} height={85} className="mb-10" />
+                        <h1 className=" font-medium text-[32px] leading-[59.71px]">Secure transactions</h1>
+                        <p className="max-w-[375px] font-light">You confirm the product before making payment. Once satisfied, you pay the seller, and our rider confirms that the seller has received the payment before leaving.</p>
+                    </div>
+                </div>
+                <div className="w-[405px]   px-5 py-10 border bg-[#B2C8F2] rounded-tr-[100px]">
+                    <div className="flex items-start flex-col">
+                        <Image src={bluetick} alt="" width={85} height={85} className="mb-10" />
+                        <h1 className=" font-medium text-[32px] leading-[59.71px]">Enhanced safety:</h1>
+                        <p className="max-w-[375px] font-light">By handling the deliveries ourselves, we mitigate the risks associated with in-person pickups, such as theft and fraudulent transactions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="relative mt-24 w-full h-auto">
+                <Image src={customer} alt="" layout="responsive" width={100} height={100} objectFit="cover" />
+                <div className="absolute inset-0 flex flex-col justify-between">
+                    <div className="flex items-center justify-center mt-24">
+                        <h1 className="text-white text-[48px]">Customer Satisfaction:</h1>
+                    </div>
+                    <div className="px-[111px] mb-24">
+                        <p className="text-white  text-[32px]">Your satisfaction is our top priority.<br />
+                            We strive to provide excellent customer service and ensure that <br /> every purchase meets your expectations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="px-[82px] py-[92px]">
+                <div className="flex">
+                    <div className="w-1/3 pr-8">
+                        <h2 className="text-3xl font-bold mb-4">Frequently asked <br /> question</h2>
+                    </div>
+                    <div className="w-2/3">
+                        <AccordionDemo />
+                    </div>
+                </div>
+            </div>
+
+            <div className="bg-white px-[82px] py-[92px]">
+                <h1 className="text-[#4255FF] text-5xl">MEET THE TEAM</h1>
+                <p className="mt-6 text-xl">Lorem ipsum dolor sit amet consectetur. Interdum cursus ut morbi malesuada lorem odio enim. Imperdiet mauris iaculis velit mauris. Consequat quam neque maecenas nisi odio sed auctor etiam morbi. Suspendisse massa vitae platea velit id faucibus orci augue condimentum. Lorem cursus tortor enim risus fringilla in purus. Aliquam quis aliquet malesuada risus.</p>
+
+                <Component />
+            </div>
+
         </main>
     )
+}
+
+
+
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion"
+
+export function AccordionDemo() {
+    return (
+        <Accordion type="single" collapsible className="w-full space-y-4">
+            <AccordionItem value="item-1">
+                <AccordionTrigger>What is UX design?</AccordionTrigger>
+                <AccordionContent>
+                    UX design stands for User Experience design. It is the process of designing digital or physical products that are easy to use, intuitive, and enjoyable for the user.
+                </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+                <AccordionTrigger>What is UX design?</AccordionTrigger>
+                <AccordionContent>
+                    UX design stands for User Experience design. It is the process of designing digital or physical products that are easy to use, intuitive, and enjoyable for the user.
+                </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+                <AccordionTrigger>What is UX design?</AccordionTrigger>
+                <AccordionContent>
+                    UX design stands for User Experience design. It is the process of designing digital or physical products that are easy to use, intuitive, and enjoyable for the user.
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+    )
+}
+
+
+
+/**
+ * v0 by Vercel.
+ * @see https://v0.dev/t/Q46FtziavoZ
+ * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
+ */
+
+
+import { useState } from "react"
+
+interface ImageItem {
+    src: StaticImageData;
+    alt: string;
+}
+
+export function Component() {
+    const [activeIndex, setActiveIndex] = useState<number>(0);
+
+
+    const images: ImageItem[] = [
+        {
+            src: girl,
+            alt: "Pinu Maharana",
+        },
+        {
+            src: mask,
+            alt: "Person 2",
+        },
+        {
+            src: model,
+            alt: "Person 3",
+        },
+        {
+            src: model2,
+            alt: "Person 4",
+        },
+        {
+            src: orange1,
+            alt: "Person 4",
+        },
+        {
+            src: orange2,
+            alt: "Person 4",
+        },
+        {
+            src: old,
+            alt: "Person 4",
+        },
+    ];
+
+    return (
+        <div className="flex h-[571px] overflow-hidden mt-14">
+            {images.map((image, index) => (
+                <div
+                    key={index}
+                    className={`relative transition-all duration-500 ease-in-out cursor-pointer
+                        ${activeIndex === index ? "flex-[3]" : "flex-[0.5]"}`}
+                    onClick={() => setActiveIndex(index)}
+                >
+                    <div className="absolute inset-0 overflow-hidden">
+                        <Image
+                            src={image.src}
+                            alt={image.alt}
+                            fill
+                            className="object-cover"
+                        />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-70"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent opacity-10"></div>
+                    <div className={`absolute bottom-0 left-0 right-0 p-4 text-white
+                            transition-opacity duration-500 ease-in-out
+                            ${activeIndex === index ? "opacity-100" : "opacity-0"}`}>
+                        {image.alt}
+                    </div>
+                </div>
+            ))}
+        </div>
+
+    );
 }
