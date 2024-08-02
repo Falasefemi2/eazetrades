@@ -15,12 +15,9 @@ import model2 from "../../public/images/model2.png"
 import orange1 from "../../public/images/orangegirl.png"
 import orange2 from "../../public/images/orange2.png"
 import old from "../../public/images/old.png"
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion"
+import AccordionDemo from "./AccordionDemo"
+import ImageComponent from "./ImageComponent"
+
 
 
 export default function AboutUs() {
@@ -143,7 +140,7 @@ export default function AboutUs() {
                 <h1 className="text-[#4255FF] text-5xl">MEET THE TEAM</h1>
                 <p className="mt-6 text-xl">Lorem ipsum dolor sit amet consectetur. Interdum cursus ut morbi malesuada lorem odio enim. Imperdiet mauris iaculis velit mauris. Consequat quam neque maecenas nisi odio sed auctor etiam morbi. Suspendisse massa vitae platea velit id faucibus orci augue condimentum. Lorem cursus tortor enim risus fringilla in purus. Aliquam quis aliquet malesuada risus.</p>
 
-                <Component />
+                <ImageComponent />
             </div>
 
         </main>
@@ -154,30 +151,6 @@ export default function AboutUs() {
 
 
 
-export function AccordionDemo() {
-    return (
-        <Accordion type="single" collapsible className="w-full space-y-4">
-            <AccordionItem value="item-1">
-                <AccordionTrigger>What is UX design?</AccordionTrigger>
-                <AccordionContent>
-                    UX design stands for User Experience design. It is the process of designing digital or physical products that are easy to use, intuitive, and enjoyable for the user.
-                </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-                <AccordionTrigger>What is UX design?</AccordionTrigger>
-                <AccordionContent>
-                    UX design stands for User Experience design. It is the process of designing digital or physical products that are easy to use, intuitive, and enjoyable for the user.
-                </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-                <AccordionTrigger>What is UX design?</AccordionTrigger>
-                <AccordionContent>
-                    UX design stands for User Experience design. It is the process of designing digital or physical products that are easy to use, intuitive, and enjoyable for the user.
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
-    )
-}
 
 
 
@@ -186,73 +159,3 @@ export function AccordionDemo() {
 
 
 
-interface ImageItem {
-    src: StaticImageData;
-    alt: string;
-}
-
-export function Component() {
-    const [activeIndex, setActiveIndex] = useState<number>(0);
-
-
-    const images: ImageItem[] = [
-        {
-            src: girl,
-            alt: "Pinu Maharana",
-        },
-        {
-            src: mask,
-            alt: "Person 2",
-        },
-        {
-            src: model,
-            alt: "Person 3",
-        },
-        {
-            src: model2,
-            alt: "Person 4",
-        },
-        {
-            src: orange1,
-            alt: "Person 4",
-        },
-        {
-            src: orange2,
-            alt: "Person 4",
-        },
-        {
-            src: old,
-            alt: "Person 4",
-        },
-    ];
-
-    return (
-        <div className="flex h-[571px] overflow-hidden mt-14">
-            {images.map((image, index) => (
-                <div
-                    key={index}
-                    className={`relative transition-all duration-500 ease-in-out cursor-pointer
-                        ${activeIndex === index ? "flex-[3]" : "flex-[0.5]"}`}
-                    onClick={() => setActiveIndex(index)}
-                >
-                    <div className="absolute inset-0 overflow-hidden">
-                        <Image
-                            src={image.src}
-                            alt={image.alt}
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-70"></div>
-                    <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent opacity-10"></div>
-                    <div className={`absolute bottom-0 left-0 right-0 p-4 text-white
-                            transition-opacity duration-500 ease-in-out
-                            ${activeIndex === index ? "opacity-100" : "opacity-0"}`}>
-                        {image.alt}
-                    </div>
-                </div>
-            ))}
-        </div>
-
-    );
-}
