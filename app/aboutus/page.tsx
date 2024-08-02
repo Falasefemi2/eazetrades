@@ -1,6 +1,7 @@
 "use client"
 /* eslint-disable react/no-unescaped-entities */
 import Image, { StaticImageData } from "next/image"
+import { useState } from "react"
 import glasses from "../../public/images/aboutus.png"
 import heroImg from "../../public/images/shopping.png"
 import product from "../../public/images/product.png"
@@ -14,6 +15,12 @@ import model2 from "../../public/images/model2.png"
 import orange1 from "../../public/images/orangegirl.png"
 import orange2 from "../../public/images/orange2.png"
 import old from "../../public/images/old.png"
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion"
 
 
 export default function AboutUs() {
@@ -145,12 +152,7 @@ export default function AboutUs() {
 
 
 
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion"
+
 
 export function AccordionDemo() {
     return (
@@ -179,14 +181,10 @@ export function AccordionDemo() {
 
 
 
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/Q46FtziavoZ
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
 
 
-import { useState } from "react"
+
+
 
 interface ImageItem {
     src: StaticImageData;
