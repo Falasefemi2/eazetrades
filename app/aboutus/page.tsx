@@ -1,20 +1,12 @@
 "use client"
 /* eslint-disable react/no-unescaped-entities */
-import Image, { StaticImageData } from "next/image"
-import { useState } from "react"
+import Image from "next/image"
 import glasses from "../../public/images/aboutus.png"
 import heroImg from "../../public/images/shopping.png"
 import product from "../../public/images/product.png"
 import item from "../../public/images/item.png"
 import bluetick from "../../public/images/bluetick.png"
 import customer from "../../public/images/customer.png"
-import girl from "../../public/images/orangegirl.png"
-import mask from "../../public/images/mask.png"
-import model from "../../public/images/model.png"
-import model2 from "../../public/images/model2.png"
-import orange1 from "../../public/images/orangegirl.png"
-import orange2 from "../../public/images/orange2.png"
-import old from "../../public/images/old.png"
 import AccordionDemo from "./AccordionDemo"
 import ImageComponent from "./ImageComponent"
 
@@ -136,7 +128,7 @@ export default function AboutUs() {
                 </div>
             </div>
 
-            <div className="bg-white px-[82px] py-[92px]">
+            <div className="bg-white px-[82px] py-24">
                 <h1 className="text-[#4255FF] text-5xl">MEET THE TEAM</h1>
                 <p className="mt-6 text-xl">Lorem ipsum dolor sit amet consectetur. Interdum cursus ut morbi malesuada lorem odio enim. Imperdiet mauris iaculis velit mauris. Consequat quam neque maecenas nisi odio sed auctor etiam morbi. Suspendisse massa vitae platea velit id faucibus orci augue condimentum. Lorem cursus tortor enim risus fringilla in purus. Aliquam quis aliquet malesuada risus.</p>
 

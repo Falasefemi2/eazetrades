@@ -52,7 +52,7 @@ export default function ImageComponent() {
     ];
 
     return (
-        <div className="flex h-[571px] overflow-hidden mt-14">
+        <div className="flex h-[571px] overflow-hidden mt-14 gap-4">
             {images.map((image, index) => (
                 <div
                     key={index}
