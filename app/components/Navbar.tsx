@@ -7,6 +7,7 @@ import logo from "../../public/images/eazetrades-logo-3 3.png"
 import Container from './Container';
 import MobileNav from './MobileNavbar';
 import Link from 'next/link';
+import SearchTest from './searchTest';
 
 
 const btnfont = localFont({ src: '../../public/fonts/AnekBangla-Medium.ttf' })
@@ -27,7 +28,8 @@ const Navbar = () => {
                     <div className="flex items-center justify-end max-w-[978px] w-full">
                         {/* Show SearchBar, NavigationMenuDemo, and Button on desktop */}
                         <div className="hidden lg:flex">
-                            <SearchBar className="mr-20" />
+                            {/* <SearchBar className="mr-20" /> */}
+                            <SearchTest />
                             <NavigationMenuDemo />
                             <Button size="default" className={`${btnfont.className} text-xl ml-20`}>Get Started</Button>
                         </div>
