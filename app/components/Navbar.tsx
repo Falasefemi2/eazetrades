@@ -7,7 +7,8 @@ import logo from "../../public/images/eazetrades-logo-3 3.png"
 import Container from './Container';
 import MobileNav from './MobileNavbar';
 import Link from 'next/link';
-import SearchTest from './searchTest';
+import SearchTest from './SearchTest';
+
 
 
 const btnfont = localFont({ src: '../../public/fonts/AnekBangla-Medium.ttf' })
