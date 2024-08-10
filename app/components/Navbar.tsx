@@ -30,7 +30,7 @@ const Navbar = () => {
                         {/* Show SearchBar, NavigationMenuDemo, and Button on desktop */}
                         <div className="hidden lg:flex">
                             {/* <SearchBar className="mr-20" /> */}
-                            <SearchTest />
+                            <SearchTest className=' mr-20' />
                             <NavigationMenuDemo />
                             <Button size="default" className={`${btnfont.className} text-xl ml-20`}>Get Started</Button>
                         </div>
