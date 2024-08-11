@@ -25,11 +25,11 @@ const TrendingProducts = () => {
             <div className="text-center">
                 <h1 className="font-semibold text-[32px] leading-[131.8%] text-[#333333] mb-[60px]">All trending products</h1>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-[20px] sm:gap-[30px] lg:gap-[40px] px-4 sm:px-[20px] lg:px-[63px] mx-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 px-2 sm:px-4 lg:px-6 mx-auto">
                 {pics.map((p, i) => (
-                    <Card className="bg-[#FFFFFF] drop-shadow-md shadow-m overflow-hidden rounded-[20px] sm:rounded-[30px] lg:rounded-[45px]" key={i}>
-                        <div className="p-2 sm:p-4 relative">
-                            <div className="absolute top-12 right-8  z-10 bg-white text-blue-700 px-2 py-1 rounded-full text-xs font-semibold">
+                    <Card className="bg-white drop-shadow-md overflow-hidden rounded-lg sm:rounded-xl" key={i}>
+                        <div className="p-2 sm:p-3 relative">
+                            <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10 bg-white text-blue-700 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold">
                                 Premium Ad
                             </div>
                             <Image
@@ -37,27 +37,25 @@ const TrendingProducts = () => {
                                 width={600}
                                 height={400}
                                 alt={`PIC ${i + 1}`}
-                                className="w-full aspect-[3/2] object-cover rounded-[20px] sm:rounded-[30px] lg:rounded-[45px]"
+                                className="w-full aspect-[3/2] object-cover rounded-md sm:rounded-lg"
                             />
                         </div>
-                        <div className="p-2 sm:p-4 space-y-2">
+                        <div className="p-2 sm:p-3 space-y-1 sm:space-y-2">
                             <div className="flex items-center justify-between">
-                                <h3 className="text-lg font-semibold text-[#5F3AFB]">Fashion</h3>
-                                <div className="text-base lg:text-2xl font-bold text-[#000000]">₦20,000</div>
+                                <h3 className="text-xs sm:text-sm font-semibold text-[#5F3AFB]">Fashion</h3>
+                                <div className="text-xs sm:text-sm lg:text-base font-bold text-black">₦20,000</div>
                             </div>
-                            <div>
-                                <p className="text-[#000000] font-bold text-lg lg:text-xl">High Quality Crocs</p>
-                            </div>
-                            <div className="bg-[#F0F0F0] rounded-[20px] p-2 sm:p-4">
-                                <div className="text-sm text-[#5F3AFB] flex items-center gap-2 mb-2">
-                                    {/* <LocateIcon className="w-4 h-4" /> */}
-                                    <Image src={location} alt="location" />
+                            <p className="text-black font-bold text-xs sm:text-sm lg:text-base">High Quality Crocs</p>
+                            <div className="bg-[#F0F0F0] rounded-md sm:rounded-lg p-1.5 sm:p-2">
+                                <div className="text-[10px] sm:text-xs lg:text-sm text-[#5F3AFB] flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+                                    <Image src={location} alt="location" className="w-3 h-3 sm:w-4 sm:h-4" />
                                     Lagos, Ikeja
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <p className="text-sm text-black">16 visits</p>
-                                    <Button size="md" className="rounded-full text-base md:text-sm lg:text-xs hidden lg:block">Preview</Button>
-                                    <Button size="sm" className="rounded-full text-base md:text-sm lg:text-xs lg:hidden block">Preview</Button>
+                                    <p className="text-[10px] sm:text-xs lg:text-sm text-black whitespace-nowrap">16 visits</p>
+                                    <Button className="rounded-full text-[8px] sm:text-xs px-1 py-0.5 sm:px-3 sm:py-1 ml-1 sm:ml-2 min-w-[40px] sm:min-w-auto w-[100px]">
+                                        Preview
+                                    </Button>
                                 </div>
                             </div>
                         </div>
