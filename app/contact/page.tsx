@@ -33,7 +33,7 @@ export default function ContactPage() {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto relative z-10 h-96">
+            <div className="max-w-7xl mx-auto">
                 <MapImage />
             </div>
         </>
@@ -54,23 +54,23 @@ function ContactForm() {
                     <form>
                         <div className="mb-4">
                             <Label className="block text-sm font-medium mb-1">Name</Label>
-                            <Input type="text" className="w-full p-2 border rounded" placeholder="Placeholder" />
+                            <Input type="text" className="w-full p-2 border rounded shadow-none" placeholder="Placeholder" />
                         </div>
                         <div className="mb-4">
                             <Label className="block text-sm font-medium mb-1">Email address</Label>
-                            <Input type="email" className="w-full p-2 border rounded" placeholder="Placeholder" />
+                            <Input type="email" className="w-full p-2 border rounded shadow-none" placeholder="Placeholder" />
                         </div>
                         <div className="mb-4">
                             <Label className="block text-sm font-medium mb-1">Phone number</Label>
-                            <Input type="tel" className="w-full p-2 border rounded" placeholder="Placeholder" />
+                            <Input type="tel" className="w-full p-2 border rounded shadow-none" placeholder="Placeholder" />
                         </div>
                         <div className="mb-4">
                             <Label className="block text-sm font-medium mb-1">Subject</Label>
-                            <Input type="text" className="w-full p-2 border rounded" placeholder="Placeholder" />
+                            <Input type="text" className="w-full p-2 border rounded shadow-none" placeholder="Placeholder" />
                         </div>
                         <div className="mb-6">
                             <Label className="block text-sm font-medium mb-1">Message</Label>
-                            <Textarea className="bg-white" placeholder="Message"></Textarea>
+                            <Textarea className="bg-white border-input-[#333333]" placeholder="Message"></Textarea>
                         </div>
                         <Button type="submit" className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700">
                             Send Message
@@ -107,28 +107,15 @@ function ContactForm() {
 
 function MapImage() {
     return (
-        <div className="relative w-full h-full">
-            {/* Desktop Map Image */}
-            <div className="hidden lg:block absolute inset-0 left-0 right-0 -top-16">
-                <Image
-                    src={mapimage}
-                    alt="map"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-lg"
-                />
-            </div>
-
-            {/* Mobile Map Image */}
-            <div className="block lg:hidden w-full h-full absolute inset-0">
-                <Image
-                    src={mobilemap}
-                    alt="map"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-lg"
-                />
-            </div>
+        <div className="relative w-full h-0 pb-[56.25%] overflow-hidden"> {/* 16:9 Aspect Ratio */}
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093684!2d144.95373631531713!3d-37.81627997975182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43c3a45d11%3A0x5045675218ce6e0!2sFederation%20Square!5e0!3m2!1sen!2sus!4v1614262545649!5m2!1sen!2sus"
+                className="absolute top-0 left-0 w-full h-full border-0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+            />
         </div>
-    )
+    );
 }
+
