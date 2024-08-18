@@ -54,8 +54,15 @@ const HeroSection = () => {
             <Carousel
                 plugins={[
                     AutoScroll({
-                        speed: 1,
+                        speed: 0.95,
                     }),
+                    Autoplay({
+                        delay: 7000,
+                        stopOnInteraction: true,
+                        jump: true
+
+                    })
+
                 ]}
                 carouselOptions={{
                     loop: true,
