@@ -25,48 +25,94 @@ const TrendingProducts = () => {
             <div className="text-center">
                 <h1 className="font-semibold text-[32px] leading-[131.8%] text-[#333333] mb-[60px]">All trending products</h1>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 px-2 sm:px-4 lg:px-6 mx-auto">
+            {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 px-2 sm:px-4 lg:px-6 mx-auto">
                 {pics.map((p, i) => (
-                    <Card className="bg-white drop-shadow-md overflow-hidden rounded-lg sm:rounded-xl" key={i}>
-                        <div className="p-2 sm:p-3 relative">
-                            <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10 bg-white text-blue-700 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold">
+                    <Card className="w-full max-w-sm bg-[#FFFFFF] drop-shadow-md shadow-m overflow-hidden rounded-[45px]" key={i}>
+                        <div className="relative p-4">
+                            <div className="absolute top-8 right-8 bg-[#FFFFFF] text-[#5F3AFB] font-bold px-2 py-1 rounded-full text-xs">
                                 Premium Ad
                             </div>
+
                             <Image
                                 src={p}
                                 width={600}
                                 height={400}
                                 alt={`PIC ${i + 1}`}
-                                className="w-full aspect-[3/2] object-cover rounded-md sm:rounded-lg"
+                                className="w-full aspect-[3/2] object-cover rounded-[45px]"
                             />
                         </div>
-                        <div className="p-2 sm:p-3 space-y-1 sm:space-y-2">
+                        <div className="p-4 space-y-2">
                             <div className="flex items-center justify-between">
-                                <h3 className="text-xs sm:text-sm font-semibold text-[#5F3AFB]">Fashion</h3>
-                                <div className="text-xs sm:text-sm lg:text-base font-bold text-black">₦20,000</div>
+                                <h3 className="text-lg font-semibold text-[#5F3AFB]">Fashion</h3>
+                                <div className="text-2xl font-bold text-[#000000]">₦20,000</div>
                             </div>
-                            <p className="text-black font-bold text-xs sm:text-sm lg:text-base">High Quality Crocs</p>
-                            <div className="bg-[#F0F0F0] rounded-md sm:rounded-lg p-1.5 sm:p-2">
-                                <div className="text-[10px] sm:text-xs lg:text-sm text-[#5F3AFB] flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
-                                    <Image src={location} alt="location" className="w-3 h-3 sm:w-4 sm:h-4" />
+                            <div className="">
+                                <p className="text-[#000000] font-bold text-xl">High Quality Crocs</p>
+                            </div>
+                            <div className="bg-[#F0F0F0] rounded-[20px] p-4">
+                                <div className="text-sm text-[#5F3AFB] flex items-center gap-2 mb-2">
+                                    <Image src={location} alt="location" />
                                     Lagos, Ikeja
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <p className="text-[10px] sm:text-xs lg:text-sm text-black whitespace-nowrap">16 visits</p>
-                                    <Button className="rounded-full text-[8px] sm:text-xs px-1 py-0.5 sm:px-3 sm:py-1 ml-1 sm:ml-2 min-w-[40px] sm:min-w-auto w-[100px]">
-                                        Preview
-                                    </Button>
+                                    <p className="text-sm text-black">16 visits</p>
+                                    <Button size="md" className="rounded-full text-base md:text-sm lg:text-xs">Preview</Button>
+                                </div>
+                            </div>
+                        </div>
+                    </Card>
+
+                ))}
+            </div> */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-6 lg:px-8 mx-auto">
+                {pics.map((p, i) => (
+                    <Card className="w-full bg-[#FFFFFF] drop-shadow-md shadow-m overflow-hidden rounded-[30px]" key={i}>
+                        <div className="relative p-4">
+                            {/* Badge for Premium Ad */}
+                            <div className="absolute top-8 right-8 bg-[#FFFFFF] text-[#5F3AFB] font-bold px-2 py-1 rounded-full text-xs">
+                                Premium Ad
+                            </div>
+
+                            <Image
+                                src={p}
+                                width={600}
+                                height={400}
+                                alt={`PIC ${i + 1}`}
+                                className="w-full aspect-[3/2] object-cover rounded-[30px]"
+                            />
+                        </div>
+                        <div className="p-4 space-y-2">
+                            <div className="flex items-center justify-between">
+                                <h3 className="text-lg font-semibold text-[#5F3AFB]">Fashion</h3>
+                                <div className="text-2xl font-bold text-[#000000]">₦20,000</div>
+                            </div>
+                            <div>
+                                <p className="text-[#000000] font-bold text-xl">High Quality Crocs</p>
+                            </div>
+                            <div className="bg-[#F0F0F0] rounded-[20px] p-4">
+                                <div className="text-sm text-[#5F3AFB] flex items-center gap-2 mb-2">
+                                    <Image src={location} alt="location" />
+                                    Lagos, Ikeja
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <p className="text-sm text-black">16 visits</p>
+                                    <Button size="md" className="rounded-full text-base md:text-sm lg:text-xs">Preview</Button>
                                 </div>
                             </div>
                         </div>
                     </Card>
                 ))}
             </div>
-            <div className="flex items-center justify-center mt-[60px] mb-[89px]">
-                <Button variant="outline" className="px-[14px] py-[13px] w-[234px] h-[69px] rounded-[12px] text-[#333333] bg-transparent">
-                    View all products <span className="ml-[10.5px]"><ShoppingCart /> </span>
+
+            <div className="flex items-center justify-center mt-8 mb-10 sm:mt-12 sm:mb-16">
+                <Button
+                    variant="outline"
+                    className="px-4 py-3 w-[80%] sm:w-[234px] sm:h-[69px] rounded-[12px] text-[#333333] bg-transparent text-sm sm:text-base"
+                >
+                    View all products <span className="ml-2"><ShoppingCart /></span>
                 </Button>
             </div>
+
         </section>
 
     )
