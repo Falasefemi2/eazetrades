@@ -18,23 +18,23 @@ const textFont = localFont({ src: '../../public/fonts/AnekBangla_SemiCondensed-S
 
 const Navbar = () => {
     return (
-        <div className="w-full fixed top-0 left-0 right-0 z-50 bg-[#EEEAFF] border border-b-[5px]  backdrop-blur-sm">
+        <div className="w-full fixed top-0 left-0 right-0 z-50 bg-[#EEEAFF] border-b-[5px] backdrop-blur-sm">
             <Container>
-                <header className="w-full flex items-center justify-between py-4">
-                    <Link href="/" className='flex items-center justify-center mr-[144px]'>
-                        <Image src={logo} width={29.17} height={35} alt='logo' className='mr-[5px] hidden md:block' priority />
-                        <Image src={logo} width={128.12} height={35} alt='logo' className='mr-[5px] md:hidden' priority />
-                        <span className={`${textFont.className} text-2xl font-semibold text-[#4F4F4F] hidden lg:block`}>EAZETRADES</span>
+                <header className="w-full flex items-center justify-between py-2 px-4 sm:px-6 lg:px-8">
+                    <Link href="/" className="flex items-center">
+                        <Image src={logo} width={29.17} height={35} alt="logo" className="mr-2 w-auto h-6 sm:h-8 md:h-9" priority />
+                        <span className={`${textFont.className} text-xl sm:text-2xl font-semibold text-[#4F4F4F] hidden sm:block`}>
+                            EAZETRADES
+                        </span>
                     </Link>
-                    <div className="flex items-center justify-end max-w-[978px] w-full">
-                        {/* Show SearchBar, NavigationMenuDemo, and Button on desktop */}
-                        <div className="hidden lg:flex">
-                            {/* <SearchBar className="mr-20" /> */}
-                            <SearchTest className=' mr-20' />
+                    <div className="flex items-center justify-end flex-1 sm:flex-initial">
+                        <div className="hidden lg:flex items-center space-x-6">
+                            <SearchTest />
                             <NavigationMenuDemo />
-                            <Button size="default" className={`${btnfont.className} text-xl ml-20`}>Get Started</Button>
+                            <Button size="default" className={`${btnfont.className} text-base sm:text-lg lg:text-xl`}>
+                                Get Started
+                            </Button>
                         </div>
-                        {/* Show MobileNav on mobile */}
                         <div className="lg:hidden">
                             <MobileNav />
                         </div>
@@ -42,8 +42,8 @@ const Navbar = () => {
                 </header>
             </Container>
         </div>
-
     );
 }
 
 export default Navbar;
+
