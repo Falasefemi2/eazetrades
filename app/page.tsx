@@ -1,3 +1,5 @@
+
+import { Component } from "./components/FadeImage";
 import HeroSection from "./components/HeroSection";
 import ImageSlider from "./components/ImageSlider";
 import RelatedSearch from "./components/RelatedSearch";
@@ -9,6 +11,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      {/* <Component /> */}
       <ImageSlider />
       <RelatedSearch />
       <TrendingProducts />

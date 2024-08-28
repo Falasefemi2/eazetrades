@@ -18,12 +18,12 @@ const textFont = localFont({ src: '../../public/fonts/AnekBangla_SemiCondensed-S
 
 const Navbar = () => {
     return (
-        <div className="w-full fixed top-0 left-0 right-0 z-50 bg-[rgba(255,255,255,0.8)] border border-b backdrop-blur-sm">
+        <div className="w-full fixed top-0 left-0 right-0 z-50 bg-[#EEEAFF] border border-b backdrop-blur-sm">
             <Container>
                 <header className="w-full flex items-center justify-between py-4">
                     <Link href="/" className='flex items-center justify-center mr-[144px]'>
-                        <Image src={logo} width={29.17} height={35} alt='logo' className='mr-[5px] hidden md:block' />
-                        <Image src={logo} width={128.12} height={35} alt='logo' className='mr-[5px] md:hidden' />
+                        <Image src={logo} width={29.17} height={35} alt='logo' className='mr-[5px] hidden md:block' priority />
+                        <Image src={logo} width={128.12} height={35} alt='logo' className='mr-[5px] md:hidden' priority />
                         <span className={`${textFont.className} text-2xl font-semibold text-[#4F4F4F] hidden lg:block`}>EAZETRADES</span>
                     </Link>
                     <div className="flex items-center justify-end max-w-[978px] w-full">

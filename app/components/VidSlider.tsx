@@ -55,6 +55,7 @@ const VidSlider = () => {
                                         src={gif}
                                         className="aspect-[3/2] object-cover w-[143px] md:w-[177px]"
                                         alt="img"
+                                        unoptimized
                                     />
                                 </div>
                                 <div className="px-2 pb-2 md:p-4 md:space-y-2">
