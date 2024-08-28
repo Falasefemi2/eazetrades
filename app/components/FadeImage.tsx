@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ImagesSlider } from "@/components/ui/images-slider";
 import { motion } from "framer-motion";
 import React from "react";
-
+import heroImg from "../../public/images/hero.jpg"
 
 export function Component() {
     const images = [
