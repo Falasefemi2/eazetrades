@@ -18,7 +18,7 @@ const textFont = localFont({ src: '../../public/fonts/AnekBangla_SemiCondensed-S
 
 const Navbar = () => {
     return (
-        <div className="w-full fixed top-0 left-0 right-0 z-50 bg-[#EEEAFF] border border-b backdrop-blur-sm">
+        <div className="w-full fixed top-0 left-0 right-0 z-50 bg-[#EEEAFF] border border-b-[5px]  backdrop-blur-sm">
             <Container>
                 <header className="w-full flex items-center justify-between py-4">
                     <Link href="/" className='flex items-center justify-center mr-[144px]'>
