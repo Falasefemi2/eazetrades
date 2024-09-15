@@ -30,15 +30,16 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
   const isAuthPage = pathname.startsWith('/auth'); // Adjust this based on your auth route
+  const isDashboardPage = pathname.startsWith('/dashboard')
 
   return (
     <html lang="en">
       <body className={`${anekBangla.className} bg-[#F9F7FF]`}>
-        {!isAuthPage && <Navbar />}
+        {!isAuthPage && !isDashboardPage && <Navbar />}
         <div>
           {children}
         </div>
-        {!isAuthPage && <Footer />}
+        {!isAuthPage && !isDashboardPage && <Footer />}
       </body>
     </html>
   );
