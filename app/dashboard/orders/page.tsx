@@ -1,11 +1,16 @@
 "use client";
 
-import { useState } from "react"
+import { SetStateAction, useState } from "react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ChevronLeft, ChevronRight, Filter } from "lucide-react"
+import { Calendar } from "@/components/ui/calendar"
+import { format } from "date-fns";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+
 
 interface Order {
     id: string
@@ -47,6 +52,9 @@ export default function OrderPage() {
         }
     }
 
+    const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date()) // State for selected date
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false) // State to control calendar visibility
+
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">Order Lists</h1>
@@ -56,13 +64,22 @@ export default function OrderPage() {
                         <Filter className="mr-2 h-4 w-4" />
                         Filter By
                     </Button>
-                    <Select>
+                    <Select onValueChange={() => setIsCalendarOpen(true)}>
                         <SelectTrigger className="w-[180px]">
                             <SelectValue placeholder="Date" />
                         </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="asc">Ascending</SelectItem>
-                            <SelectItem value="desc">Descending</SelectItem>
+                        <SelectContent className="bg-white">
+                            <div className="p-0">
+                                <Calendar
+                                    mode="single"
+                                    selected={selectedDate}
+                                    onSelect={(date) => {
+                                        setSelectedDate(date);
+                                        setIsCalendarOpen(false);
+                                    }}
+                                    initialFocus
+                                />
+                            </div>
                         </SelectContent>
                     </Select>
                     <Select>
@@ -80,11 +97,29 @@ export default function OrderPage() {
                         <SelectTrigger className="w-[180px]">
                             <SelectValue placeholder="Order Status" />
                         </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="completed">Completed</SelectItem>
-                            <SelectItem value="processing">Processing</SelectItem>
-                            <SelectItem value="rejected">Rejected</SelectItem>
-                            <SelectItem value="onhold">On Hold</SelectItem>
+                        <SelectContent className="bg-white">
+                            <Card className=" w-96">
+                                <CardHeader>
+                                    <CardTitle className="text-sm font-semibold">Select Order Status</CardTitle>
+                                </CardHeader>
+                                <CardContent className="grid grid-cols-3 gap-4">
+                                    {/* Make badges clickable for selection */}
+                                    <Badge className="bg-white text-black border-black hover:bg-gray-200 cursor-pointer">Completed</Badge>
+                                    <Badge className="bg-white text-black border-black hover:bg-gray-200 cursor-pointer">Processing</Badge>
+                                    <Badge className="bg-white text-black border-black hover:bg-gray-200 cursor-pointer">Rejected</Badge>
+                                    <Badge className="bg-white text-black border-black hover:bg-gray-200 cursor-pointer">On Hold</Badge>
+                                    <Badge className="bg-white text-black border-black hover:bg-gray-200 cursor-pointer">In Transit</Badge>
+                                </CardContent>
+                                <Separator />
+                                <p className="text-xs text-muted-foreground mt-2">
+                                    *You can choose multiple Order Status
+                                </p>
+                                <CardFooter className="flex items-center justify-center mt-8">
+                                    <Button className=" bg-[#5F3AFB] hover:bg-[#5F3AFB] w-32 h-9 rounded-none">
+                                        Apply Now
+                                    </Button>
+                                </CardFooter>
+                            </Card>
                         </SelectContent>
                     </Select>
                 </div>
@@ -109,7 +144,21 @@ export default function OrderPage() {
                             <TableCell className="font-medium">{order.id}</TableCell>
                             <TableCell>{order.name}</TableCell>
                             <TableCell>{order.address}</TableCell>
-                            <TableCell>{order.date}</TableCell>
+                            {/* <TableCell onClick={() => setIsCalendarOpen(true)}>
+                                {order.date}
+                                {isCalendarOpen && (
+                                    <Calendar
+                                        selected={selectedDate}
+                                        onSelect={(range: Date | undefined) => {
+                                            if (range) {
+                                                setSelectedDate(range); // Update selected date
+                                            }
+                                            setIsCalendarOpen(false); // Close calendar after selection
+                                        }}
+                                    />
+                                )}
+                            </TableCell> */}
+
                             <TableCell>{order.type}</TableCell>
                             <TableCell>
                                 <Badge className={getStatusColor(order.status)}>{order.status}</Badge>
