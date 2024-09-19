@@ -10,7 +10,7 @@ const NavItems = [
     { name: 'Services', path: '/dashboard/services' },
     { name: 'About', path: '/dashboard/about' },
     { name: 'Order List', path: '/dashboard/orders' },
-    { name: 'Delete Password', path: '/dashboard/delete-password' },
+    { name: 'Change Password', path: '/dashboard/change-password' },
     { name: 'Delete Account', path: '/dashboard/delete-account' },
     { name: 'Support/Help', path: '/dashboard/support' },
     { name: 'Log out', path: '/logout' }
