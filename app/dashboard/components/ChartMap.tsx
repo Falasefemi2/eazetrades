@@ -31,7 +31,6 @@ export default function SalesChart() {
     const handleMonthChange = (value: string) => {
         setSelectedMonth(value)
         console.log(`Selected month: ${months[parseInt(value) - 1]}`)
-        // Here you would typically update the chart data based on the selected month
     }
 
     return (
@@ -39,10 +38,10 @@ export default function SalesChart() {
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-base font-normal">Total Sales</CardTitle>
                 <Select onValueChange={handleMonthChange} defaultValue={selectedMonth}>
-                    <SelectTrigger className="w-[180px]">
+                    <SelectTrigger className="w-[180px] bg-white">
                         <SelectValue placeholder="Select month" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className='bg-white'>
                         {months.map((month, index) => (
                             <SelectItem key={index + 1} value={(index + 1).toString()}>
                                 {month}

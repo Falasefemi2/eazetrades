@@ -6,6 +6,7 @@ import cat from "../../../public/images/cat.png"
 import elect from "../../../public/images/elect.png"
 import watch from "../../../public/images/googlewatch.png"
 import headphones from "../../../public/images/headphone.png"
+import { Badge } from "@/components/ui/badge";
 
 export default function ProductTable() {
     return (
@@ -27,17 +28,24 @@ export default function ProductTable() {
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {[bag, cat, elect, watch, headphones].map((image, index) => (
-                                    <TableRow key={index + 1}>
-                                        <TableCell>{index + 1}</TableCell>
-                                        <TableCell>
-                                            <Image src={image} alt={`Product ${index + 1}`} width={40} height={40} className="rounded" />
-                                        </TableCell>
-                                        <TableCell>Product {index + 1}</TableCell>
-                                        <TableCell>{Math.floor(Math.random() * 100)}</TableCell>
-                                        <TableCell>${(Math.random() * 100).toFixed(2)}</TableCell>
-                                    </TableRow>
-                                ))}
+                                {[bag, cat, elect, watch, headphones].map((image, index) => {
+                                    const inStock = Math.random() > 0.5; // Randomly determine stock status
+                                    return (
+                                        <TableRow key={index + 1}>
+                                            <TableCell>{index + 1}</TableCell>
+                                            <TableCell>
+                                                <Image src={image} alt={`Product ₦{index + 1}`} width={40} height={40} className="rounded" />
+                                            </TableCell>
+                                            <TableCell>Product {index + 1}</TableCell>
+                                            <TableCell>
+                                                <Badge variant={inStock ? 'default' : 'destructive'}>
+                                                    {inStock ? 'In Stock' : 'Reorder'}
+                                                </Badge>
+                                            </TableCell>
+                                            <TableCell>₦{(Math.random() * 100).toFixed(2)}</TableCell>
+                                        </TableRow>
+                                    );
+                                })}
                             </TableBody>
                         </Table>
                     </CardContent>
@@ -58,17 +66,24 @@ export default function ProductTable() {
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {[1, 2, 3, 4].map((item) => (
-                                    <TableRow key={item}>
-                                        <TableCell>{item}</TableCell>
-                                        <TableCell>
-                                            <Image src="/placeholder.svg" alt="Service" width={40} height={40} className="rounded" />
-                                        </TableCell>
-                                        <TableCell>Service {item}</TableCell>
-                                        <TableCell>{Math.floor(Math.random() * 100)}</TableCell>
-                                        <TableCell>${(Math.random() * 100).toFixed(2)}</TableCell>
-                                    </TableRow>
-                                ))}
+                                {[bag, cat, elect, watch, headphones].map((image, index) => {
+                                    const inStock = Math.random() > 0.5; // Randomly determine stock status
+                                    return (
+                                        <TableRow key={index + 1}>
+                                            <TableCell>{index + 1}</TableCell>
+                                            <TableCell>
+                                                <Image src={image} alt={`Product ₦{index + 1}`} width={40} height={40} className="rounded" />
+                                            </TableCell>
+                                            <TableCell>Product {index + 1}</TableCell>
+                                            <TableCell>
+                                                <Badge variant={inStock ? 'default' : 'destructive'}>
+                                                    {inStock ? 'In Stock' : 'Reorder'}
+                                                </Badge>
+                                            </TableCell>
+                                            <TableCell>₦{(Math.random() * 100).toFixed(2)}</TableCell>
+                                        </TableRow>
+                                    );
+                                })}
                             </TableBody>
                         </Table>
                     </CardContent>
