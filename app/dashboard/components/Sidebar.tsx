@@ -42,7 +42,9 @@ export default function Sidebar() {
                             <li key={index}>
                                 <Link
                                     href={item.path}
-                                    className={`flex items-center py-2 px-4 rounded ${pathname === item.path ? 'bg-purple-100 text-purple-600' : 'text-gray-600 hover:bg-gray-100'
+                                    className={`flex items-center py-2 px-4 rounded font-normal ${pathname === item.path
+                                        ? 'bg-purple-100 text-purple-600'
+                                        : 'text-gray-600 hover:bg-gray-100'
                                         }`}
                                 >
                                     {item.icon && (
