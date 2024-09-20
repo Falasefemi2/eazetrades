@@ -144,7 +144,7 @@ export default function OrderPage() {
                             <TableCell className="font-medium">{order.id}</TableCell>
                             <TableCell>{order.name}</TableCell>
                             <TableCell>{order.address}</TableCell>
-                            {/* <TableCell onClick={() => setIsCalendarOpen(true)}>
+                            <TableCell onClick={() => setIsCalendarOpen(true)}>
                                 {order.date}
                                 {isCalendarOpen && (
                                     <Calendar
@@ -157,7 +157,7 @@ export default function OrderPage() {
                                         }}
                                     />
                                 )}
-                            </TableCell> */}
+                            </TableCell>
 
                             <TableCell>{order.type}</TableCell>
                             <TableCell>
