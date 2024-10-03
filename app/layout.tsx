@@ -8,20 +8,7 @@ import Footer from "./components/Footer";
 
 import { usePathname } from 'next/navigation';
 
-
-
-
-
-
 const anekBangla = localFont({ src: '../public/fonts/AnekBangla-SemiBold.ttf' })
-
-
-
-
-// export const metadata: Metadata = {
-//   title: "EazeTrades",
-//   description: "Connect buyers and sellers to",
-// };
 
 export default function RootLayout({
   children,
