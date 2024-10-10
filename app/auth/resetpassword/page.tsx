@@ -44,6 +44,11 @@ export default function ResetPassword() {
                         <form>
                             <div className="space-y-4">
                                 <div>
+                                    <Label className="block text-sm font-medium text-gray-700">Token</Label>
+                                    <Input type="text" id="token" className="mt-1 block w-full px-3 py-2  border border-[#333333] rounded-md text-sm placeholder-gray-400
+                    focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-[#F3F5F8]" placeholder="Token" />
+                                </div>
+                                <div>
                                     <Label htmlFor="email" className="block text-sm font-medium text-gray-700">Password</Label>
                                     <Input type="password" id="password" className="mt-1 block w-full px-3 py-2  border border-[#333333] rounded-md text-sm placeholder-gray-400
                     focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-[#F3F5F8]" placeholder="Password" />
