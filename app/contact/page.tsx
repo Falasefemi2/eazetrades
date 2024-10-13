@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -5,6 +7,21 @@ import mapimage from "../../public/images/map.png"
 import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
 import mobilemap from "../../public/images/mobilemap.png"
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { submitContact } from "../action";
+
+
+interface ContactFormData {
+    fullName: string;
+    userEmail: string;
+    phoneNumber: string;
+    subject: string;
+    message: string;
+}
+
+
+
 
 /* eslint-disable react/no-unescaped-entities */
 export default function ContactPage() {
@@ -44,6 +61,31 @@ export default function ContactPage() {
 
 
 function ContactForm() {
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitError, setSubmitError] = useState<string | null>(null)
+    const { register, handleSubmit, formState: { errors } } = useForm<ContactFormData>()
+
+    const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
+        setIsSubmitting(true)
+        setSubmitError(null)
+
+        try {
+            const formData = new FormData()
+            Object.entries(data).forEach(([key, value]) => {
+                formData.append(key, value)
+            })
+
+            await submitContact(formData)
+            // Handle success (e.g., show a success message, reset form)
+        } catch (error) {
+            setSubmitError('Failed to submit the form. Please try again.')
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
+
+
+
     return (
         <div className="flex justify-center items-start">
             <div className="flex flex-col-reverse md:flex-row w-full px-4 md:px-[103px] py-8 md:py-[120px] max-w-7xl">
@@ -51,7 +93,7 @@ function ContactForm() {
                 {/* Contact Form */}
                 <div className="w-full md:w-5/12 bg-white p-6 md:p-8 border rounded-[15px] shadow-md mt-8 md:mt-0">
                     <h2 className="text-2xl font-semibold mb-6">Contact form</h2>
-                    <form>
+                    {/* <form>
                         <div className="mb-4">
                             <Label className="block text-sm font-medium mb-1">Name</Label>
                             <Input type="text" className="w-full p-2 border rounded shadow-none" placeholder="Placeholder" />
@@ -75,7 +117,72 @@ function ContactForm() {
                         <Button type="submit" className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700">
                             Send Message
                         </Button>
+                    </form> */}
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="mb-4">
+                            <Label className="block text-sm font-medium mb-1" htmlFor="fullName">Name</Label>
+                            <Input
+                                id="fullName"
+                                type="text"
+                                className="w-full p-2 border rounded shadow-none"
+                                placeholder="Your full name"
+                                {...register('fullName', { required: 'Name is required' })}
+                            />
+                            {errors.fullName && <p className="text-red-500 text-xs mt-1">{String(errors.fullName.message)}</p>}
+                        </div>
+                        <div className="mb-4">
+                            <Label className="block text-sm font-medium mb-1" htmlFor="userEmail">Email address</Label>
+                            <Input
+                                id="userEmail"
+                                type="email"
+                                className="w-full p-2 border rounded shadow-none"
+                                placeholder="Your email address"
+                                {...register('userEmail', { required: 'Email is required', pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' } })}
+                            />
+                            {errors.userEmail?.message && <p className="text-red-500 text-xs mt-1">{String(errors.userEmail.message)}</p>}
+                        </div>
+                        <div className="mb-4">
+                            <Label className="block text-sm font-medium mb-1" htmlFor="phoneNumber">Phone number</Label>
+                            <Input
+                                id="phoneNumber"
+                                type="tel"
+                                className="w-full p-2 border rounded shadow-none"
+                                placeholder="Your phone number"
+                                {...register('phoneNumber', { required: 'Phone number is required' })}
+                            />
+                            {errors.phoneNumber && <p className="text-red-500 text-xs mt-1">{String(errors.phoneNumber.message)}</p>}
+                        </div>
+                        <div className="mb-4">
+                            <Label className="block text-sm font-medium mb-1" htmlFor="subject">Subject</Label>
+                            <Input
+                                id="subject"
+                                type="text"
+                                className="w-full p-2 border rounded shadow-none"
+                                placeholder="Subject of your message"
+                                {...register('subject', { required: 'Subject is required' })}
+                            />
+                            {errors.subject && <p className="text-red-500 text-xs mt-1">{String(errors.subject.message)}</p>}
+                        </div>
+                        <div className="mb-6">
+                            <Label className="block text-sm font-medium mb-1" htmlFor="message">Message</Label>
+                            <Textarea
+                                id="message"
+                                className="bg-white border-input-[#333333]"
+                                placeholder="Your message"
+                                {...register('message', { required: 'Message is required' })}
+                            />
+                            {errors.message && <p className="text-red-500 text-xs mt-1">{String(errors.message.message)}</p>}
+                        </div>
+                        {submitError && <p className="text-red-500 text-sm mb-4">{submitError}</p>}
+                        <Button
+                            type="submit"
+                            className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? 'Sending...' : 'Send Message'}
+                        </Button>
                     </form>
+
                 </div>
 
                 {/* Company Info */}
@@ -118,4 +225,6 @@ function MapImage() {
         </div>
     );
 }
+
+
 
