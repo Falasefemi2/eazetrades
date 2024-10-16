@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import localFont from 'next/font/local'
 import Footer from "./components/Footer";
+import { Toaster } from "@/components/ui/sonner"
 
 import { usePathname } from 'next/navigation';
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           {children}
         </div>
         {!isAuthPage && !isDashboardPage && <Footer />}
+        <Toaster />
       </body>
     </html>
   );

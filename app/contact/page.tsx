@@ -10,6 +10,8 @@ import mobilemap from "../../public/images/mobilemap.png"
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { submitContact } from "../action";
+import { toast } from "sonner"
+
 
 
 interface ContactFormData {
@@ -77,8 +79,10 @@ function ContactForm() {
 
             await submitContact(formData)
             // Handle success (e.g., show a success message, reset form)
+            toast("Successfully created.")
         } catch (error) {
             setSubmitError('Failed to submit the form. Please try again.')
+            toast.error("Failed to submit the form. Please try again.")
         } finally {
             setIsSubmitting(false)
         }
@@ -93,31 +97,6 @@ function ContactForm() {
                 {/* Contact Form */}
                 <div className="w-full md:w-5/12 bg-white p-6 md:p-8 border rounded-[15px] shadow-md mt-8 md:mt-0">
                     <h2 className="text-2xl font-semibold mb-6">Contact form</h2>
-                    {/* <form>
-                        <div className="mb-4">
-                            <Label className="block text-sm font-medium mb-1">Name</Label>
-                            <Input type="text" className="w-full p-2 border rounded shadow-none" placeholder="Placeholder" />
-                        </div>
-                        <div className="mb-4">
-                            <Label className="block text-sm font-medium mb-1">Email address</Label>
-                            <Input type="email" className="w-full p-2 border rounded shadow-none" placeholder="Placeholder" />
-                        </div>
-                        <div className="mb-4">
-                            <Label className="block text-sm font-medium mb-1">Phone number</Label>
-                            <Input type="tel" className="w-full p-2 border rounded shadow-none" placeholder="Placeholder" />
-                        </div>
-                        <div className="mb-4">
-                            <Label className="block text-sm font-medium mb-1">Subject</Label>
-                            <Input type="text" className="w-full p-2 border rounded shadow-none" placeholder="Placeholder" />
-                        </div>
-                        <div className="mb-6">
-                            <Label className="block text-sm font-medium mb-1">Message</Label>
-                            <Textarea className="bg-white border-input-[#333333]" placeholder="Message"></Textarea>
-                        </div>
-                        <Button type="submit" className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700">
-                            Send Message
-                        </Button>
-                    </form> */}
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-4">
                             <Label className="block text-sm font-medium mb-1" htmlFor="fullName">Name</Label>

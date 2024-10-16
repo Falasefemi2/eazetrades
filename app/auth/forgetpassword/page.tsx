@@ -1,3 +1,5 @@
+"use client";
+
 import bg from "../../../public/images/bgPhone.png"
 import Image from "next/image";
 import {
@@ -12,8 +14,44 @@ import { Input } from "@/components/ui/input";
 import logo from "../../../public/images/eazetrades-logo-3 3.png"
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { z } from "zod";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { submitForgetPassword } from "@/app/action";
+import { toast } from "sonner";
+import { zodResolver } from '@hookform/resolvers/zod';
+
+
+const ForgetPasswordSchema = z.object({
+    userEmail: z.string().email('Invalid email address'),
+});
+
+type ForgetPasswordFormData = z.infer<typeof ForgetPasswordSchema>;
+
 
 const ForgetPasswordPage = () => {
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { register, handleSubmit, formState: { errors } } = useForm<ForgetPasswordFormData>({
+        resolver: zodResolver(ForgetPasswordSchema),
+    });
+
+    const onSubmit: SubmitHandler<ForgetPasswordFormData> = async (data) => {
+        setIsSubmitting(true);
+        const formData = new FormData();
+        formData.append('userEmail', data.userEmail);
+
+        const result = await submitForgetPassword(formData);
+
+        if (result.error) {
+            toast.error(result.error);
+        } else if (result.success) {
+            toast.success(result.success);
+        }
+
+        setIsSubmitting(false);
+    };
+
     return (
         <div className="min-h-screen flex items-center justify-center px-4 overflow-y-auto">
             <div className="fixed inset-0">
@@ -41,7 +79,7 @@ const ForgetPasswordPage = () => {
                 </CardHeader>
                 <div className="px-6 py-8">
                     <h2 className="text-2xl font-bold text-center text-[#333333] mb-6">Create new account</h2>
-                    <form>
+                    {/* <form>
                         <div className="space-y-4">
                             <div>
                                 <Label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</Label>
@@ -58,7 +96,35 @@ const ForgetPasswordPage = () => {
                             </Button>
 
                         </CardFooter>
+                    </form> */}
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="space-y-4">
+                            <div>
+                                <Label htmlFor="userEmail" className="block text-sm font-medium text-gray-700">Email</Label>
+                                <Input
+                                    type="email"
+                                    id="userEmail"
+                                    {...register('userEmail')}
+                                    className="mt-1 block w-full px-3 py-2 border border-[#333333] rounded-md text-sm placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-[#F3F5F8]"
+                                    placeholder="Email"
+                                />
+                                {errors.userEmail && <p className="mt-1 text-xs text-red-500">{errors.userEmail.message}</p>}
+                            </div>
+                        </div>
+                        <CardFooter className="flex flex-col mt-16 gap-4">
+                            <Button
+                                type="submit"
+                                className="w-full px-4 py-2 bg-[#5F3AFB] text-white font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-[#5F3AFB] focus:ring-offset-2 focus:ring-offset-[#5F3AFB] rounded-[30px]"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Sending...' : 'Send'}
+                            </Button>
+                            <Button asChild variant="outline" className="w-full px-4 py-2 text-[#5F3AFB] font-semibold shadow-md rounded-[30px] border-[2px] border-[#5F3AFB]">
+                                <Link href="/auth/signin">Back to sign in</Link>
+                            </Button>
+                        </CardFooter>
                     </form>
+
                 </div>
 
             </Card>

@@ -11,14 +11,18 @@ import { Button } from "@/components/ui/button";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { submitRegistration } from "@/app/action";
+// import { submitRegistration } from "@/app/action";
+import { toast } from "sonner"
+import { submitRegistrationDetails } from "@/app/action";
+import { z } from "zod";
+
 
 interface RegistrationFormData {
     fullName: string;
     userEmail: string;
     password: string;
     rePassword: string;
-    userSelection: 'buyer' | 'supplier';
+    userSelction: 'buyer' | 'seller';
 }
 
 function CreateAccount() {
@@ -30,28 +34,54 @@ function CreateAccount() {
     const { register, handleSubmit, formState: { errors }, watch } = useForm<RegistrationFormData>()
 
     const onSubmit: SubmitHandler<RegistrationFormData> = async (data) => {
-        setIsSubmitting(true)
-        setSubmitError(null)
-        setSubmitSuccess(false)
+        setIsSubmitting(true);
+        setSubmitError(null);
+        setSubmitSuccess(false);
 
         try {
-            const formData = new FormData()
+            const formData = new FormData();
             Object.entries(data).forEach(([key, value]) => {
-                formData.append(key, value)
-            })
+                formData.append(key, value);
+            });
 
-            const result = await submitRegistration(formData)
-            if (result.status === "200") {
-                setSubmitSuccess(true)
+            const result = await submitRegistrationDetails(formData);
+            console.log("Server response:", result);
+
+            if (result.success && result.data) {
+                if (result.data.status === "200") {
+                    setSubmitSuccess(true);
+                    toast.success(result.data.message || "Profile Created Successfully!");
+                } else {
+                    const errorMessage = result.data.message || "An unexpected error occurred";
+                    setSubmitError(errorMessage);
+                    toast.error(errorMessage);
+                }
             } else {
-                setSubmitError(result.message || 'An unexpected error occurred')
+                // Handle error cases
+                let errorMessage: string;
+                if (result.error) {
+                    if (result.error instanceof z.ZodError) {
+                        errorMessage = result.error.errors.map(issue => issue.message).join(", ");
+                    } else if (typeof result.error === "string") {
+                        errorMessage = result.error;
+                    } else {
+                        errorMessage = "An unexpected error occurred";
+                    }
+                } else {
+                    errorMessage = "An unexpected error occurred without details";
+                }
+                setSubmitError(errorMessage);
+                toast.error(errorMessage);
             }
         } catch (error) {
-            setSubmitError(error instanceof Error ? error.message : 'Failed to submit the form. Please try again.')
+            console.error("Submission error:", error);
+            const errorMessage = error instanceof Error ? error.message : "Failed to submit the form. Please try again.";
+            setSubmitError(errorMessage);
+            toast.error(errorMessage);
         } finally {
-            setIsSubmitting(false)
+            setIsSubmitting(false);
         }
-    }
+    };
 
 
     return (
@@ -69,64 +99,6 @@ function CreateAccount() {
             <Card className="relative z-10 max-w-md w-full bg-[#F5F6FA] rounded-lg shadow-lg overflow-hidden">
                 <div className="px-6 py-8">
                     <h2 className="text-2xl font-bold text-center text-[#333333] mb-6">Create new account</h2>
-                    {/* <form>
-                        <div className="space-y-4">
-                            <div>
-                                <Label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</Label>
-                                <Input type="text" id="name" className="mt-1 block w-full px-3 py-2  border border-[#333333] rounded-md text-sm placeholder-gray-400
-                    focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-[#F3F5F8]" placeholder="Placeholder" />
-                            </div>
-                            <div>
-                                <Label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</Label>
-                                <Input type="email" id="email" className="mt-1 block w-full px-3 py-2  border border-[#333333] rounded-md text-sm  placeholder-gray-400
-                    focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-[#F3F5F8]" placeholder="Placeholder" />
-                            </div>
-                            <div>
-                                <Label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</Label>
-                                <div className="mt-1 relative">
-                                    <Input type={showPassword ? "text" : "password"} id="password" className="block w-full px-3 py-2  border border-[#333333] rounded-md text-sm  placeholder-gray-400
-                      focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-[#F3F5F8]" placeholder="Password" />
-                                    <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5" onClick={() => setShowPassword(!showPassword)}>
-                                        {showPassword ? <EyeOff /> : <Eye />}
-                                    </button>
-                                </div>
-                                <div className="mt-2 text-right">
-                                    <Link href="/auth/forgetpassword" className="text-[#5F3AFB] font-medium text-sm">Forget Password</Link>
-                                </div>
-                            </div>
-                            <div>
-                                <Label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">Confirm password</Label>
-                                <div className="mt-1 relative">
-                                    <Input type={showConfirmPassword ? "text" : "password"} id="confirmPassword" className="block w-full px-3 py-2  border border-[#333333] rounded-md text-sm  placeholder-gray-400
-                      focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 bg-[#F3F5F8]" placeholder="Password" />
-                                    <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-                                        {showPassword ? <EyeOff /> : <Eye />}
-                                    </button>
-                                </div>
-                            </div>
-                            <div>
-                                <span className="text-sm text-blue-600 hover:text-blue-500 cursor-pointer">Forgot password?</span>
-                            </div>
-                            <div>
-                                <p className="block text-sm font-medium text-gray-700">Signing As</p>
-                                <div className="mt-2 space-x-4">
-                                    <Label className="inline-flex items-center">
-                                        <Input type="radio" className="form-radio" name="accountType" value="buyer" />
-                                        <span className="ml-2">Buyer</span>
-                                    </Label>
-                                    <Label className="inline-flex items-center">
-                                        <Input type="radio" className="form-radio" name="accountType" value="supplier" />
-                                        <span className="ml-2">Supplier</span>
-                                    </Label>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="mt-6">
-                            <Button type="submit" className="w-full px-4 py-2 bg-[#5F3AFB] text-white font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-[#5F3AFB] focus:ring-offset-2 focus:ring-offset-[#5F3AFB] rounded-[30px]">
-                                Sign up
-                            </Button>
-                        </div>
-                    </form> */}
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="space-y-4">
                             <div>
@@ -216,7 +188,7 @@ function CreateAccount() {
                                     <Label className="inline-flex items-center">
                                         <Input
                                             type="radio"
-                                            {...register('userSelection', { required: 'Please select an account type' })}
+                                            {...register('userSelction', { required: 'Please select an account type' })}
                                             value="buyer"
                                             className="form-radio"
                                         />
@@ -225,14 +197,14 @@ function CreateAccount() {
                                     <Label className="inline-flex items-center">
                                         <Input
                                             type="radio"
-                                            {...register('userSelection', { required: 'Please select an account type' })}
-                                            value="supplier"
+                                            {...register('userSelction', { required: 'Please select an account type' })}
+                                            value="seller"
                                             className="form-radio"
                                         />
-                                        <span className="ml-2">Supplier</span>
+                                        <span className="ml-2">Seller</span>
                                     </Label>
                                 </div>
-                                {errors.userSelection && <p className="mt-1 text-xs text-red-500">{errors.userSelection.message}</p>}
+                                {errors.userSelction && <p className="mt-1 text-xs text-red-500">{errors.userSelction.message}</p>}
                             </div>
                         </div>
                         {submitError && <p className="mt-4 text-sm text-red-500">{submitError}</p>}
