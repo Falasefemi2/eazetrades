@@ -15,13 +15,6 @@ import {
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue
-} from '@/components/ui/select'
-import {
     Form,
     FormControl,
     FormField,
@@ -33,7 +26,6 @@ import { registerUser } from '@/app/action'
 import { RegistrationInput, RegistrationSchema } from '@/lib/schema'
 import Image from "next/image";
 import { Label } from "@/components/ui/label";
-// import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Eye, EyeOff } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import Link from 'next/link';
@@ -59,8 +51,11 @@ export default function RegistrationForm() {
 
     async function onSubmit(values: RegistrationInput) {
         setLoading(true)
+        console.log({ values });
+
         try {
             const result = await registerUser(values)
+            console.log({ result });
             if (result.status === 200) {
                 setSuccess(true)
                 form.reset()
@@ -83,17 +78,20 @@ export default function RegistrationForm() {
             <div className="fixed inset-0">
                 <Image
                     src={bg}
-                    alt="bg"
+                    alt="background"
                     layout="fill"
                     objectFit="cover"
                     quality={100}
+                    priority
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                <div className="absolute inset-0 bg-black bg-opacity-50" />
             </div>
+
             <Card className="w-[400px] mx-auto z-10 bg-white">
                 <CardHeader className="px-6 py-8">
                     <CardTitle>Create new Account</CardTitle>
                 </CardHeader>
+
                 <CardContent>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -104,7 +102,7 @@ export default function RegistrationForm() {
                                     <FormItem>
                                         <FormLabel>Full Name</FormLabel>
                                         <FormControl>
-                                            <Input {...field} />
+                                            <Input placeholder="Enter your full name" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -118,7 +116,7 @@ export default function RegistrationForm() {
                                     <FormItem>
                                         <FormLabel>Email</FormLabel>
                                         <FormControl>
-                                            <Input type="email" {...field} />
+                                            <Input type="email" placeholder="Enter your email" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -131,9 +129,22 @@ export default function RegistrationForm() {
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Password</FormLabel>
-                                        <FormControl>
-                                            <Input type="password" {...field} />
-                                        </FormControl>
+                                        <div className="relative">
+                                            <FormControl>
+                                                <Input
+                                                    type={showPassword ? "text" : "password"}
+                                                    placeholder="Enter your password"
+                                                    {...field}
+                                                />
+                                            </FormControl>
+                                            <button
+                                                type="button"
+                                                onClick={() => setShowPassword(!showPassword)}
+                                                className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                                            >
+                                                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                                            </button>
+                                        </div>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -145,9 +156,22 @@ export default function RegistrationForm() {
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Confirm Password</FormLabel>
-                                        <FormControl>
-                                            <Input type="password" {...field} />
-                                        </FormControl>
+                                        <div className="relative">
+                                            <FormControl>
+                                                <Input
+                                                    type={showConfirmPassword ? "text" : "password"}
+                                                    placeholder="Confirm your password"
+                                                    {...field}
+                                                />
+                                            </FormControl>
+                                            <button
+                                                type="button"
+                                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                                className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                                            >
+                                                {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                                            </button>
+                                        </div>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -190,21 +214,25 @@ export default function RegistrationForm() {
                         </form>
                     </Form>
                 </CardContent>
-                {success && (
+
+                {/* {success && (
                     <CardFooter>
                         <p className="text-green-600 text-center w-full">
                             Registration successful! Please check your email.
                         </p>
                     </CardFooter>
-                )}
+                )} */}
+
                 <div className="flex items-center justify-center mb-4">
-                    <p className=" text-lg font-semibold text-[#333333]">Already have an account? <span className="text-[#5F3AFB]"><Link href="/auth/signin">Sign in</Link></span></p>
+                    <p className="text-lg font-semibold text-[#333333]">
+                        Already have an account?{' '}
+                        <Link href="/auth/signin" className="text-[#5F3AFB]">
+                            Sign in
+                        </Link>
+                    </p>
                 </div>
-
             </Card>
-
         </div>
-
 
 
     )
