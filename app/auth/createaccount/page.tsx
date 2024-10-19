@@ -1,5 +1,6 @@
 "use client";
 
+
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -29,10 +30,12 @@ import { Label } from "@/components/ui/label";
 import { Eye, EyeOff } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import Link from 'next/link';
+import { toast } from 'sonner';
 
 export default function RegistrationForm() {
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState(false)
+    const [error, setError] = useState<string | null>(null);
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -49,29 +52,91 @@ export default function RegistrationForm() {
         }
     })
 
+    // const handleRegistrationError = (message: string) => {
+    //     setError(message);
+    //     toast.error(message)
+    // };
+
+    // async function onSubmit(values: RegistrationInput) {
+    //     setLoading(true);
+    //     setError(null);
+
+    //     try {
+    //         const result = await registerUser(values);
+    //         // console.log({ result });
+
+    //         if (result.status === 200 && result.data?.status === "200") {
+    //             console.log(result.data.message);
+
+    //             setSuccess(true);
+    //             form.reset();
+    //             toast.success("Registration completed successfully");
+    //         } else {
+    //             handleRegistrationError(result.message || "Registration failed");
+    //         }
+    //     } catch (error) {
+    //         handleRegistrationError("An unexpected error occurred");
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // }
+    const handleRegistrationError = (message: string, details?: any) => {
+        console.error('Registration Error Details:', details); // Debug log
+        setError(message);
+        toast.error(message);
+    };
+
     async function onSubmit(values: RegistrationInput) {
-        setLoading(true)
-        console.log({ values });
+        console.log('Form Submission Started with values:', values); // Debug log
+        setLoading(true);
+        setError(null);
 
         try {
-            const result = await registerUser(values)
-            console.log({ result });
-            if (result.status === 200) {
-                setSuccess(true)
-                form.reset()
-            } else {
-                // Handle validation/server errors
-                const errors = result.errors
-                Object.keys(errors).forEach((key) => {
-                    form.setError(key as keyof RegistrationInput, {
-                        message: errors[key][0]
-                    })
-                })
+            console.log('Calling registerUser...'); // Debug log
+            const result = await registerUser(values);
+            console.log('Raw API Response:', result); // Debug log
+
+            if (!result) {
+                console.error('No result returned from registerUser'); // Debug log
+                handleRegistrationError('No response from server');
+                return;
             }
+
+            if (result.status === 200 && result.data?.status === "200") {
+                console.log('Registration Success:', {
+                    status: result.status,
+                    data: result.data,
+                    message: result.data.message
+                }); // Debug log
+
+                setSuccess(true);
+                form.reset();
+                toast.success(result.data.message || "Registration completed successfully");
+            } else {
+                console.error('Registration Failed:', {
+                    status: result.status,
+                    message: result.message,
+                    data: result.data,
+                    errors: result.errors
+                }); // Debug log
+
+                handleRegistrationError(
+                    result.message || "Registration failed",
+                    { result }
+                );
+            }
+        } catch (error) {
+            console.error('Unexpected Error:', error); // Debug log
+            handleRegistrationError(
+                "An unexpected error occurred",
+                error
+            );
         } finally {
-            setLoading(false)
+            setLoading(false);
+            console.log('Form Submission Completed'); // Debug log
         }
     }
+
 
     return (
         <div className="min-h-screen flex items-center justify-center px-4 overflow-y-auto relative">

@@ -21,9 +21,42 @@ import logo from "../../../public/images/eazetrades-logo-3 3.png"
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useState } from "react";
+import { validateOTP } from "@/app/action";
 
 
-function OtpPage() {
+
+
+function OtpPage({ userEmail }: { userEmail: string }) {
+
+    const [otp, setOtp] = useState('')
+    const [loading, setLoading] = useState(false)
+
+    const handleSubmit = async () => {
+        if (otp.length !== 6) {
+
+            return
+        }
+
+        setLoading(true)
+        try {
+            const result = await validateOTP({ userEmail, otp })
+
+            if (result.success) {
+                console.log({ result });
+                // Add any navigation or next steps here
+            } else {
+
+            }
+        } catch (error) {
+            console.log({ error });
+
+        } finally {
+            setLoading(false)
+        }
+    }
+
+
     return (
         <div className="min-h-screen flex items-center justify-center px-4 overflow-y-auto">
             <div className="fixed inset-0">
@@ -65,7 +98,13 @@ function OtpPage() {
                             </InputOTPGroup>
                         </InputOTP>
                     </div>
-                    <Button className="w-full mt-8">Confirm</Button>
+                    <Button
+                        className="w-full"
+                        onClick={handleSubmit}
+                        disabled={loading}
+                    >
+                        {loading ? "Verifying..." : "Confirm"}
+                    </Button>
                 </CardFooter>
             </Card>
         </div>
