@@ -52,49 +52,73 @@ export default function RegistrationForm() {
         }
     })
 
-    // const handleRegistrationError = (message: string) => {
-    //     setError(message);
-    //     toast.error(message)
-    // };
-
-    // async function onSubmit(values: RegistrationInput) {
-    //     setLoading(true);
-    //     setError(null);
-
-    //     try {
-    //         const result = await registerUser(values);
-    //         // console.log({ result });
-
-    //         if (result.status === 200 && result.data?.status === "200") {
-    //             console.log(result.data.message);
-
-    //             setSuccess(true);
-    //             form.reset();
-    //             toast.success("Registration completed successfully");
-    //         } else {
-    //             handleRegistrationError(result.message || "Registration failed");
-    //         }
-    //     } catch (error) {
-    //         handleRegistrationError("An unexpected error occurred");
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // }
     const handleRegistrationError = (message: string, details?: any) => {
         console.error('Registration Error Details:', details); // Debug log
         setError(message);
         toast.error(message);
     };
 
+    // async function onSubmit(values: RegistrationInput) {
+    //     console.log('Form Submission Started with values:', values); // Debug log
+    //     setLoading(true);
+    //     setError(null);
+
+    //     try {
+    //         console.log('Calling registerUser...'); // Debug log
+    //         const result = await registerUser(values);
+    //         console.log('Raw API Response:', result); // Debug log
+
+    //         if (!result) {
+    //             console.error('No result returned from registerUser'); // Debug log
+    //             handleRegistrationError('No response from server');
+    //             return;
+    //         }
+
+    //         if (result.status === 200 && result.data?.status === "200") {
+    //             console.log('Registration Success:', {
+    //                 status: result.status,
+    //                 data: result.data,
+    //                 message: result.data.message
+    //             }); // Debug log
+
+    //             setSuccess(true);
+    //             form.reset();
+    //             toast.success(result.data.message || "Registration completed successfully");
+    //         } else {
+    //             console.error('Registration Failed:', {
+    //                 status: result.status,
+    //                 message: result.message,
+    //                 data: result.data,
+    //                 errors: result.errors
+    //             }); // Debug log
+
+    //             handleRegistrationError(
+    //                 result.message || "Registration failed",
+    //                 { result }
+    //             );
+    //         }
+    //     } catch (error) {
+    //         console.error('Unexpected Error:', error); // Debug log
+    //         handleRegistrationError(
+    //             "An unexpected error occurred",
+    //             error
+    //         );
+    //     } finally {
+    //         setLoading(false);
+    //         console.log('Form Submission Completed'); // Debug log
+    //     }
+    // }
+
+
     async function onSubmit(values: RegistrationInput) {
         console.log('Form Submission Started with values:', values); // Debug log
-        setLoading(true);
-        setError(null);
+        setLoading(true); // Set loading state
+        setError(null); // Clear previous errors
 
         try {
             console.log('Calling registerUser...'); // Debug log
-            const result = await registerUser(values);
-            console.log('Raw API Response:', result); // Debug log
+            const result = await registerUser(values); // Call server action
+            console.log('Raw API Response:', result); // Log the raw response
 
             if (!result) {
                 console.error('No result returned from registerUser'); // Debug log
@@ -102,40 +126,43 @@ export default function RegistrationForm() {
                 return;
             }
 
-            if (result.status === 200 && result.data?.status === "200") {
+            // Handle success: API response with status 200 and status "200" in data
+            if (result.status === "200") {
                 console.log('Registration Success:', {
                     status: result.status,
-                    data: result.data,
-                    message: result.data.message
+                    data: result,
+                    message: result.message
                 }); // Debug log
 
-                setSuccess(true);
-                form.reset();
-                toast.success(result.data.message || "Registration completed successfully");
+                setSuccess(true); // Mark the registration as successful
+                form.reset(); // Reset the form
+                toast.success(result.message || "Registration completed successfully"); // Show success toast
             } else {
+                // Handle failed registration: API returned an error
                 console.error('Registration Failed:', {
                     status: result.status,
                     message: result.message,
-                    data: result.data,
-                    errors: result.errors
+                    validation: result.validation,
+                    result: result.result
                 }); // Debug log
 
                 handleRegistrationError(
-                    result.message || "Registration failed",
+                    result.message || "Registration failed", // Show error message
                     { result }
                 );
             }
         } catch (error) {
             console.error('Unexpected Error:', error); // Debug log
             handleRegistrationError(
-                "An unexpected error occurred",
+                "An unexpected error occurred", // Handle unexpected errors
                 error
             );
         } finally {
-            setLoading(false);
-            console.log('Form Submission Completed'); // Debug log
+            setLoading(false); // Stop loading spinner
+            console.log('Form Submission Completed'); // Debug log for completion
         }
     }
+
 
 
     return (
