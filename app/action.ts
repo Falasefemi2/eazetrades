@@ -2,7 +2,11 @@
 
 "use server";
 
-import { RegistrationInput, RegistrationSchema } from "@/lib/schema";
+import {
+  ContactInput,
+  RegistrationInput,
+  RegistrationSchema,
+} from "@/lib/schema";
 interface RegistrationResponse {
   status: string; // "200"
   message: string; // e.g. "Mail sent successfully. Check your mail!"
@@ -99,5 +103,58 @@ export async function validateOtp(
   } catch (error) {
     console.error("OTP validation error:", error);
     throw error;
+  }
+}
+
+interface ContactFormResponse {
+  status: string; // e.g. "200"
+  message: string; // e.g. "Request successful" or "Something went wrong"
+  validation: boolean;
+  result: {
+    message: string; // This is the message you're expecting
+  };
+}
+
+interface ContactFormInput {
+  fullName: string;
+  userEmail: string;
+  phoneNumber: string;
+  subject: string;
+  message: string;
+}
+
+export async function submitContactForm(
+  values: ContactFormInput
+): Promise<ContactFormResponse> {
+  try {
+    // Create a FormData object
+    const formData = new FormData();
+    formData.append("fullName", values.fullName);
+    formData.append("userEmail", values.userEmail);
+    formData.append("phoneNumber", values.phoneNumber);
+    formData.append("subject", values.subject);
+    formData.append("message", values.message);
+
+    console.log(
+      "Submitting contact form data:",
+      Array.from(formData.entries())
+    ); // Log FormData entries for debugging
+
+    const response = await fetch(
+      "https://api.eazetrades.ng/api/contact/submitUserContactDetails",
+      {
+        method: "POST",
+        // Note: Do not set the 'Content-Type' header as the browser will set the correct boundary for multipart/form-data
+        body: formData,
+      }
+    );
+
+    const responseData: ContactFormResponse = await response.json();
+    console.log("Contact Form Response:", responseData);
+
+    return responseData; // Return the API response
+  } catch (error) {
+    console.error("Contact form submission error:", error);
+    throw error; // Rethrow error for further handling
   }
 }

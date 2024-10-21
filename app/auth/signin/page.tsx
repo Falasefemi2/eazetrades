@@ -24,41 +24,10 @@ interface SignInFormData {
 
 
 const SignInPage = () => {
-    // const [isSubmitting, setIsSubmitting] = useState(false)
-    // const [submitError, setSubmitError] = useState<string | null>(null)
-    // const [submitSuccess, setSubmitSuccess] = useState<boolean>(false)
-    // const [showPassword, setShowPassword] = useState(false)
-    // const { register, handleSubmit, formState: { errors } } = useForm<SignInFormData>()
-
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm<SignInFormData>();
 
-
-    // const onSubmit: SubmitHandler<SignInFormData> = async (data) => {
-    //     setIsSubmitting(true)
-    //     setSubmitError(null)
-    //     setSubmitSuccess(false)
-
-    //     try {
-    //         const formData = new FormData()
-    //         Object.entries(data).forEach(([key, value]) => {
-    //             formData.append(key, value)
-    //         })
-
-    //         const result = await submitLogin(formData)
-    //         if (result.status === "200") {
-    //             setSubmitSuccess(true)
-    //             // Handle successful login (e.g., redirect to dashboard)
-    //         } else {
-    //             setSubmitError(result.message || 'An unexpected error occurred')
-    //         }
-    //     } catch (error) {
-    //         setSubmitError(error instanceof Error ? error.message : 'Failed to sign in. Please try again.')
-    //     } finally {
-    //         setIsSubmitting(false)
-    //     }
-    // }
 
     const onSubmit: SubmitHandler<SignInFormData> = async (data) => {
         setIsSubmitting(true);
@@ -69,24 +38,7 @@ const SignInPage = () => {
                 formData.append(key, value);
             });
 
-            // const result = await submitLogin(formData);
-            // console.log("Login response:", result); // For debugging
 
-            // if (result.status === "200") {
-            //     toast.success("Sign in successful!");
-            //     // Handle successful login (e.g., redirect to dashboard)
-            //     // router.push('/dashboard');
-            // } else {
-            //     // Handle server-side error
-            //     const errorMessage = result.message || 'An unexpected error occurred';
-            //     toast.error(errorMessage);
-
-            //     if (result.status === "503") {
-            //         console.error("Server error:", result);
-            //         // You might want to implement additional error handling here,
-            //         // such as reporting the error to your error tracking service
-            //     }
-            // }
         } catch (error) {
             console.error("Login error:", error);
             const errorMessage = error instanceof Error ? error.message : 'Failed to sign in. Please try again.';

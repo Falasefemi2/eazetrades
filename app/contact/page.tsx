@@ -2,26 +2,22 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import mapimage from "../../public/images/map.png"
 import { Textarea } from "@/components/ui/textarea"
-import Image from "next/image"
-import mobilemap from "../../public/images/mobilemap.png"
 import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { submitContact } from "../action";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner"
 
-
-
-interface ContactFormData {
-    fullName: string;
-    userEmail: string;
-    phoneNumber: string;
-    subject: string;
-    message: string;
-}
-
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage
+} from '@/components/ui/form'
+import { ContactInput, ContactSchema } from "@/lib/schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { submitContactForm } from "../action";
 
 
 
@@ -63,28 +59,74 @@ export default function ContactPage() {
 
 
 function ContactForm() {
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [submitError, setSubmitError] = useState<string | null>(null)
-    const { register, handleSubmit, formState: { errors } } = useForm<ContactFormData>()
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
-    const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
-        setIsSubmitting(true)
-        setSubmitError(null)
+    // Assuming you have a ContactSchema defined for form validation
+    const form = useForm<ContactInput>({
+        resolver: zodResolver(ContactSchema),
+        defaultValues: {
+            fullName: '',
+            userEmail: '',
+            phoneNumber: '',
+            subject: '',
+            message: '',
+        },
+    });
+
+    // Updated error handler name for clarity
+    const handleContactFormError = (message: string, details?: any) => {
+        console.error('Contact Form Error Details:', details); // Debug log
+        setError(message);
+        toast.error(message);
+    };
+
+    // Handle form submission
+    async function onSubmit(values: ContactInput) {
+        setLoading(true);
+        setError(null);
 
         try {
-            const formData = new FormData()
-            Object.entries(data).forEach(([key, value]) => {
-                formData.append(key, value)
-            })
+            const result = await submitContactForm(values);
 
-            await submitContact(formData)
-            // Handle success (e.g., show a success message, reset form)
-            toast("Successfully created.")
+            if (!result) {
+                handleContactFormError('No response from server');
+                return;
+            }
+
+            if (String(result.status) === "200") {
+                console.log('Form Submission Success:', {
+                    status: result.status,
+                    data: result,
+                    message: result.message
+                }); // Debug log
+
+                setSuccess(true); // Mark the submission as successful
+                form.reset(); // Reset the form fields
+
+                // Display the message from the result in the toast notification
+                toast.success(result.result.message || "Form submitted successfully");
+
+            } else {
+                console.error('Form Submission Failed:', {
+                    status: result.status,
+                    message: result.message,
+                    validation: result.validation,
+                    result: result.result
+                }); // Debug log
+
+                handleContactFormError(
+                    result.message || "Form submission failed",
+                    { result }
+                );
+            }
         } catch (error) {
-            setSubmitError('Failed to submit the form. Please try again.')
-            toast.error("Failed to submit the form. Please try again.")
+            console.error('Unexpected Error:', error); // Debug log
+            handleContactFormError("An unexpected error occurred", error); // Handle unexpected errors
         } finally {
-            setIsSubmitting(false)
+            setLoading(false); // Stop the loading spinner
+            console.log('Form Submission Completed'); // Debug log for completion
         }
     }
 
@@ -97,71 +139,82 @@ function ContactForm() {
                 {/* Contact Form */}
                 <div className="w-full md:w-5/12 bg-white p-6 md:p-8 border rounded-[15px] shadow-md mt-8 md:mt-0">
                     <h2 className="text-2xl font-semibold mb-6">Contact form</h2>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className="mb-4">
-                            <Label className="block text-sm font-medium mb-1" htmlFor="fullName">Name</Label>
-                            <Input
-                                id="fullName"
-                                type="text"
-                                className="w-full p-2 border rounded shadow-none"
-                                placeholder="Your full name"
-                                {...register('fullName', { required: 'Name is required' })}
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                            <FormField
+                                control={form.control}
+                                name="fullName"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Full Name</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="Enter your full name" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
                             />
-                            {errors.fullName && <p className="text-red-500 text-xs mt-1">{String(errors.fullName.message)}</p>}
-                        </div>
-                        <div className="mb-4">
-                            <Label className="block text-sm font-medium mb-1" htmlFor="userEmail">Email address</Label>
-                            <Input
-                                id="userEmail"
-                                type="email"
-                                className="w-full p-2 border rounded shadow-none"
-                                placeholder="Your email address"
-                                {...register('userEmail', { required: 'Email is required', pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' } })}
+                            <FormField
+                                control={form.control}
+                                name="userEmail"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Email</FormLabel>
+                                        <FormControl>
+                                            <Input type="email" placeholder="Enter your email" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
                             />
-                            {errors.userEmail?.message && <p className="text-red-500 text-xs mt-1">{String(errors.userEmail.message)}</p>}
-                        </div>
-                        <div className="mb-4">
-                            <Label className="block text-sm font-medium mb-1" htmlFor="phoneNumber">Phone number</Label>
-                            <Input
-                                id="phoneNumber"
-                                type="tel"
-                                className="w-full p-2 border rounded shadow-none"
-                                placeholder="Your phone number"
-                                {...register('phoneNumber', { required: 'Phone number is required' })}
+                            <FormField
+                                control={form.control}
+                                name="phoneNumber"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Phone Number</FormLabel>
+                                        <FormControl>
+                                            <Input type="tel" placeholder="Enter your phone number" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
                             />
-                            {errors.phoneNumber && <p className="text-red-500 text-xs mt-1">{String(errors.phoneNumber.message)}</p>}
-                        </div>
-                        <div className="mb-4">
-                            <Label className="block text-sm font-medium mb-1" htmlFor="subject">Subject</Label>
-                            <Input
-                                id="subject"
-                                type="text"
-                                className="w-full p-2 border rounded shadow-none"
-                                placeholder="Subject of your message"
-                                {...register('subject', { required: 'Subject is required' })}
+                            <FormField
+                                control={form.control}
+                                name="subject"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Subject</FormLabel>
+                                        <FormControl>
+                                            <Input type="text" placeholder="Enter your subject" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
                             />
-                            {errors.subject && <p className="text-red-500 text-xs mt-1">{String(errors.subject.message)}</p>}
-                        </div>
-                        <div className="mb-6">
-                            <Label className="block text-sm font-medium mb-1" htmlFor="message">Message</Label>
-                            <Textarea
-                                id="message"
-                                className="bg-white border-input-[#333333]"
-                                placeholder="Your message"
-                                {...register('message', { required: 'Message is required' })}
+                            <FormField
+                                control={form.control}
+                                name="message"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Message</FormLabel>
+                                        <FormControl>
+                                            <Textarea placeholder="Enter your message" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
                             />
-                            {errors.message && <p className="text-red-500 text-xs mt-1">{String(errors.message.message)}</p>}
-                        </div>
-                        {submitError && <p className="text-red-500 text-sm mb-4">{submitError}</p>}
-                        <Button
-                            type="submit"
-                            className="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700"
-                            disabled={isSubmitting}
-                        >
-                            {isSubmitting ? 'Sending...' : 'Send Message'}
-                        </Button>
-                    </form>
-
+                            <Button
+                                type="submit"
+                                className="w-full"
+                                disabled={loading}
+                            >
+                                {loading ? 'Submitting...' : 'Submit'}
+                            </Button>
+                        </form>
+                    </Form>
                 </div>
 
                 {/* Company Info */}
