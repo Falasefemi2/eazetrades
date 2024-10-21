@@ -22,40 +22,50 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState } from "react";
-import { validateOTP } from "@/app/action";
+import { validateOtp } from "@/app/action";
+import { toast } from 'sonner';
 
 
 
 
-function OtpPage({ userEmail }: { userEmail: string }) {
 
-    const [otp, setOtp] = useState('')
-    const [loading, setLoading] = useState(false)
+function OtpPage() {
 
+    const [otp, setOtp] = useState<string>('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const userEmail = 'femifalase228@gmail.com'; // Replace with actual user email
+
+    // Handle OTP input change
+    const handleOtpChange = (newOtp: string) => {
+        setOtp(newOtp);
+    };
+
+    // Handle OTP submission
     const handleSubmit = async () => {
-        if (otp.length !== 6) {
+        setLoading(true);
+        setError(null);
 
-            return
-        }
-
-        setLoading(true)
         try {
-            const result = await validateOTP({ userEmail, otp })
+            const response = await validateOtp(userEmail, otp); // Call validateOtp
 
-            if (result.success) {
-                console.log({ result });
-                // Add any navigation or next steps here
+            console.log({ response });
+
+
+            if (response.status === '200') {
+                toast.success(response.message || 'OTP validated successfully!');
+                // Redirect or handle successful validation here
             } else {
-
+                setError(response.message || 'OTP validation failed');
+                toast.error(response.message || 'OTP validation failed');
             }
         } catch (error) {
-            console.log({ error });
-
+            setError('An unexpected error occurred. Please try again.');
+            toast.error('An unexpected error occurred.');
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }
-
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center px-4 overflow-y-auto">
@@ -76,18 +86,20 @@ function OtpPage({ userEmail }: { userEmail: string }) {
                         <span className="text-[#4F4F4F] font-semibold text-xl">EAZETRADES</span>
                     </CardTitle>
                 </CardHeader>
-                <CardContent className="">
-                    <h1 className=" font-semibold text-2xl lg:text-3xl mb-3 text-[#333333]">Confirm it’s you</h1>
-                    <p className="text-center font-normal text-base text-[#333333] mb-16">Enter the code sent to your email n****e@e***e.com.</p>
+                <CardContent>
+                    <h1 className="font-semibold text-2xl lg:text-3xl mb-3 text-[#333333]">Confirm it’s you</h1>
+                    <p className="text-center font-normal text-base text-[#333333] mb-16">
+                        Enter the code sent to your email {userEmail}.
+                    </p>
                     <Separator />
                 </CardContent>
                 <CardFooter className="flex flex-col w-full">
                     <div className="flex items-center justify-between w-full">
-                        <p className="text-[#333333] font-normal text-base"> n****e@e***e.com.</p>
+                        <p className="text-[#333333] font-normal text-base">{userEmail}</p>
                         <Link href="/" className="text-[#5F3AFB] font-normal text-base">Change</Link>
                     </div>
                     <div className="w-full mt-8">
-                        <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>
+                        <InputOTP maxLength={6} value={otp} onChange={handleOtpChange}>
                             <InputOTPGroup>
                                 <InputOTPSlot index={0} />
                                 <InputOTPSlot index={1} />
@@ -98,16 +110,18 @@ function OtpPage({ userEmail }: { userEmail: string }) {
                             </InputOTPGroup>
                         </InputOTP>
                     </div>
+                    {error && <p className="text-red-500 mt-4">{error}</p>}
                     <Button
-                        className="w-full"
+                        className="w-full mt-6"
                         onClick={handleSubmit}
                         disabled={loading}
                     >
-                        {loading ? "Verifying..." : "Confirm"}
+                        {loading ? 'Confirming...' : 'Confirm'}
                     </Button>
                 </CardFooter>
             </Card>
         </div>
+
     )
 }
 

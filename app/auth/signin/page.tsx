@@ -14,7 +14,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { submitLogin } from "@/app/action";
+// import { submitLogin } from "@/app/action";
 import { toast } from "sonner";
 
 interface SignInFormData {
@@ -69,24 +69,24 @@ const SignInPage = () => {
                 formData.append(key, value);
             });
 
-            const result = await submitLogin(formData);
-            console.log("Login response:", result); // For debugging
+            // const result = await submitLogin(formData);
+            // console.log("Login response:", result); // For debugging
 
-            if (result.status === "200") {
-                toast.success("Sign in successful!");
-                // Handle successful login (e.g., redirect to dashboard)
-                // router.push('/dashboard');
-            } else {
-                // Handle server-side error
-                const errorMessage = result.message || 'An unexpected error occurred';
-                toast.error(errorMessage);
+            // if (result.status === "200") {
+            //     toast.success("Sign in successful!");
+            //     // Handle successful login (e.g., redirect to dashboard)
+            //     // router.push('/dashboard');
+            // } else {
+            //     // Handle server-side error
+            //     const errorMessage = result.message || 'An unexpected error occurred';
+            //     toast.error(errorMessage);
 
-                if (result.status === "503") {
-                    console.error("Server error:", result);
-                    // You might want to implement additional error handling here,
-                    // such as reporting the error to your error tracking service
-                }
-            }
+            //     if (result.status === "503") {
+            //         console.error("Server error:", result);
+            //         // You might want to implement additional error handling here,
+            //         // such as reporting the error to your error tracking service
+            //     }
+            // }
         } catch (error) {
             console.error("Login error:", error);
             const errorMessage = error instanceof Error ? error.message : 'Failed to sign in. Please try again.';

@@ -17,7 +17,7 @@ import Link from "next/link";
 import { z } from "zod";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { submitForgetPassword } from "@/app/action";
+// import { submitForgetPassword } from "@/app/action";
 import { toast } from "sonner";
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -41,13 +41,13 @@ const ForgetPasswordPage = () => {
         const formData = new FormData();
         formData.append('userEmail', data.userEmail);
 
-        const result = await submitForgetPassword(formData);
+        // const result = await submitForgetPassword(formData);
 
-        if (result.error) {
-            toast.error(result.error);
-        } else if (result.success) {
-            toast.success(result.success);
-        }
+        // if (result.error) {
+        //     toast.error(result.error);
+        // } else if (result.success) {
+        //     toast.success(result.success);
+        // }
 
         setIsSubmitting(false);
     };

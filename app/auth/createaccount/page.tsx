@@ -31,6 +31,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import Link from 'next/link';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 export default function RegistrationForm() {
     const [loading, setLoading] = useState(false)
@@ -40,6 +41,8 @@ export default function RegistrationForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+
+    const router = useRouter();
 
     const form = useForm<RegistrationInput>({
         resolver: zodResolver(RegistrationSchema),
@@ -58,75 +61,20 @@ export default function RegistrationForm() {
         toast.error(message);
     };
 
-    // async function onSubmit(values: RegistrationInput) {
-    //     console.log('Form Submission Started with values:', values); // Debug log
-    //     setLoading(true);
-    //     setError(null);
-
-    //     try {
-    //         console.log('Calling registerUser...'); // Debug log
-    //         const result = await registerUser(values);
-    //         console.log('Raw API Response:', result); // Debug log
-
-    //         if (!result) {
-    //             console.error('No result returned from registerUser'); // Debug log
-    //             handleRegistrationError('No response from server');
-    //             return;
-    //         }
-
-    //         if (result.status === 200 && result.data?.status === "200") {
-    //             console.log('Registration Success:', {
-    //                 status: result.status,
-    //                 data: result.data,
-    //                 message: result.data.message
-    //             }); // Debug log
-
-    //             setSuccess(true);
-    //             form.reset();
-    //             toast.success(result.data.message || "Registration completed successfully");
-    //         } else {
-    //             console.error('Registration Failed:', {
-    //                 status: result.status,
-    //                 message: result.message,
-    //                 data: result.data,
-    //                 errors: result.errors
-    //             }); // Debug log
-
-    //             handleRegistrationError(
-    //                 result.message || "Registration failed",
-    //                 { result }
-    //             );
-    //         }
-    //     } catch (error) {
-    //         console.error('Unexpected Error:', error); // Debug log
-    //         handleRegistrationError(
-    //             "An unexpected error occurred",
-    //             error
-    //         );
-    //     } finally {
-    //         setLoading(false);
-    //         console.log('Form Submission Completed'); // Debug log
-    //     }
-    // }
-
 
     async function onSubmit(values: RegistrationInput) {
-        console.log('Form Submission Started with values:', values); // Debug log
-        setLoading(true); // Set loading state
-        setError(null); // Clear previous errors
+        setLoading(true);
+        setError(null);
 
         try {
-            console.log('Calling registerUser...'); // Debug log
-            const result = await registerUser(values); // Call server action
-            console.log('Raw API Response:', result); // Log the raw response
+            const result = await registerUser(values);
 
             if (!result) {
-                console.error('No result returned from registerUser'); // Debug log
                 handleRegistrationError('No response from server');
                 return;
             }
 
-            // Handle success: API response with status 200 and status "200" in data
+
             if (result.status === "200") {
                 console.log('Registration Success:', {
                     status: result.status,
@@ -137,6 +85,7 @@ export default function RegistrationForm() {
                 setSuccess(true); // Mark the registration as successful
                 form.reset(); // Reset the form
                 toast.success(result.message || "Registration completed successfully"); // Show success toast
+                router.push('/auth/otp');
             } else {
                 // Handle failed registration: API returned an error
                 console.error('Registration Failed:', {
@@ -162,6 +111,7 @@ export default function RegistrationForm() {
             console.log('Form Submission Completed'); // Debug log for completion
         }
     }
+
 
 
 
