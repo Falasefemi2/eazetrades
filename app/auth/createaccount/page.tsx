@@ -84,7 +84,7 @@ export default function RegistrationForm() {
 
                 setSuccess(true); // Mark the registration as successful
                 form.reset(); // Reset the form
-                toast.success(result.message || "Registration completed successfully"); // Show success toast
+                toast.success(result.result.message || "Registration completed successfully"); // Show success toast
                 router.push('/auth/otp');
             } else {
                 // Handle failed registration: API returned an error

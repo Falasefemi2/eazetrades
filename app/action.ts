@@ -11,7 +11,9 @@ interface RegistrationResponse {
   status: string; // "200"
   message: string; // e.g. "Mail sent successfully. Check your mail!"
   validation: boolean;
-  result: any[]; // Empty array as shown in the response
+  result: {
+    message: string; // This is the message you're expecting
+  };
 }
 
 export async function registerUser(
