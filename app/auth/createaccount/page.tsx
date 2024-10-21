@@ -116,6 +116,320 @@ export default function RegistrationForm() {
 
 
     return (
+        // <div className="min-h-screen flex items-center justify-center px-4 overflow-y-auto relative">
+        //     <div className="fixed inset-0">
+        //         <Image
+        //             src={bg}
+        //             alt="background"
+        //             layout="fill"
+        //             objectFit="cover"
+        //             quality={100}
+        //             priority
+        //         />
+        //         <div className="absolute inset-0 bg-black bg-opacity-50" />
+        //     </div>
+
+        //     <Card className="w-[400px] mx-auto z-10 bg-white">
+        //         <CardHeader className="px-6 py-8">
+        //             <CardTitle>Create new Account</CardTitle>
+        //         </CardHeader>
+
+        //         <CardContent>
+        //             <Form {...form}>
+        //                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        //                     <FormField
+        //                         control={form.control}
+        //                         name="fullName"
+        //                         render={({ field }) => (
+        //                             <FormItem>
+        //                                 <FormLabel>Full Name</FormLabel>
+        //                                 <FormControl>
+        //                                     <Input placeholder="Enter your full name" {...field} />
+        //                                 </FormControl>
+        //                                 <FormMessage />
+        //                             </FormItem>
+        //                         )}
+        //                     />
+
+        //                     <FormField
+        //                         control={form.control}
+        //                         name="userEmail"
+        //                         render={({ field }) => (
+        //                             <FormItem>
+        //                                 <FormLabel>Email</FormLabel>
+        //                                 <FormControl>
+        //                                     <Input type="email" placeholder="Enter your email" {...field} />
+        //                                 </FormControl>
+        //                                 <FormMessage />
+        //                             </FormItem>
+        //                         )}
+        //                     />
+
+        //                     <FormField
+        //                         control={form.control}
+        //                         name="password"
+        //                         render={({ field }) => (
+        //                             <FormItem>
+        //                                 <FormLabel>Password</FormLabel>
+        //                                 <div className="relative">
+        //                                     <FormControl>
+        //                                         <Input
+        //                                             type={showPassword ? "text" : "password"}
+        //                                             placeholder="Enter your password"
+        //                                             {...field}
+        //                                         />
+        //                                     </FormControl>
+        //                                     <button
+        //                                         type="button"
+        //                                         onClick={() => setShowPassword(!showPassword)}
+        //                                         className="absolute right-2 top-1/2 transform -translate-y-1/2"
+        //                                     >
+        //                                         {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+        //                                     </button>
+        //                                 </div>
+        //                                 <FormMessage />
+        //                             </FormItem>
+        //                         )}
+        //                     />
+
+        //                     <FormField
+        //                         control={form.control}
+        //                         name="rePassword"
+        //                         render={({ field }) => (
+        //                             <FormItem>
+        //                                 <FormLabel>Confirm Password</FormLabel>
+        //                                 <div className="relative">
+        //                                     <FormControl>
+        //                                         <Input
+        //                                             type={showConfirmPassword ? "text" : "password"}
+        //                                             placeholder="Confirm your password"
+        //                                             {...field}
+        //                                         />
+        //                                     </FormControl>
+        //                                     <button
+        //                                         type="button"
+        //                                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+        //                                         className="absolute right-2 top-1/2 transform -translate-y-1/2"
+        //                                     >
+        //                                         {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+        //                                     </button>
+        //                                 </div>
+        //                                 <FormMessage />
+        //                             </FormItem>
+        //                         )}
+        //                     />
+
+        //                     <FormField
+        //                         control={form.control}
+        //                         name="userSelection"
+        //                         render={({ field }) => (
+        //                             <FormItem className="space-y-2">
+        //                                 <FormLabel>Signing As</FormLabel>
+        //                                 <FormControl>
+        //                                     <RadioGroup
+        //                                         onValueChange={field.onChange}
+        //                                         value={field.value}
+        //                                         className="flex gap-4"
+        //                                     >
+        //                                         <div className="flex items-center space-x-2">
+        //                                             <RadioGroupItem value="buyer" id="buyer" />
+        //                                             <Label htmlFor="buyer">Buyer</Label>
+        //                                         </div>
+        //                                         <div className="flex items-center space-x-2">
+        //                                             <RadioGroupItem value="seller" id="seller" />
+        //                                             <Label htmlFor="seller">Seller</Label>
+        //                                         </div>
+        //                                     </RadioGroup>
+        //                                 </FormControl>
+        //                                 <FormMessage />
+        //                             </FormItem>
+        //                         )}
+        //                     />
+
+        //                     <Button
+        //                         type="submit"
+        //                         className="w-full"
+        //                         disabled={loading}
+        //                     >
+        //                         {loading ? 'Registering...' : 'Register'}
+        //                     </Button>
+        //                 </form>
+        //             </Form>
+        //         </CardContent>
+
+        //         {/* {success && (
+        //             <CardFooter>
+        //                 <p className="text-green-600 text-center w-full">
+        //                     Registration successful! Please check your email.
+        //                 </p>
+        //             </CardFooter>
+        //         )} */}
+
+        //         <div className="flex items-center justify-center mb-4">
+        //             <p className="text-lg font-semibold text-[#333333]">
+        //                 Already have an account?{' '}
+        //                 <Link href="/auth/signin" className="text-[#5F3AFB]">
+        //                     Sign in
+        //                 </Link>
+        //             </p>
+        //         </div>
+        //     </Card>
+        // </div>
+
+        // <div className="min-h-screen flex items-center justify-center px-4 overflow-y-auto relative">
+        //     <div className="fixed inset-0">
+        //         <Image
+        //             src={bg}
+        //             alt="background"
+        //             layout="fill"
+        //             objectFit="cover"
+        //             quality={100}
+        //             priority
+        //         />
+        //         <div className="absolute inset-0 bg-black bg-opacity-50" />
+        //     </div>
+
+        //     <Card className="w-full max-w-[500px] mx-auto z-10 bg-white">
+        //         <CardHeader className="px-6 py-8">
+        //             <CardTitle className="text-2xl font-bold text-center">Create new Account</CardTitle>
+        //         </CardHeader>
+
+        //         <CardContent>
+        //             <Form {...form}>
+        //                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        //                     <FormField
+        //                         control={form.control}
+        //                         name="fullName"
+        //                         render={({ field }) => (
+        //                             <FormItem>
+        //                                 <FormLabel>Full Name</FormLabel>
+        //                                 <FormControl>
+        //                                     <Input className="h-12" placeholder="Enter your full name" {...field} />
+        //                                 </FormControl>
+        //                                 <FormMessage />
+        //                             </FormItem>
+        //                         )}
+        //                     />
+
+        //                     <FormField
+        //                         control={form.control}
+        //                         name="userEmail"
+        //                         render={({ field }) => (
+        //                             <FormItem>
+        //                                 <FormLabel>Email</FormLabel>
+        //                                 <FormControl>
+        //                                     <Input className="h-12" type="email" placeholder="Enter your email" {...field} />
+        //                                 </FormControl>
+        //                                 <FormMessage />
+        //                             </FormItem>
+        //                         )}
+        //                     />
+
+        //                     <FormField
+        //                         control={form.control}
+        //                         name="password"
+        //                         render={({ field }) => (
+        //                             <FormItem>
+        //                                 <FormLabel>Password</FormLabel>
+        //                                 <div className="relative">
+        //                                     <FormControl>
+        //                                         <Input
+        //                                             className="h-12"
+        //                                             type={showPassword ? "text" : "password"}
+        //                                             placeholder="Enter your password"
+        //                                             {...field}
+        //                                         />
+        //                                     </FormControl>
+        //                                     <button
+        //                                         type="button"
+        //                                         onClick={() => setShowPassword(!showPassword)}
+        //                                         className="absolute right-3 top-1/2 transform -translate-y-1/2"
+        //                                     >
+        //                                         {showPassword ? <EyeOff className="h-5 w-5 text-gray-500" /> : <Eye className="h-5 w-5 text-gray-500" />}
+        //                                     </button>
+        //                                 </div>
+        //                                 <FormMessage />
+        //                             </FormItem>
+        //                         )}
+        //                     />
+
+        //                     <FormField
+        //                         control={form.control}
+        //                         name="rePassword"
+        //                         render={({ field }) => (
+        //                             <FormItem>
+        //                                 <FormLabel>Confirm Password</FormLabel>
+        //                                 <div className="relative">
+        //                                     <FormControl>
+        //                                         <Input
+        //                                             className="h-12"
+        //                                             type={showConfirmPassword ? "text" : "password"}
+        //                                             placeholder="Confirm your password"
+        //                                             {...field}
+        //                                         />
+        //                                     </FormControl>
+        //                                     <button
+        //                                         type="button"
+        //                                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+        //                                         className="absolute right-3 top-1/2 transform -translate-y-1/2"
+        //                                     >
+        //                                         {showConfirmPassword ? <EyeOff className="h-5 w-5 text-gray-500" /> : <Eye className="h-5 w-5 text-gray-500" />}
+        //                                     </button>
+        //                                 </div>
+        //                                 <FormMessage />
+        //                             </FormItem>
+        //                         )}
+        //                     />
+
+        //                     <FormField
+        //                         control={form.control}
+        //                         name="userSelection"
+        //                         render={({ field }) => (
+        //                             <FormItem className="space-y-2">
+        //                                 <FormLabel>Signing As</FormLabel>
+        //                                 <FormControl>
+        //                                     <RadioGroup
+        //                                         onValueChange={field.onChange}
+        //                                         value={field.value}
+        //                                         className="flex flex-row justify-between w-full"
+        //                                     >
+        //                                         <div className="flex items-center space-x-2">
+        //                                             <RadioGroupItem value="buyer" id="buyer" />
+        //                                             <Label htmlFor="buyer">Buyer</Label>
+        //                                         </div>
+        //                                         <div className="flex items-center space-x-2">
+        //                                             <RadioGroupItem value="seller" id="seller" />
+        //                                             <Label htmlFor="seller">Seller</Label>
+        //                                         </div>
+        //                                     </RadioGroup>
+        //                                 </FormControl>
+        //                                 <FormMessage />
+        //                             </FormItem>
+        //                         )}
+        //                     />
+
+        //                     <Button
+        //                         type="submit"
+        //                         className="w-full h-12 text-lg font-semibold"
+        //                         disabled={loading}
+        //                     >
+        //                         {loading ? 'Registering...' : 'Register'}
+        //                     </Button>
+        //                 </form>
+        //             </Form>
+        //         </CardContent>
+
+        //         <div className="flex items-center justify-center mb-6">
+        //             <p className="text-lg font-semibold text-[#333333]">
+        //                 Already have an account?{' '}
+        //                 <Link href="/auth/signin" className="text-[#5F3AFB]">
+        //                     Sign in
+        //                 </Link>
+        //             </p>
+        //         </div>
+        //     </Card>
+        // </div>
+
         <div className="min-h-screen flex items-center justify-center px-4 overflow-y-auto relative">
             <div className="fixed inset-0">
                 <Image
@@ -129,14 +443,14 @@ export default function RegistrationForm() {
                 <div className="absolute inset-0 bg-black bg-opacity-50" />
             </div>
 
-            <Card className="w-[400px] mx-auto z-10 bg-white">
+            <Card className="w-full max-w-[600px] mx-auto z-10 bg-white">
                 <CardHeader className="px-6 py-8">
-                    <CardTitle>Create new Account</CardTitle>
+                    <CardTitle className="text-2xl font-bold text-center">Create new Account</CardTitle>
                 </CardHeader>
 
                 <CardContent>
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                             <FormField
                                 control={form.control}
                                 name="fullName"
@@ -144,7 +458,7 @@ export default function RegistrationForm() {
                                     <FormItem>
                                         <FormLabel>Full Name</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Enter your full name" {...field} />
+                                            <Input className="h-12 w-full" placeholder="Enter your full name" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -158,7 +472,7 @@ export default function RegistrationForm() {
                                     <FormItem>
                                         <FormLabel>Email</FormLabel>
                                         <FormControl>
-                                            <Input type="email" placeholder="Enter your email" {...field} />
+                                            <Input className="h-12 w-full" type="email" placeholder="Enter your email" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -174,6 +488,7 @@ export default function RegistrationForm() {
                                         <div className="relative">
                                             <FormControl>
                                                 <Input
+                                                    className="h-12 w-full"
                                                     type={showPassword ? "text" : "password"}
                                                     placeholder="Enter your password"
                                                     {...field}
@@ -182,9 +497,9 @@ export default function RegistrationForm() {
                                             <button
                                                 type="button"
                                                 onClick={() => setShowPassword(!showPassword)}
-                                                className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                                                className="absolute right-3 top-1/2 transform -translate-y-1/2"
                                             >
-                                                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                                                {showPassword ? <EyeOff className="h-5 w-5 text-gray-500" /> : <Eye className="h-5 w-5 text-gray-500" />}
                                             </button>
                                         </div>
                                         <FormMessage />
@@ -201,6 +516,7 @@ export default function RegistrationForm() {
                                         <div className="relative">
                                             <FormControl>
                                                 <Input
+                                                    className="h-12 w-full"
                                                     type={showConfirmPassword ? "text" : "password"}
                                                     placeholder="Confirm your password"
                                                     {...field}
@@ -209,9 +525,9 @@ export default function RegistrationForm() {
                                             <button
                                                 type="button"
                                                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                                className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                                                className="absolute right-3 top-1/2 transform -translate-y-1/2"
                                             >
-                                                {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                                                {showConfirmPassword ? <EyeOff className="h-5 w-5 text-gray-500" /> : <Eye className="h-5 w-5 text-gray-500" />}
                                             </button>
                                         </div>
                                         <FormMessage />
@@ -229,7 +545,7 @@ export default function RegistrationForm() {
                                             <RadioGroup
                                                 onValueChange={field.onChange}
                                                 value={field.value}
-                                                className="flex gap-4"
+                                                className="flex flex-row justify-between w-full px-4"
                                             >
                                                 <div className="flex items-center space-x-2">
                                                     <RadioGroupItem value="buyer" id="buyer" />
@@ -248,7 +564,7 @@ export default function RegistrationForm() {
 
                             <Button
                                 type="submit"
-                                className="w-full"
+                                className="w-full h-12 text-lg font-semibold"
                                 disabled={loading}
                             >
                                 {loading ? 'Registering...' : 'Register'}
@@ -257,15 +573,7 @@ export default function RegistrationForm() {
                     </Form>
                 </CardContent>
 
-                {/* {success && (
-                    <CardFooter>
-                        <p className="text-green-600 text-center w-full">
-                            Registration successful! Please check your email.
-                        </p>
-                    </CardFooter>
-                )} */}
-
-                <div className="flex items-center justify-center mb-4">
+                <div className="flex items-center justify-center mb-6">
                     <p className="text-lg font-semibold text-[#333333]">
                         Already have an account?{' '}
                         <Link href="/auth/signin" className="text-[#5F3AFB]">
@@ -275,7 +583,6 @@ export default function RegistrationForm() {
                 </div>
             </Card>
         </div>
-
 
     )
 }

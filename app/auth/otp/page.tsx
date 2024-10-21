@@ -94,9 +94,12 @@ function OtpPage() {
                     <Separator />
                 </CardContent>
                 <CardFooter className="flex flex-col w-full">
-                    <div className="flex items-center justify-between w-full">
-                        <p className="text-[#333333] font-normal text-base">{userEmail}</p>
-                        <Link href="/" className="text-[#5F3AFB] font-normal text-base">Change</Link>
+                    <div className="flex flex-col w-full">
+                        <div className="flex items-center justify-between">
+                            <p className="text-[#333333] font-normal text-base">{userEmail}</p>
+                            <Link href="/auth/createaccount" className="text-[#5F3AFB] font-normal text-base">Change</Link>
+                        </div>
+                        <p className="text-[#333333] font-normal text-base mt-2">Check spam folder if code not in inbox</p>
                     </div>
                     <div className="w-full mt-8">
                         <InputOTP maxLength={6} value={otp} onChange={handleOtpChange}>
