@@ -58,41 +58,46 @@ export async function validateOtp(
   otp: string
 ): Promise<OtpValidationResponse> {
   try {
-    // Extracting the individual OTP digits from the input string
+    // Extracting the individual OTP digits
     const [tokenOne, tokenTwo, tokenThree, tokenFour, tokenFive, tokenSix] =
       otp.split("");
 
-    // Formatting the data to send to the server
-    const payload = {
-      userEmail,
-      tokenOne,
-      tokenTwo,
-      tokenThree,
-      tokenFour,
-      tokenFive,
-      tokenSix,
-    };
+    const formData = new FormData();
+    formData.append("userEmail", userEmail);
+    formData.append("tokenOne", tokenOne);
+    formData.append("tokenTwo", tokenTwo);
+    formData.append("tokenThree", tokenThree);
+    formData.append("tokenFour", tokenFour);
+    formData.append("tokenFive", tokenFive);
+    formData.append("tokenSix", tokenSix);
 
-    console.log("Sending OTP validation payload:", payload);
+    // Log the form data for debugging
+    console.log("FormData payload:", Array.from(formData.entries()));
 
     const response = await fetch(
       "https://api.eazetrades.ng/api/auth/validateRegistrationToken",
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json",
+          "User-Agent": "Mozilla/5.0", // Adding this header to match the working function
         },
-        body: JSON.stringify(payload),
+        body: formData,
       }
     );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Server response:", response.status, errorText);
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
     const responseData: OtpValidationResponse = await response.json();
     console.log("OTP Validation Response:", responseData);
 
-    return responseData; // Return the API response
+    return responseData;
   } catch (error) {
     console.error("OTP validation error:", error);
-    throw error; // Handle error
+    throw error;
   }
 }
