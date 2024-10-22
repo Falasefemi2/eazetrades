@@ -200,7 +200,7 @@ function ContactForm() {
                                     <FormItem>
                                         <FormLabel>Message</FormLabel>
                                         <FormControl>
-                                            <Textarea placeholder="Enter your message" {...field} />
+                                            <Textarea placeholder="Enter your message" {...field} className="bg-white border-foreground" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
