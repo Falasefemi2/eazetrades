@@ -7,6 +7,7 @@ import {
   RegistrationInput,
   RegistrationSchema,
 } from "@/lib/schema";
+import { revalidatePath } from "next/cache";
 interface RegistrationResponse {
   status: string; // "200"
   message: string; // e.g. "Mail sent successfully. Check your mail!"
@@ -158,5 +159,52 @@ export async function submitContactForm(
   } catch (error) {
     console.error("Contact form submission error:", error);
     throw error; // Rethrow error for further handling
+  }
+}
+
+interface SubscriptionFormResponse {
+  status: string;
+  message: string;
+  validation: boolean;
+  result: {
+    message: string; // This is the message you're expecting
+  };
+}
+
+export async function subscribeUser(
+  values: string
+): Promise<SubscriptionFormResponse> {
+  try {
+    const formData = new FormData();
+    formData.append("userEmail", values);
+
+    const response = await fetch(
+      "https://api.eazetrades.ng/api/contact/submitUserSubscriptionEmail",
+      {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const responseData: SubscriptionFormResponse = await response.json();
+    console.log("Subscription Form Response:", responseData);
+
+    return responseData;
+  } catch (error) {
+    if (error instanceof TypeError && error.message === "fetch failed") {
+      console.error("Network error - Unable to reach the server");
+      throw new Error(
+        "Unable to connect to the server. Please check your internet connection."
+      );
+    }
+    console.error("Subscription form submission error:", error);
+    throw error;
   }
 }
