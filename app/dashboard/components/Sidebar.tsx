@@ -27,6 +27,7 @@ const NavItems = [
     { name: 'Services', path: '/dashboard/services', icon: headphones }, // Added icon property
     { name: 'About', path: '/dashboard/about', icon: iconpic }, // Added icon property
     { name: 'Order List', path: '/dashboard/orders', icon: list }, // Added icon property
+    { name: 'Messages', path: '/dashboard/messages', icon: list }, // Added icon property
     { name: 'Change Password', path: '/dashboard/change-password', icon: c }, // Added icon property
     { name: 'Delete Account', path: '/dashboard/delete-account', icon: air }, // Added icon property
     { name: 'Support/Help', path: '/dashboard/support', icon: help }, // Added icon property
