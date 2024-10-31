@@ -12,7 +12,7 @@ export default function MessagesPage() {
                 <div className="p-4 border-b">
                     <h2 className="font-semibold">Messages</h2>
                 </div>
-                <ScrollArea className="h-[calc(600px-69px)]">
+                <ScrollArea className="h-[calc(600px-57px)]">
                     {[...Array(10)].map((_, i) => (
                         <div
                             key={i}
@@ -39,20 +39,40 @@ export default function MessagesPage() {
             {/* Chat Window */}
             <div className="flex-1 flex flex-col">
                 {/* Chat Header */}
-                <div className="p-4 border-b flex items-center justify-between bg-background">
+                <div className="px-4 py-3 border-b flex items-center justify-between bg-background">
                     <div className="flex items-center gap-3">
-                        <Avatar>
-                            <AvatarImage src="/placeholder.svg?height=40&width=40" />
+                        <Avatar className="h-8 w-8">
+                            <AvatarImage src="/placeholder.svg?height=32&width=32" />
                             <AvatarFallback>S</AvatarFallback>
                         </Avatar>
-                        <div>
-                            <h3 className="font-medium">Name of seller</h3>
-                            <p className="text-sm text-muted-foreground">Online</p>
+                        <div className="flex flex-col">
+                            <h3 className="text-sm font-medium leading-none">Name of seller</h3>
+                            <p className="text-xs text-muted-foreground mt-1">Online</p>
                         </div>
                     </div>
-                    <Button variant="ghost" size="icon">
-                        <Star className="h-5 w-5" />
-                    </Button>
+                    <div className="flex items-center gap-2">
+                        <Button variant="ghost" size="icon" className="h-8 w-8">
+                            <Star className="h-4 w-4" />
+                        </Button>
+                        <Button variant="ghost" size="icon" className="h-8 w-8">
+                            <span className="sr-only">More options</span>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <circle cx="12" cy="12" r="1" />
+                                <circle cx="19" cy="12" r="1" />
+                                <circle cx="5" cy="12" r="1" />
+                            </svg>
+                        </Button>
+                    </div>
                 </div>
 
                 {/* Messages */}

@@ -6,6 +6,7 @@ import {
   ContactInput,
   RegistrationInput,
   RegistrationSchema,
+  SignInInput,
 } from "@/lib/schema";
 import { revalidatePath } from "next/cache";
 interface RegistrationResponse {
@@ -205,6 +206,46 @@ export async function subscribeUser(
       );
     }
     console.error("Subscription form submission error:", error);
+    throw error;
+  }
+}
+
+interface SignInUserResponse {
+  status: string;
+  message: string;
+  validation: boolean;
+  result: {
+    message: string;
+  };
+}
+
+export async function SignInUser(
+  values: SignInInput
+): Promise<SignInUserResponse> {
+  try {
+    const formData = new FormData();
+    formData.append("userEmail", values.userEmail);
+    formData.append("password", values.password);
+    console.log({ formData });
+
+    const response = await fetch(
+      "https://api.eazetrades.ng/api/auth/submitLoginDetails",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "User-Agent": "Mozilla/5.0", // Try adding this header
+        },
+        body: formData, // Pass the FormData object
+      }
+    );
+
+    const responseData: SignInUserResponse = await response.json();
+    console.log("Sign In User Response:", responseData);
+
+    return responseData;
+  } catch (error) {
+    console.error("Sign in user error:", error);
     throw error;
   }
 }

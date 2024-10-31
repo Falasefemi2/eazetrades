@@ -30,3 +30,10 @@ export const ContactSchema = z.object({
 });
 
 export type ContactInput = z.infer<typeof ContactSchema>;
+
+export const SignInSchema = z.object({
+  userEmail: z.string().email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+});
+
+export type SignInInput = z.infer<typeof SignInSchema>;

@@ -116,27 +116,30 @@ export default function RegistrationForm() {
 
 
     return (
-        <div className="min-h-screen flex items-center justify-center px-4 overflow-y-auto relative">
+        <div className="min-h-screen flex items-center justify-center px-4">
             <div className="fixed inset-0">
                 <Image
                     src={bg}
-                    alt="background"
+                    alt="Background"
                     layout="fill"
                     objectFit="cover"
                     quality={100}
                     priority
+                    className="opacity-90"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-50" />
+                <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
             </div>
 
-            <Card className="w-full max-w-[600px] mx-auto z-10 bg-white">
-                <CardHeader className="px-6 py-8">
-                    <CardTitle className="text-2xl font-bold text-center">Create new Account</CardTitle>
+            <Card className="relative z-10 w-full max-w-[602px] rounded-lg bg-white/95 shadow-xl">
+                <CardHeader className="space-y-1 text-center pb-6">
+                    <CardTitle className="text-2xl font-bold tracking-tight">
+                        Create new account
+                    </CardTitle>
                 </CardHeader>
 
-                <CardContent>
+                <CardContent className="space-y-4">
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                             <FormField
                                 control={form.control}
                                 name="fullName"
@@ -144,7 +147,11 @@ export default function RegistrationForm() {
                                     <FormItem>
                                         <FormLabel>Full Name</FormLabel>
                                         <FormControl>
-                                            <Input className="h-12 w-72" placeholder="Enter your full name" {...field} />
+                                            <Input
+                                                className="w-full lg:w-[500px] py-2"
+                                                placeholder="Enter your full name"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -158,7 +165,12 @@ export default function RegistrationForm() {
                                     <FormItem>
                                         <FormLabel>Email</FormLabel>
                                         <FormControl>
-                                            <Input className="h-12 w-72" type="email" placeholder="Enter your email" {...field} />
+                                            <Input
+                                                className="w-full lg:w-[500px] py-2"
+                                                type="email"
+                                                placeholder="Enter your email"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -174,7 +186,7 @@ export default function RegistrationForm() {
                                         <div className="relative">
                                             <FormControl>
                                                 <Input
-                                                    className="h-12 w-72"
+                                                    className="w-full lg:w-[500px] py-2"
                                                     type={showPassword ? "text" : "password"}
                                                     placeholder="Enter your password"
                                                     {...field}
@@ -183,9 +195,13 @@ export default function RegistrationForm() {
                                             <button
                                                 type="button"
                                                 onClick={() => setShowPassword(!showPassword)}
-                                                className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
                                             >
-                                                {showPassword ? <EyeOff className="h-5 w-5 text-gray-500" /> : <Eye className="h-5 w-5 text-gray-500" />}
+                                                {showPassword ? (
+                                                    <EyeOff className="h-5 w-5" />
+                                                ) : (
+                                                    <Eye className="h-5 w-5" />
+                                                )}
                                             </button>
                                         </div>
                                         <FormMessage />
@@ -202,7 +218,7 @@ export default function RegistrationForm() {
                                         <div className="relative">
                                             <FormControl>
                                                 <Input
-                                                    className="h-12 w-72"
+                                                    className="w-full lg:w-[500px] py-2"
                                                     type={showConfirmPassword ? "text" : "password"}
                                                     placeholder="Confirm your password"
                                                     {...field}
@@ -211,9 +227,13 @@ export default function RegistrationForm() {
                                             <button
                                                 type="button"
                                                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                                className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
                                             >
-                                                {showConfirmPassword ? <EyeOff className="h-5 w-5 text-gray-500" /> : <Eye className="h-5 w-5 text-gray-500" />}
+                                                {showConfirmPassword ? (
+                                                    <EyeOff className="h-5 w-5" />
+                                                ) : (
+                                                    <Eye className="h-5 w-5" />
+                                                )}
                                             </button>
                                         </div>
                                         <FormMessage />
@@ -231,7 +251,7 @@ export default function RegistrationForm() {
                                             <RadioGroup
                                                 onValueChange={field.onChange}
                                                 value={field.value}
-                                                className="flex flex-row justify-between w-full px-4"
+                                                className="flex justify-between w-full"
                                             >
                                                 <div className="flex items-center space-x-2">
                                                     <RadioGroupItem value="buyer" id="buyer" />
@@ -239,7 +259,7 @@ export default function RegistrationForm() {
                                                 </div>
                                                 <div className="flex items-center space-x-2">
                                                     <RadioGroupItem value="seller" id="seller" />
-                                                    <Label htmlFor="seller">Seller</Label>
+                                                    <Label htmlFor="seller">Supplier</Label>
                                                 </div>
                                             </RadioGroup>
                                         </FormControl>
@@ -250,25 +270,30 @@ export default function RegistrationForm() {
 
                             <Button
                                 type="submit"
-                                className="w-full h-12 text-lg font-semibold"
+                                className="w-full py-2 text-base font-semibold bg-primary hover:bg-primary/90 mt-4"
                                 disabled={loading}
                             >
-                                {loading ? 'Signing Up...' : 'Sign Up'}
+                                {loading ? 'Signing Up...' : 'Sign up'}
                             </Button>
                         </form>
                     </Form>
-                </CardContent>
 
-                <div className="flex items-center justify-center mb-6">
-                    <p className="text-lg font-semibold text-[#333333]">
-                        Already have an account?{' '}
-                        <Link href="/auth/signin" className="text-[#5F3AFB]">
-                            Sign in
-                        </Link>
-                    </p>
-                </div>
+                    <div className="mt-6 text-center">
+                        <p className="text-sm">
+                            Already have an account?{' '}
+                            <Link
+                                href="/auth/signin"
+                                className="font-semibold text-primary hover:underline"
+                            >
+                                Sign in
+                            </Link>
+                        </p>
+                    </div>
+                </CardContent>
             </Card>
         </div>
+
+
 
     )
 }
