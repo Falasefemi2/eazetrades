@@ -1,88 +1,65 @@
-import React from 'react';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table"
 
-const MobileUserList = () => {
-    const data = [
-        {
-            id: '001',
-            title: 'Christine Brooks',
-            featured: {
-                name: 'Christine',
-                email: 'Brooks@gmail.com'
-            }
-        },
-        {
-            id: '002',
-            title: 'Christine Brooks',
-            featured: {
-                name: 'Christine',
-                email: 'Brooks@gmail.com'
-            }
-        },
-        {
-            id: '003',
-            title: 'Christine Brooks',
-            featured: {
-                name: 'Christine',
-                email: 'Brooks@gmail.com'
-            }
-        },
-        {
-            id: '004',
-            title: 'Christine Brooks',
-            featured: {
-                name: 'Christine',
-                email: 'Brooks@gmail.com'
-            }
-        },
-        {
-            id: '005',
-            title: 'Christine Brooks',
-            featured: {
-                name: 'Christine',
-                email: 'Brooks@gmail.com'
-            }
-        },
-        // Additional rows...
-    ];
+interface TeamMember {
+    id: string
+    name: string
+    email: string
+}
+
+export default function Component() {
+    const teamMembers: TeamMember[] = Array.from({ length: 12 }, (_, i) => ({
+        id: `${i + 1}`.padStart(3, '0'),
+        name: "Christina Brooks",
+        email: "christina@gmail.com",
+    }))
 
     return (
-        <div className="bg-white">
-            <div className="overflow-x-auto">
-                <div className="min-w-full">
+        <div className="w-full p-4">
+            <h2 className="text-2xl font-semibold mb-4">About Us</h2>
+            <div className="border rounded-lg overflow-hidden">
+                <div className="overflow-x-auto">
                     <Table>
                         <TableHeader>
-                            <TableRow className="bg-gray-50">
-                                <TableHead className="w-20 py-3 px-4 text-left text-sm font-medium text-gray-500">ID</TableHead>
-                                <TableHead className="py-3 px-4 text-left text-sm font-medium text-gray-500">Title</TableHead>
-                                <TableHead className="py-3 px-4 text-left text-sm font-medium text-gray-500">Featured</TableHead>
-                                <TableHead className="py-3 px-4 text-left text-sm font-medium text-gray-500 w-24">Actions</TableHead>
+                            <TableRow>
+                                <TableHead className="w-[100px]">ID</TableHead>
+                                <TableHead>Name</TableHead>
+                                <TableHead className="hidden sm:table-cell">Email</TableHead>
+                                <TableHead className="w-[100px]">Actions</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {data.map((row) => (
-                                <TableRow key={row.id} className="border-t border-gray-200">
-                                    <TableCell className="py-4 px-4 text-sm text-gray-600">
-                                        {row.id}
-                                    </TableCell>
-                                    <TableCell className="py-4 px-4 text-sm text-gray-600">
-                                        {row.title}
-                                    </TableCell>
-                                    <TableCell className="py-4 px-4">
-                                        <div className="flex flex-col">
-                                            <span className="text-sm text-gray-600">{row.featured.name}</span>
-                                            <span className="text-sm text-gray-600">{row.featured.email}</span>
-                                        </div>
-                                    </TableCell>
-                                    <TableCell className="py-4 px-4">
-                                        <div className="flex space-x-3">
-                                            <button className="text-gray-400 hover:text-gray-500">
+                            {teamMembers.map((member) => (
+                                <TableRow key={member.id}>
+                                    <TableCell className="font-medium">{member.id}</TableCell>
+                                    <TableCell>{member.name}</TableCell>
+                                    <TableCell className="hidden sm:table-cell">{member.email}</TableCell>
+                                    <TableCell>
+                                        <div className="flex items-center gap-2">
+                                            <Button
+                                                variant="ghost"
+                                                size="icon"
+                                                className="h-8 w-8"
+                                                aria-label="Edit member"
+                                            >
                                                 <Pencil className="h-4 w-4" />
-                                            </button>
-                                            <button className="text-red-400 hover:text-red-500">
+                                            </Button>
+                                            <Button
+                                                variant="ghost"
+                                                size="icon"
+                                                className="h-8 w-8 text-destructive"
+                                                aria-label="Delete member"
+                                            >
                                                 <Trash2 className="h-4 w-4" />
-                                            </button>
+                                            </Button>
                                         </div>
                                     </TableCell>
                                 </TableRow>
@@ -92,7 +69,5 @@ const MobileUserList = () => {
                 </div>
             </div>
         </div>
-    );
-};
-
-export default MobileUserList;
+    )
+}
