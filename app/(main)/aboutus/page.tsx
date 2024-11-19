@@ -1,15 +1,15 @@
 "use client"
 /* eslint-disable react/no-unescaped-entities */
 import Image from "next/image"
-import glasses from "../../public/images/aboutus.png"
-import heroImg from "../../public/images/shopping.png"
-import product from "../../public/images/product.png"
-import item from "../../public/images/item.png"
-import bluetick from "../../public/images/bluetick.png"
-import customer from "../../public/images/customer.png"
+import glasses from "../../../public/images/aboutus.png"
+import heroImg from "../../../public/images/shopping.png"
+import product from "../../../public/images/product.png"
+import item from "../../../public/images/item.png"
+import bluetick from "../../../public/images/bluetick.png"
+import customer from "../../../public/images/customer.png"
 import AccordionDemo from "./AccordionDemo"
 import ImageComponent from "./ImageComponent"
-import mobilegirl from '../../public/images/mobilegirl.png'
+import mobilegirl from '../../../public/images/mobilegirl.png'
 
 
 

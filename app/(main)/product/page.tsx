@@ -12,7 +12,7 @@ import {
 
 import arrow from "../../public/images/simple-line-icons_arrow-left.png"
 import Image from "next/image";
-import FilterDropdown from "../components/FilterDropdown";
+import FilterDropdown from "../../components/FilterDropdown";
 import ProductCard from "./ProductCard";
 import ProductPagination from "./ProductPagination";
 

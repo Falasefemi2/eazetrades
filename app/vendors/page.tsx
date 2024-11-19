@@ -198,8 +198,8 @@ export default function VendorPage() {
 
 import { Instagram, Mail, Twitter } from "lucide-react"
 import { Separator } from "@radix-ui/react-separator";
-import ProductCard from "../product/ProductCard";
-import ProductPagination from "../product/ProductPagination";
+import ProductCard from "../(main)/product/ProductCard";
+import ProductPagination from "../(main)/product/ProductPagination";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
