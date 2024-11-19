@@ -2,13 +2,13 @@
 "use client"
 
 import { useState } from "react";
-import girl from "../../public/images/orangegirl.png"
-import mask from "../../public/images/mask.png"
-import model from "../../public/images/model.png"
-import model2 from "../../public/images/model2.png"
-import orange1 from "../../public/images/orangegirl.png"
-import orange2 from "../../public/images/orange2.png"
-import old from "../../public/images/old.png"
+import girl from "../../../public/images/orangegirl.png"
+import mask from "../../../public/images/mask.png"
+import model from "../../../public/images/model.png"
+import model2 from "../../../public/images/model2.png"
+import orange1 from "../../../public/images/orangegirl.png"
+import orange2 from "../../../public/images/orange2.png"
+import old from "../../../public/images/old.png"
 import Image, { StaticImageData } from "next/image"
 
 

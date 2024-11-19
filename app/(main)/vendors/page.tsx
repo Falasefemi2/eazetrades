@@ -1,16 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import cloth from "../../public/images/cloth.png"
-import flower from "../../public/images/flower.png"
-import halfcircle from "../../public/images/halfcircle.png"
-import stool from "../../public/images/stool.png"
-import bootle from "../../public/images/bottle.png"
-import crocs from "../../public/images/crocs.png"
-import watch from "../../public/images/watch.png"
-import headphone from "../../public/images/headphone.png"
-import speaker from "../../public/images/speaker.png"
-import location from "../../public/images/location.png"
+import cloth from "../../../public/images/cloth.png"
+import flower from "../../../public/images/flower.png"
+import halfcircle from "../../../public/images/halfcircle.png"
+import stool from "../../../public/images/stool.png"
+import bootle from "../../../public/images/bottle.png"
+import crocs from "../../../public/images/crocs.png"
+import watch from "../../../public/images/watch.png"
+import headphone from "../../../public/images/headphone.png"
+import speaker from "../../../public/images/speaker.png"
+import location from "../../../public/images/location.png"
 
 
 const pics = [stool, bootle, crocs, watch, headphone, speaker]

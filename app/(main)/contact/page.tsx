@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/form'
 import { ContactInput, ContactSchema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { submitContactForm } from "../action";
+import { submitContactForm } from "../../action";
 
 
 
