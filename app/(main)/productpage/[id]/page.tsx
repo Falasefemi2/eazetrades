@@ -3,26 +3,26 @@
 
 import Image from "next/image";
 import { useState } from 'react';
-import camera1 from "../../../public/images/camera1.png"
+import camera1 from "../../../../public/images/camera1.png"
 import { Button } from "@/components/ui/button"
 import { JSX, SVGProps } from "react";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import av1 from "../../../public/images/av1.png"
-import av2 from "../../../public/images/av2.png"
-import bag from "../../../public/images/bag.jpg"
-import cup from "../../../public/images/cup.jpg"
+import av1 from "../../../../public/images/av1.png"
+import av2 from "../../../../public/images/av2.png"
+import bag from "../../../../public/images/bag.jpg"
+import cup from "../../../../public/images/cup.jpg"
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 
-import stool from "../../../public/images/stool.png"
-import bootle from "../../../public/images/bottle.png"
-import crocs from "../../../public/images/crocs.png"
-import watch from "../../../public/images/watch.png"
-import headphone from "../../../public/images/headphone.png"
-import speaker from "../../../public/images/speaker.png"
+import stool from "../../../../public/images/stool.png"
+import bootle from "../../../../public/images/bottle.png"
+import crocs from "../../../../public/images/crocs.png"
+import watch from "../../../../public/images/watch.png"
+import headphone from "../../../../public/images/headphone.png"
+import speaker from "../../../../public/images/speaker.png"
 import { ShoppingCart } from "lucide-react";
-import location from "../../../public/images/location.png"
+import location from "../../../../public/images/location.png"
 
 
 
