@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Import images
 import heroImage from '../../public/images/hero.jpg';
+import Link from 'next/link';
 
 const images = [heroImage, heroImage];
 
@@ -65,7 +66,7 @@ export default function Component() {
                         transition={{ duration: 0.3, delay: 0.3 }} // Faster animation
 
                     >
-                        Get Started
+                        <Link href="/auth/createaccount">Get Started</Link>
                     </motion.button>
                 </div>
             </div>
