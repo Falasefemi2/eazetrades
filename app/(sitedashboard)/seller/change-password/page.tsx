@@ -1,10 +1,10 @@
-'use client'
+"use client"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Card, CardContent } from "@/components/ui/card"
 
 export default function Component() {
     const [isLoading, setIsLoading] = useState(false)
@@ -19,9 +19,10 @@ export default function Component() {
     }
 
     return (
-        <Card className="w-full max-w-md mx-auto">
-            <CardContent className="pt-6">
-                <form onSubmit={onSubmit} className="space-y-4">
+        <div className="p-4 md:p-6">
+            <h1 className="text-2xl font-semibold mb-6">Change Password</h1>
+            <Card className="p-6 bg-white">
+                <form onSubmit={onSubmit} className="space-y-6">
                     <div className="space-y-2">
                         <Label htmlFor="old-password">Old Password</Label>
                         <Input
@@ -29,6 +30,9 @@ export default function Component() {
                             required
                             type="password"
                             disabled={isLoading}
+                            className="bg-[#F4F4F4] h-[52px] w-full md:w-[670px]"
+
+                            placeholder="Enter old password"
                         />
                     </div>
                     <div className="space-y-2">
@@ -38,6 +42,9 @@ export default function Component() {
                             required
                             type="password"
                             disabled={isLoading}
+                            className="bg-[#F4F4F4] h-[52px] w-full md:w-[670px]"
+
+                            placeholder="Enter new password"
                         />
                     </div>
                     <div className="space-y-2">
@@ -47,12 +54,15 @@ export default function Component() {
                             required
                             type="password"
                             disabled={isLoading}
+                            className="bg-[#F4F4F4] h-[52px] w-full md:w-[670px]"
+
+                            placeholder="Confirm password"
                         />
                     </div>
-                    <div className="flex gap-4 pt-4">
+                    <div className="flex flex-col sm:flex-row gap-4 pt-4">
                         <Button
                             variant="outline"
-                            className="flex-1"
+                            className="flex-1 h-12 w-full"
                             disabled={isLoading}
                             type="button"
                         >
@@ -60,14 +70,16 @@ export default function Component() {
                         </Button>
                         <Button
                             type="submit"
-                            className="flex-1"
+                            className="flex-1 h-12 bg-[#6C5DD3] hover:bg-[#6C5DD3]/90 text-white w-full"
                             disabled={isLoading}
                         >
                             {isLoading ? "Changing..." : "Change password"}
                         </Button>
                     </div>
                 </form>
-            </CardContent>
-        </Card>
+            </Card>
+        </div>
     )
 }
+
+
