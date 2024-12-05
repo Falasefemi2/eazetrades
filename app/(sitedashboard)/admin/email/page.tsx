@@ -1,54 +1,104 @@
-import React from 'react';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-const EmailList = () => {
-    const data = [
-        { id: '001', fullName: 'Christine Brooks', email: 'Christine.Brooks@gmail.com', phone: '09173737287474' },
-        { id: '002', fullName: 'Christine Brooks', email: 'Christine.Brooks@gmail.com', phone: '09173737287474' },
-        { id: '003', fullName: 'Christine Brooks', email: 'Christine.Brooks@gmail.com', phone: '09173737287474' },
-        { id: '004', fullName: 'Christine Brooks', email: 'Christine.Brooks@gmail.com', phone: '09173737287474' },
-        { id: '005', fullName: 'Christine Brooks', email: 'Christine.Brooks@gmail.com', phone: '09173737287474' },
-        { id: '006', fullName: 'Christine Brooks', email: 'Christine.Brooks@gmail.com', phone: '09173737287474' },
-        { id: '007', fullName: 'Christine Brooks', email: 'Christine.Brooks@gmail.com', phone: '09173737287474' },
-        { id: '008', fullName: 'Christine Brooks', email: 'Christine.Brooks@gmail.com', phone: '09173737287474' },
-        { id: '009', fullName: 'Christine Brooks', email: 'Christine.Brooks@gmail.com', phone: '09173737287474' },
-        { id: '010', fullName: 'Christine Brooks', email: 'Christine.Brooks@gmail.com', phone: '09173737287474' },
-        { id: '011', fullName: 'Christine Brooks', email: 'Christine.Brooks@gmail.com', phone: '09173737287474' },
-        { id: '012', fullName: 'Christine Brooks', email: 'Christine.Brooks@gmail.com', phone: '09173737287474' }
-    ];
+interface EmailListProps {
+    registeredUsers: Array<{ id: string; email: string }>
+    newsletterEmails: Array<{ id: string; email: string }>
+}
 
+export default function EmailList({
+    registeredUsers = Array(4).fill(0).map((_, index) => ({
+        id: `RU${String(index + 1).padStart(3, '0')}`,
+        email: `user${index + 1}@example.com`
+    })),
+    newsletterEmails = Array(4).fill(0).map((_, index) => ({
+        id: `NE${String(index + 1).padStart(3, '0')}`,
+        email: `newsletter${index + 1}@example.com`
+    })),
+}: EmailListProps) {
     return (
-        <div className="p-6 bg-white">
-            <div className="mb-4">
-                <h1 className="text-xl font-normal text-gray-900">Email List</h1>
-            </div>
-            <div className="bg-white rounded-md">
-                <div className="min-w-full">
+        <div className="w-full space-y-8 p-4">
+            <h1 className="text-2xl font-bold">Email List</h1>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>Registered Users</CardTitle>
+                </CardHeader>
+                <CardContent>
                     <Table>
                         <TableHeader>
-                            <TableRow className="bg-gray-50">
-                                <TableHead className="w-20 py-3 px-4 text-left text-sm font-medium text-gray-500">ID</TableHead>
-                                <TableHead className="py-3 px-4 text-left text-sm font-medium text-gray-500">Full Name</TableHead>
-                                <TableHead className="py-3 px-4 text-left text-sm font-medium text-gray-500">Email Address</TableHead>
-                                <TableHead className="py-3 px-4 text-left text-sm font-medium text-gray-500">Phone Number</TableHead>
+                            <TableRow>
+                                <TableHead className="w-20">ID</TableHead>
+                                <TableHead>Email Address</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {data.map((row) => (
-                                <TableRow key={row.id} className="border-t border-gray-200">
-                                    <TableCell className="py-4 px-4 text-sm text-gray-600">{row.id}</TableCell>
-                                    <TableCell className="py-4 px-4 text-sm text-gray-600">{row.fullName}</TableCell>
-                                    <TableCell className="py-4 px-4 text-sm text-gray-600">{row.email}</TableCell>
-                                    <TableCell className="py-4 px-4 text-sm text-gray-600">{row.phone}</TableCell>
+                            {registeredUsers.map((user) => (
+                                <TableRow key={user.id}>
+                                    <TableCell className="font-medium">{user.id}</TableCell>
+                                    <TableCell className="w-full">{user.email}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
-                </div>
-            </div>
-        </div>
-    );
-};
+                    <div className="flex items-center justify-between mt-4">
+                        <p className="text-sm text-muted-foreground">Showing 1-10 of 79</p>
+                        <div className="flex items-center space-x-2">
+                            <Button variant="outline" size="icon">
+                                <ChevronLeft className="h-4 w-4" />
+                            </Button>
+                            <Button variant="outline" size="icon">
+                                <ChevronRight className="h-4 w-4" />
+                            </Button>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
 
-export default EmailList;
+            <Card>
+                <CardHeader>
+                    <CardTitle>Newsletter Emails</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-20">ID</TableHead>
+                                <TableHead>Email Address</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {newsletterEmails.map((email) => (
+                                <TableRow key={email.id}>
+                                    <TableCell className="font-medium">{email.id}</TableCell>
+                                    <TableCell className="w-full">{email.email}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                    <div className="flex items-center justify-between mt-4">
+                        <p className="text-sm text-muted-foreground">Showing 1-10 of 79</p>
+                        <div className="flex items-center space-x-2">
+                            <Button variant="outline" size="icon">
+                                <ChevronLeft className="h-4 w-4" />
+                            </Button>
+                            <Button variant="outline" size="icon">
+                                <ChevronRight className="h-4 w-4" />
+                            </Button>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+        </div>
+    )
+}
+
