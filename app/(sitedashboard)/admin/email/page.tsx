@@ -9,21 +9,39 @@ import {
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { Metadata } from 'next'
 
-interface EmailListProps {
-    registeredUsers: Array<{ id: string; email: string }>
-    newsletterEmails: Array<{ id: string; email: string }>
+export interface EmailListProps {
+    registeredUsers?: { id: string; email: string }[];
+    newsletterEmails?: { id: string; email: string }[];
 }
 
-export default function EmailList({
-    registeredUsers = Array(4).fill(0).map((_, index) => ({
+export const metadata: Metadata = {
+    title: 'Email List',
+}
+
+export default function Page() {
+    const defaultRegisteredUsers = Array(4).fill(0).map((_, index) => ({
         id: `RU${String(index + 1).padStart(3, '0')}`,
         email: `user${index + 1}@example.com`
-    })),
-    newsletterEmails = Array(4).fill(0).map((_, index) => ({
+    }));
+
+    const defaultNewsletterEmails = Array(4).fill(0).map((_, index) => ({
         id: `NE${String(index + 1).padStart(3, '0')}`,
         email: `newsletter${index + 1}@example.com`
-    })),
+    }));
+
+    return (
+        <EmailList
+            registeredUsers={defaultRegisteredUsers}
+            newsletterEmails={defaultNewsletterEmails}
+        />
+    )
+}
+
+function EmailList({
+    registeredUsers = [],
+    newsletterEmails = [],
 }: EmailListProps) {
     return (
         <div className="w-full space-y-8 p-4">
@@ -101,4 +119,3 @@ export default function EmailList({
         </div>
     )
 }
-

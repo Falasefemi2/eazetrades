@@ -42,7 +42,7 @@ const items: { title: string; url: string; icon: LucideIcon }[] = [
     },
     {
         title: "Advertisement",
-        url: "/admin/advertisement",
+        url: "/admin/advertisements",
         icon: MessageSquareMore,
     },
     {
