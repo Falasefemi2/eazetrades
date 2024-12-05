@@ -5,6 +5,7 @@ import ImageSlider from "../components/ImageSlider";
 import RelatedSearch from "../components/RelatedSearch";
 import Testimonials from "../components/Testimonials";
 import TrendingProducts from "../components/TrendingProducts";
+import Services from "../components/Services";
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <ImageSlider />
       <RelatedSearch />
       <TrendingProducts />
+      <Services />
       <Testimonials />
     </>
   );
