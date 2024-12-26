@@ -4,7 +4,8 @@ import { cva } from "class-variance-authority"
 import { ChevronDown } from "lucide-react"
 import localFont from 'next/font/local'
 
-const myFont = localFont({ src: '../../public/fonts/AnekBangla-Regular.ttf' })
+
+const poppinsMedium = localFont({ src: '../../public/fonts/Poppins-Medium.ttf' });
 
 
 import { cn } from "@/lib/utils"
@@ -47,7 +48,7 @@ const NavigationMenuItem = NavigationMenuPrimitive.Item
 const navigationMenuTriggerStyle = cva(
   cn(
     "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium focus:outline-none disabled:pointer-events-none disabled:opacity-50 text-xl text-[#4F4F4F]",
-    myFont.className // Apply the font class here
+    poppinsMedium.className // Apply the font class here
   )
 )
 

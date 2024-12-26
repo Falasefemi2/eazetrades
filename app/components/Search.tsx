@@ -1,10 +1,10 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { Search, SearchIcon } from "lucide-react";
-import localFont from 'next/font/local';
 import React from 'react';
 
-const lexendDeca = localFont({ src: '../../public/fonts/LexendDeca-Regular.ttf' });
+
+
 
 interface SearchBarProps {
     className?: string;
