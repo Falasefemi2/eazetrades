@@ -8,7 +8,7 @@ import man2 from "../../public/images/Rectangle 33(3).png"
 import man3 from "../../public/images/Rectangle 33(4).png"
 import man4 from "../../public/images/Rectangle 33(5).png"
 import location from "../../public/images/location.png"
-import { ShoppingCart } from "lucide-react";
+import { Link, ShoppingCart } from "lucide-react";
 
 
 interface Service {
@@ -118,8 +118,11 @@ export default function Service() {
                 <Button
                     variant="outline"
                     className="px-4 py-3 w-[80%] sm:w-[234px] sm:h-[69px] rounded-[12px] text-[#333333] bg-transparent text-sm sm:text-base"
+                    asChild
                 >
-                    View all products <span className="ml-2"><ShoppingCart /></span>
+                    <Link href="/product">
+                        View all products <span className="ml-2"><ShoppingCart /></span>
+                    </Link>
                 </Button>
             </div>
         </div>
