@@ -8,7 +8,8 @@ import man2 from "../../public/images/Rectangle 33(3).png"
 import man3 from "../../public/images/Rectangle 33(4).png"
 import man4 from "../../public/images/Rectangle 33(5).png"
 import location from "../../public/images/location.png"
-import { Link, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
+import Link from "next/link"
 
 
 interface Service {
@@ -129,4 +130,3 @@ export default function Service() {
 
     )
 }
-
