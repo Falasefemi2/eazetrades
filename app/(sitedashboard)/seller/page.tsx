@@ -4,9 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
+import { Area, AreaChart, CartesianGrid, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 import { ChartContainer, ChartTooltip } from "@/components/ui/chart"
-import { Users, TrendingUp } from 'lucide-react'
+import { Users, TrendingUp, LineChart } from 'lucide-react'
+
 
 const salesData = [
     { date: "1", sales: 25 },
@@ -98,7 +99,7 @@ export default function Component() {
                 </Card>
             </div>
 
-            <Card>
+            {/* <Card>
                 <CardHeader>
                     <CardTitle>Total Sales</CardTitle>
                 </CardHeader>
@@ -112,6 +113,7 @@ export default function Component() {
                         }}
                         className="h-[300px]"
                     >
+
                         <ResponsiveContainer width="100%" height="100%">
                             <AreaChart data={salesData}>
                                 <XAxis
@@ -139,7 +141,8 @@ export default function Component() {
                         </ResponsiveContainer>
                     </ChartContainer>
                 </CardContent>
-            </Card>
+            </Card> */}
+
 
             <div className="grid gap-4 md:grid-cols-2">
                 <Card>
