@@ -4,9 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Area, AreaChart, CartesianGrid, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
+// import { Area, AreaChart, CartesianGrid, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 import { ChartContainer, ChartTooltip } from "@/components/ui/chart"
 import { Users, TrendingUp, LineChart } from 'lucide-react'
+import AnalyticsChart from "./components/analytics-chart"
 
 
 const salesData = [
@@ -143,7 +144,7 @@ export default function Component() {
                 </CardContent>
             </Card> */}
 
-
+<AnalyticsChart />
             <div className="grid gap-4 md:grid-cols-2">
                 <Card>
                     <CardHeader>
