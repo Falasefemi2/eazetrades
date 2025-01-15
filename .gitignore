@@ -16,6 +16,8 @@
 # production
 /build
 
+/package-lock.zip
+
 # misc
 .DS_Store
 *.pem
