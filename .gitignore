@@ -17,6 +17,7 @@
 /build
 
 /package-lock.zip
+/.zip
 
 # misc
 .DS_Store
